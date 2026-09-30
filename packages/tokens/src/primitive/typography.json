@@ -1,0 +1,53 @@
+{
+  "font": {
+    "family": {
+      "katsoulidis": {
+        "$type": "fontFamily",
+        "$value": ["Katsoulidis", "Georgia", "Times New Roman", "serif"],
+        "$description": "NKUA serif. Only 400 and 700, upright + italic."
+      },
+      "open-sans": {
+        "$type": "fontFamily",
+        "$value": ["Open Sans", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Arial", "sans-serif"],
+        "$description": "Variable font, weights 300–800."
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": ["ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "Liberation Mono", "monospace"]
+      }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "light": { "$value": 300 },
+      "regular": { "$value": 400 },
+      "semibold": { "$value": 600 },
+      "bold": { "$value": 700 },
+      "extrabold": { "$value": 800 }
+    },
+    "size": {
+      "$type": "dimension",
+      "100": { "$value": "0.75rem", "$description": "12px" },
+      "200": { "$value": "0.875rem", "$description": "14px" },
+      "300": { "$value": "1rem", "$description": "16px" },
+      "400": { "$value": "1.125rem", "$description": "18px" },
+      "500": { "$value": "1.25rem", "$description": "20px" },
+      "600": { "$value": "1.5rem", "$description": "24px" },
+      "700": { "$value": "1.875rem", "$description": "30px" },
+      "800": { "$value": "2.25rem", "$description": "36px" },
+      "900": { "$value": "3rem", "$description": "48px" }
+    },
+    "line-height": {
+      "$type": "number",
+      "tight": { "$value": 1.2, "$description": "Not lower: Greek capitals carry accents above the cap height." },
+      "snug": { "$value": 1.35 },
+      "normal": { "$value": 1.5 },
+      "relaxed": { "$value": 1.7 }
+    },
+    "letter-spacing": {
+      "$type": "dimension",
+      "tight": { "$value": "-0.01em" },
+      "normal": { "$value": "0" },
+      "wide": { "$value": "0.02em" }
+    }
+  }
+}

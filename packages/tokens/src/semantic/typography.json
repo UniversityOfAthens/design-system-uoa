@@ -1,0 +1,35 @@
+{
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "heading": { "$value": "{font.family.katsoulidis}" },
+      "body": { "$value": "{font.family.open-sans}" },
+      "code": { "$value": "{font.family.mono}" }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "body": { "$value": "{font.weight.regular}" },
+      "body-strong": { "$value": "{font.weight.semibold}" },
+      "heading": { "$value": "{font.weight.bold}", "$description": "Katsoulidis has no 600; use 400 or 700 only." }
+    },
+    "size": {
+      "$type": "dimension",
+      "body-sm": { "$value": "{font.size.200}" },
+      "body-md": { "$value": "{font.size.300}" },
+      "body-lg": { "$value": "{font.size.400}" },
+      "caption": { "$value": "{font.size.100}" },
+      "heading-1": { "$value": "{font.size.800}" },
+      "heading-2": { "$value": "{font.size.700}" },
+      "heading-3": { "$value": "{font.size.600}" },
+      "heading-4": { "$value": "{font.size.500}" },
+      "heading-5": { "$value": "{font.size.400}" },
+      "heading-6": { "$value": "{font.size.300}" },
+      "display": { "$value": "{font.size.900}" }
+    },
+    "line-height": {
+      "$type": "number",
+      "heading": { "$value": "{font.line-height.tight}" },
+      "body": { "$value": "{font.line-height.normal}" }
+    }
+  }
+}

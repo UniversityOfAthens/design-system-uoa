@@ -1,0 +1,10 @@
+{
+  "color": {
+    "$type": "color",
+    "brand": {
+      "primary": { "$value": "{color.burgundy.700}" },
+      "primary-hover": { "$value": "{color.burgundy.900}" },
+      "link": { "$value": "{color.burgundy.700}" }
+    }
+  }
+}

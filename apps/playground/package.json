@@ -1,0 +1,10 @@
+{
+  "name": "@uoa/playground",
+  "private": true,
+  "scripts": {
+    "dev": "cd ../../packages/tokens && bun run build && cd ../../apps/playground && bun ./index.html"
+  },
+  "devDependencies": {
+    "@uoa/tokens": "workspace:*"
+  }
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UOA Design System — Playground</title>
+  <link rel="stylesheet" href="../../packages/tokens/fonts/fonts.css">
+  <link rel="stylesheet" href="../../packages/tokens/dist/css/tokens.css">
+  <link rel="stylesheet" href="./playground.css">
+</head>
+<body>
+  <header class="pg-bar">
+    <strong class="pg-bar__title">UOA DS playground</strong>
+    <label>Brand
+      <select id="brand">
+        <option value="">Default (www.uoa.gr)</option>
+        <option value="red">Red (burgundy)</option>
+        <option value="green">Green (teal)</option>
+      </select>
+    </label>
+    <label>Accent
+      <select id="accent">
+        <option value="">Default</option>
+        <option>azure</option>
+        <option>indigo</option>
+        <option>rose</option>
+        <option>olive</option>
+        <option>vermilion</option>
+        <option>burgundy</option>
+        <option>teal</option>
+      </select>
+    </label>
+  </header>
+
+  <main class="pg-main">
+    <section>
+      <h2 class="pg-section">Typography</h2>
+      <p class="pg-note">Headings: <code>--uoa-font-family-heading</code> (Katsoulidis → Georgia fallback). Body: <code>--uoa-font-family-body</code> (Open Sans).</p>
+      <div class="pg-type">
+        <h1>Εθνικό και Καποδιστριακό Πανεπιστήμιο Αθηνών</h1>
+        <h2>Σχολές και Τμήματα</h2>
+        <h3>Τμήμα Φυσικής — Department of Physics</h3>
+        <h4>Ανακοινώσεις φοιτητών</h4>
+        <h5>Πρόγραμμα εξεταστικής περιόδου</h5>
+        <h6>Ώρες γραφείου · Office hours</h6>
+        <p class="pg-display">Άλφα Ωμέγα 2026</p>
+        <p>Το Εθνικό και Καποδιστριακό Πανεπιστήμιο Αθηνών ιδρύθηκε το 1837 και είναι το πρώτο πανεπιστήμιο του νεοσύστατου ελληνικού κράτους. <a href="#">Διαβάστε περισσότερα</a> για την ιστορία του.</p>
+        <p lang="en">The National and Kapodistrian University of Athens was founded in 1837 and is the first university of the newly established Greek state. <a href="#">Read more</a> about its history.</p>
+        <p class="pg-small">Μικρό κείμενο (body-sm) — ΆΈΉΊΌΎΏ άέήίόύώ ϊϋΐΰ « » ; · €</p>
+      </div>
+      <div class="pg-weights" id="weights"></div>
+    </section>
+
+    <section>
+      <h2 class="pg-section">Semantic colours</h2>
+      <p class="pg-note">Contrast is measured against white. AA text needs 4.5:1, UI parts 3:1.</p>
+      <div class="pg-swatches" id="semantic"></div>
+    </section>
+
+    <section>
+      <h2 class="pg-section">Brand in use</h2>
+      <div class="pg-demo">
+        <div class="pg-demo__banner">
+          <span class="pg-demo__accent"></span>
+          <p class="pg-demo__kicker">Τμήμα Φυσικής</p>
+          <p class="pg-demo__headline">Νέο πρόγραμμα μεταπτυχιακών σπουδών</p>
+        </div>
+        <div class="pg-demo__body">
+          <button class="pg-button" type="button">Υποβολή αίτησης</button>
+          <a href="#">Δείτε όλες τις ανακοινώσεις</a>
+        </div>
+        <div class="pg-alerts">
+          <p class="pg-alert" data-kind="success">Η αίτησή σας υποβλήθηκε.</p>
+          <p class="pg-alert" data-kind="warning">Η προθεσμία λήγει αύριο.</p>
+          <p class="pg-alert" data-kind="danger">Το πεδίο είναι υποχρεωτικό.</p>
+          <p class="pg-alert" data-kind="info">Οι εγγραφές ανοίγουν τον Οκτώβριο.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="pg-section">Primitive colours</h2>
+      <div class="pg-swatches" id="primitive"></div>
+    </section>
+  </main>
+
+  <script type="module" src="./playground.js"></script>
+</body>
+</html>

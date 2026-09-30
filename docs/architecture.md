@@ -37,7 +37,7 @@ picker, modal) become hard to maintain in vanilla JS, those specific ones can be
 Components (Lit) — they still work in Twig/PHP/React. Decide per component; record it in
 an ADR.
 
-## Proposed repo structure (pnpm monorepo)
+## Proposed repo structure (Bun monorepo)
 
 ```
 design-system-uoa/
@@ -74,7 +74,7 @@ design-system-uoa/
 │   └── storybook/              # component workbench + docs site (or Astro Starlight)
 ├── .changeset/                 # versioning / changelogs
 ├── package.json
-├── pnpm-workspace.yaml
+├── bun.lock
 └── README.md
 ```
 
@@ -104,7 +104,7 @@ design-system-uoa/
 
 | Concern | Suggestion |
 | --- | --- |
-| Package manager / monorepo | pnpm workspaces (+ Turborepo if builds get slow) |
+| Package manager / monorepo | Bun workspaces (+ Turborepo if builds get slow) |
 | Tokens | Style Dictionary v4, DTCG JSON format |
 | CSS | Plain modern CSS (custom properties, `@layer`, nesting) + PostCSS; Sass optional |
 | Workbench / docs | Storybook (HTML/Twig), later a docs site (Astro Starlight) |

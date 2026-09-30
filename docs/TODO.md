@@ -12,7 +12,7 @@
 
 ## Phase 1 — Repo scaffolding
 
-- [ ] pnpm workspace, `packages/` + `apps/` layout (see architecture.md)
+- [ ] Bun workspace, `packages/` + `apps/` layout (see architecture.md)
 - [ ] Prettier, ESLint, Stylelint, commitlint, EditorConfig
 - [ ] Changesets
 - [ ] GitHub Actions: lint, build, test, deploy Storybook (GitHub Pages)

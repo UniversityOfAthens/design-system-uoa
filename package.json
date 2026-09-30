@@ -1,0 +1,9 @@
+{
+  "name": "design-system-uoa",
+  "private": true,
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "build": "bun run --filter '@uoa/tokens' build",
+    "dev": "bun run --filter '@uoa/playground' dev"
+  }
+}

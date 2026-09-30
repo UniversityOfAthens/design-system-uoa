@@ -1,0 +1,19 @@
+{
+  "name": "@uoa/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": ["dist", "fonts"],
+  "exports": {
+    "./css": "./dist/css/tokens.css",
+    "./fonts.css": "./fonts/fonts.css",
+    "./scss": "./dist/scss/_tokens.scss",
+    ".": "./dist/js/tokens.js"
+  },
+  "scripts": {
+    "build": "node build/build.js"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5"
+  }
+}
