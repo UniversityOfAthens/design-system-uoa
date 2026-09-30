@@ -2,9 +2,9 @@
   "name": "@uoa/playground",
   "private": true,
   "scripts": {
-    "dev": "cd ../../packages/tokens && bun run build && cd ../../apps/playground && bun ./index.html"
+    "dev": "cd ../.. && bun run dev"
   },
   "devDependencies": {
-    "@uoa/tokens": "workspace:*"
+    "@uoa/core": "workspace:*"
   }
 }

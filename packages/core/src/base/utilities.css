@@ -1,0 +1,36 @@
+/* Hidden visually, still read by screen readers. */
+.uoa-visually-hidden:not(:focus, :active) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Large brand-serif headline for heroes and landing pages. */
+.uoa-display {
+  font-family: var(--uoa-font-family-display);
+  font-weight: var(--uoa-font-weight-display);
+  font-size: var(--uoa-font-size-display);
+  line-height: var(--uoa-font-line-height-display);
+  letter-spacing: var(--uoa-font-letter-spacing-display);
+  text-wrap: balance;
+}
+
+/* Intro paragraph under a page title. */
+.uoa-lead {
+  font-size: var(--uoa-font-size-body-lg);
+  color: var(--uoa-color-text-muted);
+}
+
+/* Small uppercase label above a heading. Latin only — see conventions.md on Greek uppercase. */
+.uoa-eyebrow {
+  font-size: var(--uoa-font-size-caption);
+  font-weight: var(--uoa-font-weight-body-strong);
+  letter-spacing: var(--uoa-font-letter-spacing-eyebrow);
+  color: var(--uoa-color-brand-primary);
+}

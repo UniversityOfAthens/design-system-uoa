@@ -2,7 +2,7 @@ import { readdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { basename, join } from 'node:path';
 import StyleDictionary from 'style-dictionary';
 
-const BASE = ['src/primitive/**/*.json', 'src/semantic/**/*.json'];
+const BASE = ['src/primitive/**/*.json', 'src/semantic/**/*.json', 'src/component/**/*.json'];
 const CSS_DIR = 'dist/css/';
 
 await rm('dist', { recursive: true, force: true });

@@ -4,85 +4,233 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>UOA Design System — Playground</title>
-  <link rel="stylesheet" href="../../packages/tokens/fonts/fonts.css">
-  <link rel="stylesheet" href="../../packages/tokens/dist/css/tokens.css">
+  <link rel="stylesheet" href="../../packages/core/dist/fonts/fonts.css">
+  <link rel="stylesheet" href="../../packages/core/dist/uoa.css">
   <link rel="stylesheet" href="./playground.css">
 </head>
 <body>
-  <header class="pg-bar">
-    <strong class="pg-bar__title">UOA DS playground</strong>
-    <label>Brand
-      <select id="brand">
-        <option value="">Default (www.uoa.gr)</option>
-        <option value="red">Red (burgundy)</option>
-        <option value="green">Green (teal)</option>
-      </select>
-    </label>
-    <label>Accent
-      <select id="accent">
-        <option value="">Default</option>
-        <option>azure</option>
-        <option>indigo</option>
-        <option>rose</option>
-        <option>olive</option>
-        <option>vermilion</option>
-        <option>burgundy</option>
-        <option>teal</option>
-      </select>
-    </label>
+  <a class="pg-skip" href="#content">Μετάβαση στο περιεχόμενο</a>
+
+  <header class="pg-header">
+    <a class="pg-brand" href="#top">
+      <span class="pg-brand__mark" aria-hidden="true">ΕΚΠΑ</span>
+      <span class="pg-brand__name">Design System</span>
+      <span class="pg-badge">draft</span>
+    </a>
+    <div class="pg-controls">
+      <label class="pg-control">
+        <span>Brand</span>
+        <select id="brand">
+          <option value="">Default · uoa.gr</option>
+          <option value="red">Red · burgundy</option>
+          <option value="green">Green · teal</option>
+        </select>
+      </label>
+      <label class="pg-control">
+        <span>Accent</span>
+        <select id="accent">
+          <option value="">Default</option>
+          <option>azure</option>
+          <option>indigo</option>
+          <option>rose</option>
+          <option>olive</option>
+          <option>vermilion</option>
+          <option>burgundy</option>
+          <option>teal</option>
+        </select>
+      </label>
+    </div>
   </header>
 
-  <main class="pg-main">
-    <section>
-      <h2 class="pg-section">Typography</h2>
-      <p class="pg-note">Headings: <code>--uoa-font-family-heading</code> (Katsoulidis → Georgia fallback). Body: <code>--uoa-font-family-body</code> (Open Sans).</p>
-      <div class="pg-type">
-        <h1>Εθνικό και Καποδιστριακό Πανεπιστήμιο Αθηνών</h1>
-        <h2>Σχολές και Τμήματα</h2>
-        <h3>Τμήμα Φυσικής — Department of Physics</h3>
-        <h4>Ανακοινώσεις φοιτητών</h4>
-        <h5>Πρόγραμμα εξεταστικής περιόδου</h5>
-        <h6>Ώρες γραφείου · Office hours</h6>
-        <p class="pg-display">Άλφα Ωμέγα 2026</p>
-        <p>Το Εθνικό και Καποδιστριακό Πανεπιστήμιο Αθηνών ιδρύθηκε το 1837 και είναι το πρώτο πανεπιστήμιο του νεοσύστατου ελληνικού κράτους. <a href="#">Διαβάστε περισσότερα</a> για την ιστορία του.</p>
-        <p lang="en">The National and Kapodistrian University of Athens was founded in 1837 and is the first university of the newly established Greek state. <a href="#">Read more</a> about its history.</p>
-        <p class="pg-small">Μικρό κείμενο (body-sm) — ΆΈΉΊΌΎΏ άέήίόύώ ϊϋΐΰ « » ; · €</p>
+  <div class="pg-layout" id="top">
+    <nav class="pg-nav" aria-label="Ενότητες">
+      <p class="pg-nav__group">Foundations</p>
+      <ul>
+        <li><a href="#colour">Colour</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#spacing">Spacing</a></li>
+        <li><a href="#shape">Radius &amp; shadow</a></li>
+      </ul>
+      <p class="pg-nav__group">Components</p>
+      <ul>
+        <li><a href="#button">Button</a></li>
+      </ul>
+      <p class="pg-nav__group">In context</p>
+      <ul>
+        <li><a href="#example">Department page</a></li>
+      </ul>
+    </nav>
+
+    <main class="pg-content" id="content">
+      <div class="pg-intro">
+        <p class="uoa-eyebrow">NKUA · ΕΚΠΑ</p>
+        <h1 class="uoa-display">Σύστημα σχεδίασης</h1>
+        <p class="uoa-lead">Tokens, base styles and components for every NKUA website. Switch brand and accent at the top to see a department's theme.</p>
       </div>
-      <div class="pg-weights" id="weights"></div>
-    </section>
 
-    <section>
-      <h2 class="pg-section">Semantic colours</h2>
-      <p class="pg-note">Contrast is measured against white. AA text needs 4.5:1, UI parts 3:1.</p>
-      <div class="pg-swatches" id="semantic"></div>
-    </section>
+      <!-- Colour -->
+      <section class="pg-section" id="colour" aria-labelledby="colour-h">
+        <header class="pg-section__head">
+          <h2 id="colour-h">Colour</h2>
+          <p>Semantic colours follow the site's brand. Contrast is measured against white: <span class="pg-pill" data-level="aa">AA</span> text, <span class="pg-pill" data-level="ui">UI</span> borders and icons only (3:1), <span class="pg-pill" data-level="deco">Decorative</span> never for meaning.</p>
+        </header>
+        <div id="colour-groups"></div>
+        <h3 class="pg-subhead">Palettes</h3>
+        <div id="palettes" class="pg-palettes"></div>
+      </section>
 
-    <section>
-      <h2 class="pg-section">Brand in use</h2>
-      <div class="pg-demo">
-        <div class="pg-demo__banner">
-          <span class="pg-demo__accent"></span>
-          <p class="pg-demo__kicker">Τμήμα Φυσικής</p>
-          <p class="pg-demo__headline">Νέο πρόγραμμα μεταπτυχιακών σπουδών</p>
+      <!-- Typography -->
+      <section class="pg-section" id="typography" aria-labelledby="typography-h">
+        <header class="pg-section__head">
+          <h2 id="typography-h">Typography</h2>
+          <p><strong>Katsoulidis</strong> for h1 and display text, <strong>Open Sans</strong> for everything else. Sizes from h3 upwards scale with the viewport.</p>
+        </header>
+        <div class="pg-card pg-specimens" id="specimens"></div>
+        <div class="pg-grid-2">
+          <div class="pg-card">
+            <p class="pg-card__label">Κείμενο · Greek</p>
+            <p>Το Εθνικό και Καποδιστριακό Πανεπιστήμιο Αθηνών ιδρύθηκε το 1837 και είναι το πρώτο πανεπιστήμιο του νεοσύστατου ελληνικού κράτους. <a href="#">Διαβάστε περισσότερα</a> για την ιστορία του.</p>
+            <p class="pg-muted">ΆΈΉΊΌΎΏ άέήίόύώ ϊϋΐΰ « » ; · €</p>
+          </div>
+          <div class="pg-card" lang="en">
+            <p class="pg-card__label">Body · English</p>
+            <p>The National and Kapodistrian University of Athens was founded in 1837 and is the first university of the newly established Greek state. <a href="#">Read more</a> about its history.</p>
+            <p class="pg-muted">Open Sans is a variable font: any weight from 300 to 800.</p>
+          </div>
         </div>
-        <div class="pg-demo__body">
-          <button class="pg-button" type="button">Υποβολή αίτησης</button>
-          <a href="#">Δείτε όλες τις ανακοινώσεις</a>
-        </div>
-        <div class="pg-alerts">
-          <p class="pg-alert" data-kind="success">Η αίτησή σας υποβλήθηκε.</p>
-          <p class="pg-alert" data-kind="warning">Η προθεσμία λήγει αύριο.</p>
-          <p class="pg-alert" data-kind="danger">Το πεδίο είναι υποχρεωτικό.</p>
-          <p class="pg-alert" data-kind="info">Οι εγγραφές ανοίγουν τον Οκτώβριο.</p>
-        </div>
-      </div>
-    </section>
+        <div class="pg-card pg-weights" id="weights"></div>
+      </section>
 
-    <section>
-      <h2 class="pg-section">Primitive colours</h2>
-      <div class="pg-swatches" id="primitive"></div>
-    </section>
-  </main>
+      <!-- Spacing -->
+      <section class="pg-section" id="spacing" aria-labelledby="spacing-h">
+        <header class="pg-section__head">
+          <h2 id="spacing-h">Spacing</h2>
+          <p>A 4px grid. <code>--uoa-space-4</code> = 16px.</p>
+        </header>
+        <div class="pg-card pg-scale" id="spacing-scale"></div>
+      </section>
+
+      <!-- Shape -->
+      <section class="pg-section" id="shape" aria-labelledby="shape-h">
+        <header class="pg-section__head">
+          <h2 id="shape-h">Radius &amp; shadow</h2>
+          <p>Controls use <code>radius-control</code> (8px), cards and panels <code>radius-surface</code> (12px).</p>
+        </header>
+        <div class="pg-tiles" id="shape-tiles"></div>
+      </section>
+
+      <!-- Button -->
+      <section class="pg-section" id="button" aria-labelledby="button-h">
+        <header class="pg-section__head">
+          <h2 id="button-h">Button</h2>
+          <p>Starts an action. One primary per area; the rest secondary or tertiary. Docs: <code>packages/core/src/components/button/README.md</code></p>
+        </header>
+
+        <figure class="pg-example">
+          <figcaption>Variants</figcaption>
+          <div class="pg-example__canvas">
+            <div class="uoa-cluster">
+              <button class="uoa-button" type="button">Υποβολή αίτησης</button>
+              <button class="uoa-button uoa-button--secondary" type="button">Αποθήκευση</button>
+              <button class="uoa-button uoa-button--tertiary" type="button">Ακύρωση</button>
+            </div>
+          </div>
+        </figure>
+
+        <figure class="pg-example">
+          <figcaption>Small</figcaption>
+          <div class="pg-example__canvas">
+            <div class="uoa-cluster">
+              <button class="uoa-button uoa-button--sm" type="button">Φίλτρα</button>
+              <button class="uoa-button uoa-button--sm uoa-button--secondary" type="button">Εξαγωγή</button>
+              <button class="uoa-button uoa-button--sm uoa-button--tertiary" type="button">Καθαρισμός</button>
+            </div>
+          </div>
+        </figure>
+
+        <figure class="pg-example">
+          <figcaption>With icon, icon-only, link</figcaption>
+          <div class="pg-example__canvas">
+            <div class="uoa-cluster">
+              <button class="uoa-button" type="button">
+                <svg class="uoa-button__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                Λήψη προγράμματος
+              </button>
+              <button class="uoa-button uoa-button--secondary" type="button" aria-label="Αναζήτηση">
+                <svg class="uoa-button__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              </button>
+              <a class="uoa-button uoa-button--secondary" href="#">Σύνδεσμος ως κουμπί</a>
+            </div>
+          </div>
+        </figure>
+
+        <figure class="pg-example">
+          <figcaption>Disabled</figcaption>
+          <div class="pg-example__canvas">
+            <div class="uoa-cluster">
+              <button class="uoa-button" type="button" disabled>Υποβολή αίτησης</button>
+              <button class="uoa-button uoa-button--secondary" type="button" disabled>Αποθήκευση</button>
+              <a class="uoa-button uoa-button--tertiary" aria-disabled="true">Ακύρωση</a>
+            </div>
+          </div>
+        </figure>
+
+        <figure class="pg-example">
+          <figcaption>Full width</figcaption>
+          <div class="pg-example__canvas">
+            <div style="max-width: 22rem">
+              <button class="uoa-button uoa-button--block" type="submit">Σύνδεση</button>
+            </div>
+          </div>
+        </figure>
+      </section>
+
+      <!-- In context -->
+      <section class="pg-section" id="example" aria-labelledby="example-h">
+        <header class="pg-section__head">
+          <h2 id="example-h">Department page</h2>
+          <p>Tokens, base styles and Button together. Not components yet: a preview of where they're heading.</p>
+        </header>
+        <div class="pg-demo">
+          <div class="pg-demo__hero">
+            <p class="pg-demo__eyebrow">Σχολή Θετικών Επιστημών</p>
+            <p class="uoa-display pg-demo__title">Τμήμα Φυσικής</p>
+            <p class="pg-demo__lead">Προπτυχιακές και μεταπτυχιακές σπουδές, έρευνα και ανακοινώσεις του Τμήματος.</p>
+            <div class="uoa-cluster">
+              <a class="uoa-button pg-demo__cta" href="#">Προπτυχιακά</a>
+              <a class="uoa-button uoa-button--secondary" href="#">Μεταπτυχιακά</a>
+            </div>
+          </div>
+          <div class="pg-demo__body">
+            <h3>Ανακοινώσεις</h3>
+            <div class="uoa-grid" style="--uoa-grid-min: 15rem">
+              <article class="pg-news">
+                <p class="pg-news__date">28 Σεπτ 2026</p>
+                <h4 class="pg-news__title"><a href="#">Έναρξη μαθημάτων χειμερινού εξαμήνου</a></h4>
+                <p class="pg-muted">Τα μαθήματα ξεκινούν τη Δευτέρα 5 Οκτωβρίου.</p>
+              </article>
+              <article class="pg-news">
+                <p class="pg-news__date">21 Σεπτ 2026</p>
+                <h4 class="pg-news__title"><a href="#">Πρόγραμμα εξεταστικής Σεπτεμβρίου</a></h4>
+                <p class="pg-muted">Αναρτήθηκε το τελικό πρόγραμμα.</p>
+              </article>
+              <article class="pg-news">
+                <p class="pg-news__date">15 Σεπτ 2026</p>
+                <h4 class="pg-news__title"><a href="#">Υποτροφίες αριστείας 2026–27</a></h4>
+                <p class="pg-muted">Υποβολή αιτήσεων έως 30 Οκτωβρίου.</p>
+              </article>
+            </div>
+            <div class="pg-alerts">
+              <p class="pg-alert" data-kind="success">Η αίτησή σας υποβλήθηκε.</p>
+              <p class="pg-alert" data-kind="warning">Η προθεσμία λήγει αύριο.</p>
+              <p class="pg-alert" data-kind="danger">Το πεδίο είναι υποχρεωτικό.</p>
+              <p class="pg-alert" data-kind="info">Οι εγγραφές ανοίγουν τον Οκτώβριο.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 
   <script type="module" src="./playground.js"></script>
 </body>

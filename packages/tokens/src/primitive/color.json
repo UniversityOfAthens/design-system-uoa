@@ -2,53 +2,128 @@
   "color": {
     "$type": "color",
     "uoa": {
-      "navy": { "$value": "#161f57", "$description": "Header/brand navy of www.uoa.gr" },
-      "navy-dark": { "$value": "#0e1440" },
-      "blue": { "$value": "#0075cb", "$description": "Link blue of www.uoa.gr. 4.77:1 on white — not on grey-100 or darker." },
-      "cyan": { "$value": "#00afcb", "$description": "2.6:1 on white. Decorative only, never for text." }
+      "navy": {
+        "$value": "#161f57",
+        "$description": "Header/brand navy of www.uoa.gr"
+      },
+      "navy-dark": {
+        "$value": "#0e1440"
+      },
+      "blue": {
+        "$value": "#0075cb",
+        "$description": "Link blue of www.uoa.gr. 4.77:1 on white — not on grey-100 or darker."
+      },
+      "cyan": {
+        "$value": "#00afcb",
+        "$description": "2.6:1 on white. Decorative only, never for text."
+      }
     },
     "burgundy": {
-      "700": { "$value": "#862c23", "$description": "TYPO3 'Red' scheme primary" },
-      "900": { "$value": "#551c16" }
+      "700": {
+        "$value": "#862c23",
+        "$description": "TYPO3 'Red' scheme primary"
+      },
+      "900": {
+        "$value": "#551c16"
+      }
     },
     "teal": {
-      "700": { "$value": "#2c5454", "$description": "TYPO3 'Green' scheme primary" },
-      "900": { "$value": "#172c2c" }
+      "700": {
+        "$value": "#2c5454",
+        "$description": "TYPO3 'Green' scheme primary"
+      },
+      "900": {
+        "$value": "#172c2c"
+      }
     },
     "accent": {
-      "azure": { "$value": "#0d5eaf" },
-      "indigo": { "$value": "#2711ab", "$description": "TYPO3 'Navy' accent" },
-      "rose": { "$value": "#a62e4a", "$description": "TYPO3 'Serice' accent" },
-      "olive": { "$value": "#787637" },
-      "vermilion": { "$value": "#c24a38", "$description": "TYPO3 'Orange' accent" }
+      "azure": {
+        "$value": "#0d5eaf"
+      },
+      "indigo": {
+        "$value": "#2711ab",
+        "$description": "TYPO3 'Navy' accent"
+      },
+      "rose": {
+        "$value": "#a62e4a",
+        "$description": "TYPO3 'Serice' accent"
+      },
+      "olive": {
+        "$value": "#787637"
+      },
+      "vermilion": {
+        "$value": "#c24a38",
+        "$description": "TYPO3 'Orange' accent"
+      }
     },
     "grey": {
-      "0": { "$value": "#ffffff" },
-      "50": { "$value": "#f7f7f7" },
-      "100": { "$value": "#eeeeee" },
-      "200": { "$value": "#dddddd" },
-      "300": { "$value": "#cccccc" },
-      "500": { "$value": "#767676", "$description": "Lightest grey allowed for text on white (4.54:1)" },
-      "600": { "$value": "#666666" },
-      "700": { "$value": "#444444" },
-      "800": { "$value": "#333333" },
-      "900": { "$value": "#1c1c1c" }
+      "0": {
+        "$value": "#ffffff"
+      },
+      "50": {
+        "$value": "#f8fafc"
+      },
+      "100": {
+        "$value": "#f1f5f9"
+      },
+      "200": {
+        "$value": "#e2e8f0"
+      },
+      "300": {
+        "$value": "#cbd5e1"
+      },
+      "400": {
+        "$value": "#94a3b8",
+        "$description": "Decorative/disabled only — fails text contrast"
+      },
+      "500": {
+        "$value": "#64748b",
+        "$description": "Lightest grey allowed for text on white (4.76:1)"
+      },
+      "600": {
+        "$value": "#475569"
+      },
+      "700": {
+        "$value": "#334155"
+      },
+      "800": {
+        "$value": "#1e293b"
+      },
+      "900": {
+        "$value": "#0f172a"
+      }
     },
     "green": {
-      "100": { "$value": "#e8f5ec" },
-      "700": { "$value": "#1e7b34" }
+      "100": {
+        "$value": "#e8f5ec"
+      },
+      "700": {
+        "$value": "#1e7b34"
+      }
     },
     "amber": {
-      "100": { "$value": "#fff4d6" },
-      "700": { "$value": "#8a5a00" }
+      "100": {
+        "$value": "#fff4d6"
+      },
+      "700": {
+        "$value": "#8a5a00"
+      }
     },
     "red": {
-      "100": { "$value": "#fdecea" },
-      "700": { "$value": "#b3261e" }
+      "100": {
+        "$value": "#fdecea"
+      },
+      "700": {
+        "$value": "#b3261e"
+      }
     },
     "blue": {
-      "100": { "$value": "#e6f1fa" },
-      "700": { "$value": "#005a9e" }
+      "100": {
+        "$value": "#e6f1fa"
+      },
+      "700": {
+        "$value": "#005a9e"
+      }
     }
   }
 }

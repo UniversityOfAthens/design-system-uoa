@@ -3,7 +3,7 @@
   "private": true,
   "workspaces": ["packages/*", "apps/*"],
   "scripts": {
-    "build": "bun run --filter '@uoa/tokens' build",
-    "dev": "bun run --filter '@uoa/playground' dev"
+    "build": "cd packages/tokens && bun run build && cd ../core && bun run build",
+    "dev": "bun run build && cd apps/playground && bun ./index.html"
   }
 }

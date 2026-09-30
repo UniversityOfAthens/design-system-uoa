@@ -3,47 +3,111 @@
     "$type": "color",
     "brand": {
       "$description": "Swapped per site by themes/brand/* (data-uoa-brand) and themes/accent/* (data-uoa-accent). Default = www.uoa.gr.",
-      "primary": { "$value": "{color.uoa.navy}" },
-      "primary-hover": { "$value": "{color.uoa.navy-dark}" },
-      "link": { "$value": "{color.uoa.blue}" },
-      "accent": { "$value": "{color.uoa.cyan}", "$description": "Default accent is decorative only (fails text contrast)." }
+      "primary": {
+        "$value": "{color.uoa.navy}"
+      },
+      "primary-hover": {
+        "$value": "{color.uoa.navy-dark}"
+      },
+      "link": {
+        "$value": "{color.uoa.blue}"
+      },
+      "accent": {
+        "$value": "{color.uoa.cyan}",
+        "$description": "Default accent is decorative only (fails text contrast)."
+      }
     },
     "text": {
-      "default": { "$value": "{color.grey.900}" },
-      "muted": { "$value": "{color.grey.600}" },
-      "inverse": { "$value": "{color.grey.0}" },
-      "link": { "$value": "{color.brand.link}" },
-      "link-hover": { "$value": "{color.brand.primary}" },
-      "heading": { "$value": "{color.brand.primary}" }
+      "default": {
+        "$value": "{color.grey.900}"
+      },
+      "muted": {
+        "$value": "{color.grey.600}"
+      },
+      "inverse": {
+        "$value": "{color.grey.0}"
+      },
+      "link": {
+        "$value": "{color.brand.link}"
+      },
+      "link-hover": {
+        "$value": "{color.brand.primary}"
+      },
+      "heading": {
+        "$value": "{color.grey.900}"
+      }
     },
     "surface": {
-      "default": { "$value": "{color.grey.0}" },
-      "subtle": { "$value": "{color.grey.50}" },
-      "brand": { "$value": "{color.brand.primary}" }
+      "default": {
+        "$value": "{color.grey.0}"
+      },
+      "subtle": {
+        "$value": "{color.grey.50}"
+      },
+      "brand": {
+        "$value": "{color.brand.primary}"
+      },
+      "muted": {
+        "$value": "{color.grey.100}",
+        "$description": "Link blue, olive and orange fall below 4.5:1 here — dark text only"
+      }
     },
     "border": {
-      "subtle": { "$value": "{color.grey.100}" },
-      "default": { "$value": "{color.grey.300}" },
-      "strong": { "$value": "{color.grey.600}", "$description": "Use for form-control borders (≥3:1)." }
+      "subtle": {
+        "$value": "{color.grey.100}"
+      },
+      "default": {
+        "$value": "{color.grey.200}"
+      },
+      "strong": {
+        "$value": "{color.grey.500}",
+        "$description": "Use for form-control borders (≥3:1)."
+      }
     },
     "action": {
-      "primary": { "$value": "{color.brand.primary}" },
-      "primary-hover": { "$value": "{color.brand.primary-hover}" },
-      "primary-text": { "$value": "{color.grey.0}" }
+      "primary": {
+        "$value": "{color.brand.primary}"
+      },
+      "primary-hover": {
+        "$value": "{color.brand.primary-hover}"
+      },
+      "primary-text": {
+        "$value": "{color.grey.0}"
+      }
     },
     "focus": {
-      "ring": { "$value": "{color.uoa.blue}" },
-      "ring-inverse": { "$value": "{color.grey.0}" }
+      "ring": {
+        "$value": "{color.uoa.blue}"
+      },
+      "ring-inverse": {
+        "$value": "{color.grey.0}"
+      }
     },
     "feedback": {
-      "success-text": { "$value": "{color.green.700}" },
-      "success-surface": { "$value": "{color.green.100}" },
-      "warning-text": { "$value": "{color.amber.700}" },
-      "warning-surface": { "$value": "{color.amber.100}" },
-      "danger-text": { "$value": "{color.red.700}" },
-      "danger-surface": { "$value": "{color.red.100}" },
-      "info-text": { "$value": "{color.blue.700}" },
-      "info-surface": { "$value": "{color.blue.100}" }
+      "success-text": {
+        "$value": "{color.green.700}"
+      },
+      "success-surface": {
+        "$value": "{color.green.100}"
+      },
+      "warning-text": {
+        "$value": "{color.amber.700}"
+      },
+      "warning-surface": {
+        "$value": "{color.amber.100}"
+      },
+      "danger-text": {
+        "$value": "{color.red.700}"
+      },
+      "danger-surface": {
+        "$value": "{color.red.100}"
+      },
+      "info-text": {
+        "$value": "{color.blue.700}"
+      },
+      "info-surface": {
+        "$value": "{color.blue.100}"
+      }
     }
   }
 }

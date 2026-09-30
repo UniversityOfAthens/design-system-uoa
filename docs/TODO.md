@@ -3,16 +3,22 @@
 ## Phase 0 — Decisions & groundwork
 
 - [ ] Collect the official NKUA visual identity guidelines (logo, colours, fonts, usage rules)
+  — partial: fonts in hand; colours derived from live sites (research/uoa-sites-audit.md), not official
 - [ ] Confirm licensing for the brand fonts (self-hosting on the web, Greek coverage)
+  — Open Sans is OFL (fine); Katsoulidis pending, gitignored until confirmed
 - [ ] Decide docs/workbench tool (Storybook vs Astro Starlight vs both) → ADR 0001
+  — proposal: Pajamas/shadcn-style docs site in Astro; `apps/playground` is a stopgap
 - [ ] Decide core approach (HTML/CSS/vanilla JS, Web Components only where needed) → ADR 0002
-- [ ] Confirm target Drupal version (10.3+/11) and whether sites share one base theme → ADR 0003
+  — decided and built (plain CSS core, no Tailwind/Bootstrap); ADR not written yet
+- [ ] Choose the first platform adapter → ADR 0003. 44/54 live sites run TYPO3, only 1 Drupal:
+  confirm whether NKUA stays on TYPO3 or migrates, then pick the adapter (and version)
 - [ ] Set up Figma library and agree on the Figma ↔ tokens workflow
 - [ ] Inventory existing NKUA sites: list recurring components/patterns and pain points
+  — partial: CMS, colour schemes, fonts done (research/uoa-sites-audit.md); components/pain points not
 
 ## Phase 1 — Repo scaffolding
 
-- [ ] Bun workspace, `packages/` + `apps/` layout (see architecture.md)
+- [x] Bun workspace, `packages/` + `apps/` layout (see architecture.md)
 - [ ] Prettier, ESLint, Stylelint, commitlint, EditorConfig
 - [ ] Changesets
 - [ ] GitHub Actions: lint, build, test, deploy Storybook (GitHub Pages)
@@ -20,16 +26,17 @@
 
 ## Phase 2 — Foundations
 
-- [ ] Tokens package: colour, typography, spacing, layout, radius, shadow, motion, z-index
-- [ ] Style Dictionary build → CSS, SCSS, JS, WP theme.json
-- [ ] Base CSS: reset, typography, links, focus styles, layout grid/container, utilities
+- [x] Tokens package: colour, typography, spacing, layout, radius, shadow, motion, z-index
+- [ ] Style Dictionary build → CSS, SCSS, JS, WP theme.json — CSS/SCSS/JS done, theme.json missing
+- [x] Base CSS: reset, typography, links, focus styles, layout grid/container, utilities
 - [ ] Icons package (SVG sprite) + usage rules
 - [ ] Foundation doc pages: colour, typography, spacing, layout, iconography, accessibility
+  — partial: colour, typography, spacing, shape in `apps/playground`
 
-## Phase 3 — Core components (MVP for a Drupal site)
+## Phase 3 — Core components (MVP for the first platform)
 
 Atoms / basic
-- [ ] Button / link button
+- [x] Button / link button (`draft` — needs screen-reader pass, design review, adapter)
 - [ ] Link, Icon
 - [ ] Badge / Tag
 - [ ] Form elements: text input, textarea, select, checkbox, radio, switch, fieldset, error message
@@ -73,7 +80,7 @@ Organisms / layout
 - [ ] WordPress: block theme, theme.json from tokens, block patterns
 - [ ] React: `@uoa/react` wrappers (+ optional shadcn-style registry)
 - [ ] Dark mode / high-contrast theme
-- [ ] Faculty accent theming
+- [x] Faculty accent theming (`data-uoa-brand` red/green + `data-uoa-accent`, mirrors the TYPO3 schemes)
 
 ## Ongoing
 

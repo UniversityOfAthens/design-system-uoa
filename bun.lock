@@ -8,6 +8,13 @@
     "apps/playground": {
       "name": "@uoa/playground",
       "devDependencies": {
+        "@uoa/core": "workspace:*",
+      },
+    },
+    "packages/core": {
+      "name": "@uoa/core",
+      "version": "0.0.0",
+      "dependencies": {
         "@uoa/tokens": "workspace:*",
       },
     },
@@ -53,6 +60,8 @@
     "@jsonjoy.com/json-pointer": ["@jsonjoy.com/json-pointer@1.0.2", "", { "dependencies": { "@jsonjoy.com/codegen": "^1.0.0", "@jsonjoy.com/util": "^1.9.0" }, "peerDependencies": { "tslib": "2" } }, "sha512-Fsn6wM2zlDzY1U+v4Nc8bo3bVqgfNTGcn6dMgs6FjrEnt4ZCe60o6ByKRjOGlI2gow0aE/Q41QOigdTqkyK5fg=="],
 
     "@jsonjoy.com/util": ["@jsonjoy.com/util@1.9.0", "", { "dependencies": { "@jsonjoy.com/buffers": "^1.0.0", "@jsonjoy.com/codegen": "^1.0.0" }, "peerDependencies": { "tslib": "2" } }, "sha512-pLuQo+VPRnN8hfPqUTLTHk126wuYdXVxE6aDmjSeV4NCAgyxWbiOIeNJVtID3h1Vzpoi9m4jXezf73I6LgabgQ=="],
+
+    "@uoa/core": ["@uoa/core@workspace:packages/core"],
 
     "@uoa/playground": ["@uoa/playground@workspace:apps/playground"],
 
