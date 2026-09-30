@@ -1,0 +1,65 @@
+---
+title: Spacing & layout
+description: The 4px spacing scale, containers and layout helpers.
+sidebar:
+  order: 3
+---
+
+import SpacingScale from '../../../components/SpacingScale.astro';
+import TokenTable from '../../../components/TokenTable.astro';
+import Example from '../../../components/Example.astro';
+
+## Spacing
+
+A 4px grid: the step number times 4 is the size in pixels, so `--uoa-space-4` is 16px.
+
+<SpacingScale />
+
+## Containers
+
+<TokenTable prefix="container-" />
+
+`.uoa-container` centres content at `--uoa-container-max` with side gutters;
+add `.uoa-container--narrow` for long-form text.
+
+## Layout helpers
+
+Compose these instead of writing one-off margins. Each takes a custom property to change its gap.
+
+<Example
+  title=".uoa-stack — vertical rhythm (--uoa-stack-gap)"
+  code={`
+    <div class="uoa-stack" style="--uoa-stack-gap: var(--uoa-space-3)">
+      <div style="padding: 1rem; background: #f1f5f9; border-radius: 8px">Πρώτο</div>
+      <div style="padding: 1rem; background: #f1f5f9; border-radius: 8px">Δεύτερο</div>
+      <div style="padding: 1rem; background: #f1f5f9; border-radius: 8px">Τρίτο</div>
+    </div>
+  `}
+/>
+
+<Example
+  title=".uoa-cluster — inline group that wraps (--uoa-cluster-gap)"
+  code={`
+    <div class="uoa-cluster">
+      <button class="uoa-button" type="button">Υποβολή</button>
+      <button class="uoa-button uoa-button--secondary" type="button">Αποθήκευση</button>
+      <a href="#">Βοήθεια</a>
+    </div>
+  `}
+/>
+
+<Example
+  title=".uoa-grid — as many columns as fit (--uoa-grid-min, --uoa-grid-gap)"
+  code={`
+    <div class="uoa-grid" style="--uoa-grid-min: 10rem">
+      <div style="padding: 1.5rem; background: #f1f5f9; border-radius: 8px">1</div>
+      <div style="padding: 1.5rem; background: #f1f5f9; border-radius: 8px">2</div>
+      <div style="padding: 1.5rem; background: #f1f5f9; border-radius: 8px">3</div>
+      <div style="padding: 1.5rem; background: #f1f5f9; border-radius: 8px">4</div>
+    </div>
+  `}
+/>
+
+## Breakpoints
+
+<TokenTable prefix="breakpoint-" />

@@ -1,0 +1,30 @@
+---
+// Every brand/accent theme and the colours it sets.
+import { themes } from '../lib/tokens';
+import ContrastPill from './ContrastPill.astro';
+
+const { kind } = Astro.props as { kind: 'brand' | 'accent' };
+const list = themes.filter((t) => t.kind === kind);
+---
+<table>
+  <thead>
+    <tr><th>Attribute on <code>&lt;html&gt;</code></th><th>Sets</th></tr>
+  </thead>
+  <tbody>
+    {list.map((theme) => (
+      <tr>
+        <td><code>{theme.attribute}</code></td>
+        <td>
+          {theme.tokens.map((t) => (
+            <div class="uoa-theme-row">
+              <span class="uoa-dot" style={`background: ${t.value}`}></span>
+              <code>{t.name.replace('--uoa-color-brand-', 'brand-')}</code>
+              <span>{t.value}</span>
+              <ContrastPill hex={String(t.value)} />
+            </div>
+          ))}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

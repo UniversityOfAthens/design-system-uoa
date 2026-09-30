@@ -6,8 +6,7 @@
   — partial: fonts in hand; colours derived from live sites (research/uoa-sites-audit.md), not official
 - [ ] Confirm licensing for the brand fonts (self-hosting on the web, Greek coverage)
   — Open Sans is OFL (fine); Katsoulidis pending, gitignored until confirmed
-- [ ] Decide docs/workbench tool (Storybook vs Astro Starlight vs both) → ADR 0001
-  — proposal: Pajamas/shadcn-style docs site in Astro; `apps/playground` is a stopgap
+- [x] Decide docs/workbench tool → ADR 0001: Astro + Starlight (`apps/docs`)
 - [ ] Decide core approach (HTML/CSS/vanilla JS, Web Components only where needed) → ADR 0002
   — decided and built (plain CSS core, no Tailwind/Bootstrap); ADR not written yet
 - [ ] Choose the first platform adapter → ADR 0003. 44/54 live sites run TYPO3, only 1 Drupal:
@@ -21,7 +20,7 @@
 - [x] Bun workspace, `packages/` + `apps/` layout (see architecture.md)
 - [ ] Prettier, ESLint, Stylelint, commitlint, EditorConfig
 - [ ] Changesets
-- [ ] GitHub Actions: lint, build, test, deploy Storybook (GitHub Pages)
+- [ ] GitHub Actions: lint, build, test, deploy docs site (GitHub Pages)
 - [ ] CONTRIBUTING.md, CODE_OF_CONDUCT.md, PR/issue templates
 
 ## Phase 2 — Foundations
@@ -31,7 +30,7 @@
 - [x] Base CSS: reset, typography, links, focus styles, layout grid/container, utilities
 - [ ] Icons package (SVG sprite) + usage rules
 - [ ] Foundation doc pages: colour, typography, spacing, layout, iconography, accessibility
-  — partial: colour, typography, spacing, shape in `apps/playground`
+  — partial: colour, typography, spacing & layout, shape & motion in `apps/docs`; iconography and accessibility missing
 
 ## Phase 3 — Core components (MVP for the first platform)
 

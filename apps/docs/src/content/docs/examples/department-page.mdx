@@ -1,0 +1,61 @@
+---
+title: Department page
+description: Tokens, base styles and Button together on a department homepage.
+---
+
+import Example from '../../../components/Example.astro';
+
+A preview of where the components are heading. The hero, news cards and alerts here are
+**not components yet** — they're written with tokens and will become Hero, Card and Alert.
+Switch brand and accent at the top of the page.
+
+<Example
+  title="Τμήμα Φυσικής"
+  padding="none"
+  code={`
+    <style>
+      .demo-hero { padding: var(--uoa-space-16) var(--uoa-space-10); color: var(--uoa-color-text-inverse);
+        background: radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--uoa-color-brand-accent) 45%, transparent) 0%, transparent 55%), var(--uoa-color-brand-primary); }
+      .demo-hero p { max-width: 36rem; }
+      .demo-hero :focus-visible { outline-color: var(--uoa-color-focus-ring-inverse); }
+      .demo-hero .demo-cta { --uoa-button-primary-bg: #fff; --uoa-button-primary-bg-hover: var(--uoa-color-surface-muted); --uoa-button-primary-text: var(--uoa-color-brand-primary); }
+      .demo-hero .uoa-button--secondary { --uoa-button-secondary-text: #fff; --uoa-button-secondary-border: rgb(255 255 255 / .45);
+        --uoa-button-secondary-border-hover: #fff; --uoa-button-secondary-bg-hover: rgb(255 255 255 / .12); background: transparent; box-shadow: none; }
+      .demo-body { padding: var(--uoa-space-10); }
+      .demo-news { padding: var(--uoa-space-5); border: 1px solid var(--uoa-color-border-default); border-radius: var(--uoa-radius-surface); }
+      .demo-news time { display: block; margin-bottom: var(--uoa-space-2); font-size: var(--uoa-font-size-caption); font-weight: 600; color: var(--uoa-color-brand-primary); }
+      .demo-news h3 { font-size: var(--uoa-font-size-heading-5); margin-bottom: var(--uoa-space-2); }
+      .demo-news h3 a { color: inherit; text-decoration: none; }
+      .demo-news h3 a:hover { text-decoration: underline; }
+      .demo-news p { margin: 0; font-size: var(--uoa-font-size-body-sm); color: var(--uoa-color-text-muted); }
+      .demo-alert { margin: 0; padding: var(--uoa-space-3) var(--uoa-space-4); font-size: var(--uoa-font-size-body-sm); font-weight: 600;
+        border-radius: var(--uoa-radius-control); border-inline-start: 4px solid currentColor; }
+      @media (max-width: 600px) { .demo-hero { padding: var(--uoa-space-10) var(--uoa-space-5); } .demo-body { padding: var(--uoa-space-5); } }
+    </style>
+    <header class="demo-hero">
+      <p style="font-weight: 600; opacity: .85; margin-bottom: var(--uoa-space-2)">Σχολή Θετικών Επιστημών</p>
+      <h1 class="uoa-display" style="color: inherit">Τμήμα Φυσικής</h1>
+      <p class="uoa-lead" style="color: inherit; opacity: .9; margin-bottom: var(--uoa-space-8)">Προπτυχιακές και μεταπτυχιακές σπουδές, έρευνα και ανακοινώσεις του Τμήματος.</p>
+      <div class="uoa-cluster">
+        <a class="uoa-button demo-cta" href="#">Προπτυχιακά</a>
+        <a class="uoa-button uoa-button--secondary" href="#">Μεταπτυχιακά</a>
+      </div>
+    </header>
+    <main class="demo-body uoa-stack" style="--uoa-stack-gap: var(--uoa-space-8)">
+      <section>
+        <h2>Ανακοινώσεις</h2>
+        <div class="uoa-grid" style="--uoa-grid-min: 14rem">
+          <article class="demo-news"><time>28 Σεπτ 2026</time><h3><a href="#">Έναρξη μαθημάτων χειμερινού εξαμήνου</a></h3><p>Τα μαθήματα ξεκινούν τη Δευτέρα 5 Οκτωβρίου.</p></article>
+          <article class="demo-news"><time>21 Σεπτ 2026</time><h3><a href="#">Πρόγραμμα εξεταστικής Σεπτεμβρίου</a></h3><p>Αναρτήθηκε το τελικό πρόγραμμα.</p></article>
+          <article class="demo-news"><time>15 Σεπτ 2026</time><h3><a href="#">Υποτροφίες αριστείας 2026–27</a></h3><p>Υποβολή αιτήσεων έως 30 Οκτωβρίου.</p></article>
+        </div>
+      </section>
+      <div class="uoa-stack" style="--uoa-stack-gap: var(--uoa-space-2)">
+        <p class="demo-alert" style="color: var(--uoa-color-feedback-success-text); background: var(--uoa-color-feedback-success-surface)">Η αίτησή σας υποβλήθηκε.</p>
+        <p class="demo-alert" style="color: var(--uoa-color-feedback-warning-text); background: var(--uoa-color-feedback-warning-surface)">Η προθεσμία λήγει αύριο.</p>
+        <p class="demo-alert" style="color: var(--uoa-color-feedback-danger-text); background: var(--uoa-color-feedback-danger-surface)">Το πεδίο είναι υποχρεωτικό.</p>
+        <p class="demo-alert" style="color: var(--uoa-color-feedback-info-text); background: var(--uoa-color-feedback-info-surface)">Οι εγγραφές ανοίγουν τον Οκτώβριο.</p>
+      </div>
+    </main>
+  `}
+/>

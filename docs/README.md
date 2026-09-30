@@ -12,6 +12,7 @@ what to build and how to organise it.
 | [conventions.md](conventions.md) | Naming, accessibility, i18n, browser support, versioning |
 | [TODO.md](TODO.md) | Phased roadmap / checklist |
 | [research/uoa-sites-audit.md](research/uoa-sites-audit.md) | Colours, schemes and CMS of the 54 live NKUA sites |
+| [adr/](adr/) | Architecture decision records (0001: docs site in Astro + Starlight) |
 
 ## The short version
 

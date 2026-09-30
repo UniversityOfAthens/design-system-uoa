@@ -1,0 +1,118 @@
+---
+// Live example rendered in an isolated iframe with @uoa/core loaded, plus its source.
+// Usage: <Example title="Variants" code={`<button class="uoa-button">…</button>`} />
+import { Code } from '@astrojs/starlight/components';
+
+interface Props {
+  code: string;
+  title?: string;
+  /** Padding inside the canvas. Use "none" for full-bleed page examples. */
+  padding?: 'default' | 'none';
+  /** Show the source panel. */
+  showCode?: boolean;
+}
+
+const { code, title, padding = 'default', showCode = true } = Astro.props;
+
+function dedent(source: string) {
+  const lines = source.replace(/^\n+|\s+$/g, '').split('\n');
+  const indent = Math.min(...lines.filter((l) => l.trim()).map((l) => l.match(/^ */)![0].length));
+  return lines.map((l) => l.slice(indent)).join('\n');
+}
+
+const source = dedent(code);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const bodyPadding = padding === 'none' ? '0' : '2rem 1.5rem';
+const srcdoc = `<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="${base}/uoa/fonts/fonts.css">
+<link rel="stylesheet" href="${base}/uoa/uoa.css">
+<style>html{background:transparent}body{min-height:0;padding:${bodyPadding}}</style>
+</head>
+<body>${source}</body>
+</html>`;
+---
+<figure class="uoa-example not-content">
+  {title && <figcaption>{title}</figcaption>}
+  <iframe class="uoa-example__frame" srcdoc={srcdoc} title={title ?? 'Example'} data-padding={padding}></iframe>
+  {showCode && (
+    <details class="uoa-example__code">
+      <summary>Show code</summary>
+      <Code code={source} lang="html" />
+    </details>
+  )}
+</figure>
+
+<script>
+  // Size each iframe to its content and mirror the brand/accent chosen in the header.
+  const ATTRS = ['data-uoa-brand', 'data-uoa-accent'];
+
+  function syncTheme(frame: HTMLIFrameElement) {
+    const doc = frame.contentDocument?.documentElement;
+    if (!doc) return;
+    for (const attr of ATTRS) {
+      const value = document.documentElement.getAttribute(attr);
+      if (value) doc.setAttribute(attr, value);
+      else doc.removeAttribute(attr);
+    }
+  }
+
+  function setup(frame: HTMLIFrameElement) {
+    const doc = frame.contentDocument;
+    if (!doc?.body) return;
+    syncTheme(frame);
+    const fit = () => { frame.style.height = `${doc.documentElement.scrollHeight}px`; };
+    new ResizeObserver(fit).observe(doc.body);
+    fit();
+  }
+
+  for (const frame of document.querySelectorAll<HTMLIFrameElement>('.uoa-example__frame')) {
+    if (frame.contentDocument?.readyState === 'complete') setup(frame);
+    frame.addEventListener('load', () => setup(frame));
+  }
+
+  document.addEventListener('uoa-theme-change', () => {
+    for (const frame of document.querySelectorAll<HTMLIFrameElement>('.uoa-example__frame')) syncTheme(frame);
+  });
+</script>
+
+<style>
+  .uoa-example {
+    margin: 1.5rem 0;
+    overflow: hidden;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.75rem;
+  }
+  .uoa-example figcaption {
+    padding: 0.625rem 1rem;
+    font-size: var(--sl-text-sm);
+    font-weight: 600;
+    color: var(--sl-color-white);
+    border-bottom: 1px solid var(--sl-color-gray-5);
+  }
+  .uoa-example__frame {
+    display: block;
+    width: 100%;
+    height: 6rem;
+    border: 0;
+    /* Examples are always light: the design system has no dark theme yet. */
+    background-color: #fff;
+    background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+    background-size: 16px 16px;
+    color-scheme: light;
+  }
+  .uoa-example__frame[data-padding='none'] { background-image: none; }
+  .uoa-example__code { border-top: 1px solid var(--sl-color-gray-5); }
+  .uoa-example__code summary {
+    padding: 0.5rem 1rem;
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-3);
+    cursor: pointer;
+  }
+  .uoa-example__code summary:hover { color: var(--sl-color-white); }
+  .uoa-example__code :global(.expressive-code) { margin: 0; }
+  .uoa-example__code :global(.expressive-code .frame) { border-radius: 0; box-shadow: none; }
+</style>

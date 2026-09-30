@@ -1,0 +1,13 @@
+---
+import { byPrefix } from '../lib/tokens';
+const steps = byPrefix('space-').filter((t) => t.value !== '0');
+---
+<div class="uoa-spacing not-content">
+  {steps.map((t) => (
+    <div class="uoa-spacing__row">
+      <code>{t.name}</code>
+      <span>{parseFloat(String(t.value)) * 16}px</span>
+      <span class="uoa-spacing__bar" style={`width: var(${t.name})`}></span>
+    </div>
+  ))}
+</div>

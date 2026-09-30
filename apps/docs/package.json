@@ -1,0 +1,17 @@
+{
+  "name": "@uoa/docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync": "rm -rf public/uoa && cp -r ../../packages/core/dist public/uoa",
+    "dev": "bun run sync && astro dev",
+    "build": "bun run sync && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.42",
+    "@uoa/core": "workspace:*",
+    "@uoa/tokens": "workspace:*",
+    "astro": "^7"
+  }
+}

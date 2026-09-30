@@ -3,12 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "files": ["dist", "fonts"],
+  "files": [
+    "dist",
+    "fonts"
+  ],
   "exports": {
     "./css": "./dist/css/tokens.css",
     "./fonts.css": "./fonts/fonts.css",
     "./scss": "./dist/scss/_tokens.scss",
-    ".": "./dist/js/tokens.js"
+    ".": "./dist/js/tokens.js",
+    "./docs.json": "./dist/docs/tokens.json"
   },
   "scripts": {
     "build": "node build/build.js"

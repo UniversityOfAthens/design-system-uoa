@@ -1,0 +1,25 @@
+---
+// Semantic colour swatches. Chips use the live CSS variable (follows the brand picker);
+// hex and contrast show the default (www.uoa.gr) value.
+import { byPrefix } from '../lib/tokens';
+import ContrastPill from './ContrastPill.astro';
+
+// contrast={false} hides the pill for colours that are never text (surfaces).
+const { group, contrast = true } = Astro.props as { group: string; contrast?: boolean };
+const list = byPrefix(`color-${group}-`, 'semantic');
+---
+<div class="uoa-swatches not-content">
+  {list.map((t) => (
+    <div class="uoa-swatch">
+      <div class="uoa-swatch__chip" style={`background: var(${t.name})`}></div>
+      <div class="uoa-swatch__meta">
+        <code class="uoa-swatch__name">{t.name}</code>
+        <span class="uoa-swatch__row">
+          <span>{t.value}</span>
+          {contrast && <ContrastPill hex={String(t.value)} />}
+        </span>
+        {t.ref && <span class="uoa-swatch__ref">→ {t.ref.slice(1, -1)}</span>}
+      </div>
+    </div>
+  ))}
+</div>
