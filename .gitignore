@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.DS_Store
+
+# Katsoulidis is a commercial font (Cannibal Fonts) — keep it out of the repo
+# until the NKUA licence for redistribution is confirmed.
+packages/tokens/fonts/katsoulidis/*
+!packages/tokens/fonts/katsoulidis/README.md
+
+# Docs site: generated copy of @uoa/core/dist and Astro output
+apps/docs/public/uoa/
+apps/docs/.astro/
+apps/docs/dist/

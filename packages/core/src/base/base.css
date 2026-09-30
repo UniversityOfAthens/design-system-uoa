@@ -1,0 +1,86 @@
+/* Element defaults: typography, links, focus. Tokens only. */
+
+html {
+  font-family: var(--uoa-font-family-body);
+  font-size: 100%;
+  font-weight: var(--uoa-font-weight-body);
+  line-height: var(--uoa-font-line-height-body);
+  color: var(--uoa-color-text-default);
+  background-color: var(--uoa-color-surface-default);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--uoa-font-family-heading);
+  font-weight: var(--uoa-font-weight-heading);
+  line-height: var(--uoa-font-line-height-heading);
+  letter-spacing: var(--uoa-font-letter-spacing-heading);
+  color: var(--uoa-color-text-heading);
+  text-wrap: balance;
+  margin-block-end: var(--uoa-space-4);
+}
+
+/* h1 carries the brand serif; h2–h6 stay sans for a cleaner hierarchy. */
+h1 {
+  font-family: var(--uoa-font-family-display);
+  font-weight: var(--uoa-font-weight-display);
+  font-size: var(--uoa-font-size-heading-1);
+  letter-spacing: var(--uoa-font-letter-spacing-display);
+}
+h2 { font-size: var(--uoa-font-size-heading-2); }
+h3 { font-size: var(--uoa-font-size-heading-3); }
+h4 { font-size: var(--uoa-font-size-heading-4); }
+h5 { font-size: var(--uoa-font-size-heading-5); }
+h6 { font-size: var(--uoa-font-size-heading-6); }
+
+p {
+  text-wrap: pretty;
+}
+
+p, ul, ol, dl, blockquote, figure, table {
+  margin-block: 0 var(--uoa-space-4);
+}
+
+ul, ol {
+  padding-inline-start: var(--uoa-space-6);
+}
+
+strong, b {
+  font-weight: var(--uoa-font-weight-body-strong);
+}
+
+small {
+  font-size: var(--uoa-font-size-body-sm);
+}
+
+code, kbd, samp, pre {
+  font-family: var(--uoa-font-family-code);
+  font-size: 0.9em;
+}
+
+hr {
+  border: 0;
+  border-block-start: var(--uoa-border-width-thin) solid var(--uoa-color-border-default);
+  margin-block: var(--uoa-space-8);
+}
+
+a {
+  color: var(--uoa-color-text-link);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--uoa-color-text-link-hover);
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: var(--uoa-focus-ring-width) solid var(--uoa-color-focus-ring);
+  outline-offset: var(--uoa-focus-ring-offset);
+}
+
+::selection {
+  color: var(--uoa-color-text-inverse);
+  background-color: var(--uoa-color-brand-primary);
+}

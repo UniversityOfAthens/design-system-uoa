@@ -1,0 +1,75 @@
+---
+// Starlight's light/dark picker, plus NKUA brand and accent pickers.
+// The choice is stored in localStorage and applied to <html> here and inside
+// every example iframe (see Example.astro).
+import Default from '@astrojs/starlight/components/ThemeSelect.astro';
+
+const brands = [['', 'uoa.gr'], ['red', 'Red'], ['green', 'Green']];
+const accents = ['', 'azure', 'indigo', 'rose', 'olive', 'vermilion', 'burgundy', 'teal'];
+---
+<uoa-theme-picker class="uoa-pickers">
+  <label>
+    <span class="sr-only">Brand</span>
+    <select data-kind="brand" title="Brand">
+      {brands.map(([value, label]) => <option value={value}>{label}</option>)}
+    </select>
+  </label>
+  <label>
+    <span class="sr-only">Accent</span>
+    <select data-kind="accent" title="Accent">
+      {accents.map((value) => <option value={value}>{value || 'Accent'}</option>)}
+    </select>
+  </label>
+</uoa-theme-picker>
+<Default />
+
+{/* Inline so the theme is applied before first paint. */}
+<script is:inline>
+  (() => {
+    for (const kind of ['brand', 'accent']) {
+      const value = (() => { try { return localStorage.getItem('uoa-' + kind); } catch { return null; } })();
+      if (value) document.documentElement.setAttribute('data-uoa-' + kind, value);
+    }
+  })();
+</script>
+
+<script>
+  class UoaThemePicker extends HTMLElement {
+    connectedCallback() {
+      for (const select of this.querySelectorAll('select')) {
+        const kind = select.dataset.kind!;
+        select.value = document.documentElement.getAttribute(`data-uoa-${kind}`) ?? '';
+        select.addEventListener('change', () => {
+          const attr = `data-uoa-${kind}`;
+          if (select.value) document.documentElement.setAttribute(attr, select.value);
+          else document.documentElement.removeAttribute(attr);
+          try { localStorage.setItem(`uoa-${kind}`, select.value); } catch {}
+          document.dispatchEvent(new CustomEvent('uoa-theme-change'));
+        });
+      }
+    }
+  }
+  customElements.define('uoa-theme-picker', UoaThemePicker);
+</script>
+
+<style>
+  .uoa-pickers { display: flex; gap: 0.5rem; }
+  .uoa-pickers select {
+    height: 2rem;
+    padding: 0 0.5rem;
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-2);
+    /* Explicit background: with `transparent`, browsers draw the option list on white
+       while the text stays light in dark mode. */
+    background-color: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  .uoa-pickers select:hover { color: var(--sl-color-white); border-color: var(--sl-color-gray-4); }
+  .uoa-pickers option {
+    color: var(--sl-color-gray-1);
+    background-color: var(--sl-color-bg-nav);
+  }
+  @media (max-width: 50rem) { .uoa-pickers { display: none; } }
+</style>

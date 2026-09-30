@@ -1,0 +1,13 @@
+---
+import { byPrefix } from '../lib/tokens';
+const { kind } = Astro.props as { kind: 'radius' | 'shadow' };
+const list = byPrefix(`${kind}-`, 'primitive');
+---
+<div class="uoa-tiles not-content">
+  {list.map((t) => (
+    <div class="uoa-tile" data-kind={kind} style={kind === 'radius' ? `border-radius: var(${t.name})` : `box-shadow: var(${t.name})`}>
+      <code>{t.name.replace('--uoa-', '')}</code>
+      <span>{kind === 'radius' ? t.value : ''}</span>
+    </div>
+  ))}
+</div>

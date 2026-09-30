@@ -1,0 +1,37 @@
+---
+title: Shape & motion
+description: Radius, borders, shadows, motion and z-index.
+sidebar:
+  order: 4
+---
+
+import ShapeTiles from '../../../components/ShapeTiles.astro';
+import TokenTable from '../../../components/TokenTable.astro';
+
+## Radius
+
+Use the semantic tokens: `--uoa-radius-control` (8px) for buttons and inputs,
+`--uoa-radius-surface` (12px) for cards, alerts and panels.
+
+<ShapeTiles kind="radius" />
+
+## Shadow
+
+Soft and layered. Use `sm` at rest, `md` on hover or for raised cards, `lg` for overlays.
+
+<ShapeTiles kind="shadow" />
+
+## Border width
+
+<TokenTable prefix="border-width-" />
+
+## Motion
+
+Keep transitions short. All motion is switched off for users with `prefers-reduced-motion`
+(handled in the reset).
+
+<TokenTable prefix="motion-" />
+
+## Z-index
+
+<TokenTable prefix="z-index-" />

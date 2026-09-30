@@ -37,7 +37,7 @@ picker, modal) become hard to maintain in vanilla JS, those specific ones can be
 Components (Lit) — they still work in Twig/PHP/React. Decide per component; record it in
 an ADR.
 
-## Proposed repo structure (pnpm monorepo)
+## Proposed repo structure (Bun monorepo)
 
 ```
 design-system-uoa/
@@ -57,9 +57,8 @@ design-system-uoa/
 │   │               ├── accordion.css
 │   │               ├── accordion.js        # optional enhancement
 │   │               ├── accordion.html      # reference markup
-│   │               ├── accordion.stories.js
-│   │               ├── accordion.test.js   # a11y + behaviour
-│   │               └── README.md           # component docs (see template)
+│   │   │               ├── accordion.test.js   # a11y + behaviour
+│   │               └── README.md           # short pointer to the docs page
 │   ├── drupal/                 # uoa_ds Drupal theme (base theme) with SDC
 │   │   ├── uoa_ds.info.yml
 │   │   ├── uoa_ds.libraries.yml
@@ -71,10 +70,10 @@ design-system-uoa/
 │   ├── wordpress/              # (later) block theme / plugin: theme.json, block patterns
 │   └── react/                  # (later) @uoa/react — wrappers over core classes
 ├── apps/
-│   └── storybook/              # component workbench + docs site (or Astro Starlight)
+│   └── docs/                   # Astro + Starlight docs site (ADR 0001)
 ├── .changeset/                 # versioning / changelogs
 ├── package.json
-├── pnpm-workspace.yaml
+├── bun.lock
 └── README.md
 ```
 
@@ -86,8 +85,6 @@ design-system-uoa/
 - Ship as a **base theme** (`uoa_ds`); faculty/department sites create a sub-theme.
 - Map Drupal render output (menus, pagers, form elements, status messages, fields) to our
   markup via template overrides — that is where most of the Drupal work actually is.
-- Storybook can render Twig directly (e.g. `drupal/storybook` module or
-  `vite-plugin-twig-drupal`) so the Twig files are the ones reviewed in Storybook.
 
 ### WordPress specifics (later)
 
@@ -104,12 +101,12 @@ design-system-uoa/
 
 | Concern | Suggestion |
 | --- | --- |
-| Package manager / monorepo | pnpm workspaces (+ Turborepo if builds get slow) |
+| Package manager / monorepo | Bun workspaces (+ Turborepo if builds get slow) |
 | Tokens | Style Dictionary v4, DTCG JSON format |
 | CSS | Plain modern CSS (custom properties, `@layer`, nesting) + PostCSS; Sass optional |
-| Workbench / docs | Storybook (HTML/Twig), later a docs site (Astro Starlight) |
+| Docs site | Astro + Starlight, examples in iframes (ADR 0001) |
 | Lint | Stylelint, ESLint, Prettier, twigcs for Twig |
 | Tests | Playwright (visual regression + behaviour), axe-core for a11y |
 | Versioning | Changesets, semver per package |
-| CI | GitHub Actions: lint → build → test → publish Storybook |
+| CI | GitHub Actions: lint → build → test → publish docs site |
 | Design | Figma library mirrored to tokens (Tokens Studio or Figma variables export) |

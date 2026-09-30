@@ -1,0 +1,39 @@
+/* Layout primitives. Compose these instead of writing one-off margins. */
+
+/* Centred page column with side gutters. */
+.uoa-container {
+  width: 100%;
+  max-width: calc(var(--uoa-container-max) + 2 * var(--uoa-container-gutter));
+  margin-inline: auto;
+  padding-inline: var(--uoa-container-gutter);
+}
+
+.uoa-container--narrow {
+  max-width: calc(var(--uoa-container-narrow) + 2 * var(--uoa-container-gutter));
+}
+
+/* Vertical rhythm: equal space between direct children. */
+.uoa-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uoa-stack-gap, var(--uoa-space-4));
+}
+
+.uoa-stack > * {
+  margin-block: 0;
+}
+
+/* Inline group that wraps: buttons, tags, links. */
+.uoa-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--uoa-cluster-gap, var(--uoa-space-3));
+}
+
+/* Responsive grid: as many columns as fit, each at least --uoa-grid-min wide. */
+.uoa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--uoa-grid-min, 16rem), 100%), 1fr));
+  gap: var(--uoa-grid-gap, var(--uoa-space-6));
+}

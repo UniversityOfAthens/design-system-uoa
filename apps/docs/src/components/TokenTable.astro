@@ -1,0 +1,18 @@
+---
+// Generic token table for a prefix, e.g. <TokenTable prefix="motion-" />.
+import { byPrefix, type Token } from '../lib/tokens';
+const { prefix, tier } = Astro.props as { prefix: string; tier?: Token['tier'] };
+const list = byPrefix(prefix, tier);
+---
+<table>
+  <thead><tr><th>Token</th><th>Value</th><th>Notes</th></tr></thead>
+  <tbody>
+    {list.map((t) => (
+      <tr>
+        <td><code>{t.name}</code></td>
+        <td><code>{t.ref ? t.ref.slice(1, -1) : String(t.value)}</code>{t.ref && <><br /><small>{String(t.value)}</small></>}</td>
+        <td>{t.description ?? ''}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

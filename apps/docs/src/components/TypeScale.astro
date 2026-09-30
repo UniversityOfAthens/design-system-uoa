@@ -1,0 +1,40 @@
+---
+// Type specimens. Styles come from the live tokens.
+import { valueOf } from '../lib/tokens';
+
+const rows: [string, string, string, string][] = [
+  // token, family, weight, sample
+  ['display', 'display', 'display', 'Εθνικό και Καποδιστριακό'],
+  ['heading-1', 'display', 'display', 'Σχολές και Τμήματα'],
+  ['heading-2', 'heading', 'heading', 'Προπτυχιακές σπουδές'],
+  ['heading-3', 'heading', 'heading', 'Τμήμα Φυσικής — Department of Physics'],
+  ['heading-4', 'heading', 'heading', 'Ανακοινώσεις φοιτητών'],
+  ['heading-5', 'heading', 'heading', 'Πρόγραμμα εξεταστικής περιόδου'],
+  ['heading-6', 'heading', 'heading', 'Ώρες γραφείου · Office hours'],
+  ['body-lg', 'body', 'body', 'Κείμενο εισαγωγής για σελίδες και ενότητες.'],
+  ['body-md', 'body', 'body', 'Κύριο κείμενο — Open Sans 16px, ύψος γραμμής 1.5.'],
+  ['body-sm', 'body', 'body', 'Μικρό κείμενο για βοηθητικές πληροφορίες.'],
+  ['caption', 'body', 'body', 'Λεζάντα · caption'],
+];
+const isHeading = (t: string) => t === 'display' || t.startsWith('heading');
+---
+<div class="uoa-type not-content">
+  {rows.map(([token, family, weight, sample]) => (
+    <div class="uoa-type__row">
+      <div class="uoa-type__meta">
+        <code>font-size-{token}</code>
+        <span>{valueOf(`--uoa-font-size-${token}`)}</span>
+      </div>
+      <p
+        class="uoa-type__sample"
+        style={[
+          `font-family: var(--uoa-font-family-${family})`,
+          `font-weight: var(--uoa-font-weight-${weight})`,
+          `font-size: var(--uoa-font-size-${token})`,
+          `line-height: var(--uoa-font-line-height-${token === 'display' ? 'display' : isHeading(token) ? 'heading' : 'body'})`,
+          isHeading(token) ? `letter-spacing: var(--uoa-font-letter-spacing-${family === 'display' ? 'display' : 'heading'})` : '',
+        ].join(';')}
+      >{sample}</p>
+    </div>
+  ))}
+</div>

@@ -1,0 +1,14 @@
+/* @uoa/core — entry file. Built by build/build.js into dist/uoa.css.
+   Only `@layer` statements and `@import "…" [layer(…)];` lines belong here.
+   Layers let site CSS override the design system without specificity fights:
+   any unlayered site rule wins over every uoa.* rule.
+   Fonts ship separately as dist/fonts/fonts.css. */
+@layer uoa.reset, uoa.base, uoa.layout, uoa.components, uoa.utilities;
+
+@import "@uoa/tokens/css";
+
+@import "./base/reset.css" layer(uoa.reset);
+@import "./base/base.css" layer(uoa.base);
+@import "./base/layout.css" layer(uoa.layout);
+@import "./components/button/button.css" layer(uoa.components);
+@import "./base/utilities.css" layer(uoa.utilities);

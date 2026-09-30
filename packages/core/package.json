@@ -1,0 +1,18 @@
+{
+  "name": "@uoa/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": ["dist", "src"],
+  "exports": {
+    "./css": "./dist/uoa.css",
+    "./fonts.css": "./dist/fonts/fonts.css",
+    "./src/*": "./src/*"
+  },
+  "scripts": {
+    "build": "node build/build.js"
+  },
+  "dependencies": {
+    "@uoa/tokens": "workspace:*"
+  }
+}

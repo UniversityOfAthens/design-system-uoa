@@ -1,0 +1,23 @@
+---
+// Primitive colour palettes as strips.
+import { byPrefix, isDark } from '../lib/tokens';
+
+const palettes = ['uoa', 'burgundy', 'teal', 'accent', 'grey', 'green', 'amber', 'red', 'blue'];
+---
+<div class="uoa-palettes not-content">
+  {palettes.map((p) => (
+    <div class="uoa-palette">
+      <span class="uoa-palette__name">{p}</span>
+      <div class="uoa-palette__strip">
+        {byPrefix(`color-${p}-`, 'primitive').map((t) => (
+          <span
+            style={`background: ${t.value}; color: ${isDark(String(t.value)) ? '#fff' : '#0f172a'}`}
+            title={`${t.name}: ${t.value}${t.description ? ' — ' + t.description : ''}`}
+          >
+            {t.name.replace(`--uoa-color-${p}-`, '')}
+          </span>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>

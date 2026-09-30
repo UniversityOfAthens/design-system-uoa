@@ -1,7 +1,11 @@
 # Component docs template
 
-Copy this into `packages/core/src/components/<name>/README.md` for every component.
+Copy this into `apps/docs/src/content/docs/components/<name>.mdx` for every component (see ADR 0001).
+The component folder in `packages/core/src/components/<name>/` gets a short README that points to it.
 Merges the Pajamas guideline structure with Material Web's theming/API tables.
+
+In the MDX page, use `<Example title="…" code={`…`} />` for live examples and
+`<TokenTable prefix="<component>-" />` for the Theming table.
 
 ---
 
@@ -14,7 +18,7 @@ Status: `draft | beta | stable | deprecated` · Figma: <link> · Source: <link>
 
 ## Examples
 
-Live example(s) (Storybook embed) with the default variant first, then variants/states.
+Live `<Example>` blocks, default variant first, then variants/states.
 
 ## Structure
 

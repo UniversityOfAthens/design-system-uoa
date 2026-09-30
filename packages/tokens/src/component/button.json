@@ -1,0 +1,73 @@
+{
+  "button": {
+    "padding-block": {
+      "$type": "dimension",
+      "$value": "{space.3}",
+      "$description": "Border is subtracted in CSS, so 12 + 20 (line) + 12 = 44px target"
+    },
+    "padding-inline": {
+      "$type": "dimension",
+      "$value": "{space.5}"
+    },
+    "padding-block-sm": {
+      "$type": "dimension",
+      "$value": "{space.2}"
+    },
+    "padding-inline-sm": {
+      "$type": "dimension",
+      "$value": "{space.3}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.2}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{border-width.thin}"
+    },
+    "font-weight": {
+      "$type": "fontWeight",
+      "$value": "{font.weight.body-strong}"
+    },
+    "primary-bg": {
+      "$type": "color",
+      "$value": "{color.action.primary}"
+    },
+    "primary-bg-hover": {
+      "$type": "color",
+      "$value": "{color.action.primary-hover}"
+    },
+    "primary-text": {
+      "$type": "color",
+      "$value": "{color.action.primary-text}"
+    },
+    "secondary-text": {
+      "$type": "color",
+      "$value": "{color.text.default}"
+    },
+    "secondary-border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "secondary-bg-hover": {
+      "$type": "color",
+      "$value": "{color.surface.subtle}"
+    },
+    "tertiary-text": {
+      "$type": "color",
+      "$value": "{color.action.primary}"
+    },
+    "tertiary-bg-hover": {
+      "$type": "color",
+      "$value": "{color.surface.muted}"
+    },
+    "secondary-border-hover": {
+      "$type": "color",
+      "$value": "{color.grey.300}"
+    }
+  }
+}

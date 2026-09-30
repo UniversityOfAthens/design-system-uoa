@@ -1,0 +1,48 @@
+/* @uoa/tokens — web fonts. Load once, before tokens.css is used. */
+
+/* Open Sans — variable, weights 300–800. Latin + monotonic Greek subset. */
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("./open-sans/OpenSans-Variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: italic;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("./open-sans/OpenSans-Italic-Variable.woff2") format("woff2");
+}
+
+/* Katsoulidis — 400 and 700 only. Files are gitignored (commercial licence);
+   see katsoulidis/README.md. Missing files fall back to Georgia/serif. */
+@font-face {
+  font-family: "Katsoulidis";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./katsoulidis/KatsMoRg.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Katsoulidis";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./katsoulidis/KatsMoIt.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Katsoulidis";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./katsoulidis/KatsMoBd.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Katsoulidis";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./katsoulidis/KatsMoBI.woff2") format("woff2");
+}

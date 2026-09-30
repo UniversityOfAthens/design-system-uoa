@@ -1,0 +1,33 @@
+---
+// Brand mark + title. Follows the selected brand colour via tokens.
+const base = import.meta.env.BASE_URL;
+---
+<a href={base} class="uoa-site-title">
+  <span class="uoa-site-title__mark" aria-hidden="true">ΕΚΠΑ</span>
+  <span>Design System</span>
+</a>
+
+<style>
+  .uoa-site-title {
+    display: flex;
+    gap: 0.625rem;
+    align-items: center;
+    font-weight: 700;
+    font-size: var(--sl-text-h4);
+    letter-spacing: -0.015em;
+    color: var(--sl-color-text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .uoa-site-title__mark {
+    display: grid;
+    place-items: center;
+    height: 2rem;
+    padding-inline: 0.5rem;
+    font-family: var(--uoa-font-family-display);
+    font-size: 0.875rem;
+    color: #fff;
+    background: var(--uoa-color-brand-primary);
+    border-radius: var(--uoa-radius-control);
+  }
+</style>

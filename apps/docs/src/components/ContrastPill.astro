@@ -1,0 +1,6 @@
+---
+import { contrastLevel } from '../lib/tokens';
+const { hex } = Astro.props as { hex: string };
+const { level, label, ratio } = contrastLevel(hex);
+---
+<span class="uoa-pill" data-level={level} title={`${ratio.toFixed(2)}:1 on white`}>{label} {ratio.toFixed(1)}</span>
