@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [develop]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Build, axe and visual regression
+    runs-on: ubuntu-latest
+    # Same image as `bun run test:visual` locally, so screenshots match the committed ones.
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --ipc=host
+    env:
+      HOME: /root
+    steps:
+      - uses: actions/checkout@v4
+      # setup-bun downloads a zip; the Playwright image has no unzip.
+      - run: apt-get update && apt-get install -y --no-install-recommends unzip
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run docs:build
+
+      - name: Accessibility (axe, WCAG 2.2 AA)
+        working-directory: apps/docs
+        run: node node_modules/@playwright/test/cli.js test --project=a11y
+
+      - name: Visual regression
+        working-directory: apps/docs
+        run: node node_modules/@playwright/test/cli.js test --project=visual

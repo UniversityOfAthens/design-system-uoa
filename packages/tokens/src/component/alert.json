@@ -1,0 +1,39 @@
+{
+  "alert": {
+    "padding-block": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "padding-inline": {
+      "$type": "dimension",
+      "$value": "{space.5}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.3}",
+      "$description": "Between the icon and the content"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.surface}"
+    },
+    "bar-width": {
+      "$type": "dimension",
+      "$value": "{border-width.heavy}",
+      "$description": "Coloured bar on the inline-start edge. Keeps the type visible in forced-colors mode and without colour"
+    },
+    "text": {
+      "$type": "color",
+      "$value": "{color.text.default}",
+      "$description": "Body text. Titles and icons use the variant colour"
+    },
+    "info-accent": { "$type": "color", "$value": "{color.feedback.info-text}" },
+    "info-surface": { "$type": "color", "$value": "{color.feedback.info-surface}" },
+    "success-accent": { "$type": "color", "$value": "{color.feedback.success-text}" },
+    "success-surface": { "$type": "color", "$value": "{color.feedback.success-surface}" },
+    "warning-accent": { "$type": "color", "$value": "{color.feedback.warning-text}" },
+    "warning-surface": { "$type": "color", "$value": "{color.feedback.warning-surface}" },
+    "danger-accent": { "$type": "color", "$value": "{color.feedback.danger-text}" },
+    "danger-surface": { "$type": "color", "$value": "{color.feedback.danger-surface}" }
+  }
+}

@@ -2,5 +2,6 @@
 import { contrastLevel } from '../lib/tokens';
 const { hex } = Astro.props as { hex: string };
 const { level, label, ratio } = contrastLevel(hex);
+const { t } = Astro.locals;
 ---
-<span class="uoa-pill" data-level={level} title={`${ratio.toFixed(2)}:1 on white`}>{label} {ratio.toFixed(1)}</span>
+<span class="uoa-pill" data-level={level} title={`${ratio.toFixed(2)}:1 ${t('uoa.contrast.onWhite')}`}>{level === 'deco' ? t('uoa.contrast.decorative') : label} {ratio.toFixed(1)}</span>

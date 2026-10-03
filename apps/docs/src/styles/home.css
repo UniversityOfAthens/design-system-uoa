@@ -1,0 +1,21 @@
+/* Home page (splash template): hero and cards. */
+
+.hero { padding-block: 4rem 3rem; }
+.hero h1 {
+  font-family: var(--uoa-font-family-display);
+  font-weight: var(--uoa-font-weight-display);
+  letter-spacing: var(--uoa-font-letter-spacing-display);
+  color: var(--sl-color-white);
+}
+.hero .tagline { color: var(--sl-color-gray-3); }
+.hero .sl-link-button { border-radius: 0.5rem; font-size: var(--sl-text-sm); font-weight: 500; padding: 0.625rem 1.125rem; }
+.hero .sl-link-button.primary { color: var(--sl-color-black); background: var(--sl-color-white); border-color: var(--sl-color-white); }
+.hero .sl-link-button.minimal { color: var(--sl-color-white); border: 1px solid var(--sl-color-gray-5); padding-inline: 1.125rem; }
+.card {
+  border: 1px solid var(--sl-color-hairline) !important;
+  border-radius: 0.75rem;
+  background: var(--sl-color-black);
+}
+.card .icon { color: var(--sl-color-white); background: var(--sl-color-gray-6) !important; border: 0 !important; border-radius: 0.5rem; }
+.card .title { font-size: var(--sl-text-lg); font-weight: 600; }
+.card .body { font-size: var(--sl-text-sm); color: var(--sl-color-gray-3); }

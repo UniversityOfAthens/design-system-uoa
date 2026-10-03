@@ -1,15 +1,15 @@
 ---
-title: UOA Design System
-description: Tokens, base styles and components for NKUA websites.
+title: Σύστημα σχεδίασης ΕΚΠΑ
+description: Tokens, βασικά στυλ και στοιχεία για τους ιστότοπους του ΕΚΠΑ.
 template: splash
 hero:
   title: Σύστημα σχεδίασης ΕΚΠΑ
-  tagline: One set of tokens, styles and components for every National and Kapodistrian University of Athens website — accessible, bilingual and themeable per department.
+  tagline: Ένα κοινό σύνολο από tokens, στυλ και στοιχεία για κάθε ιστότοπο του Εθνικού και Καποδιστριακού Πανεπιστημίου Αθηνών — προσβάσιμο, δίγλωσσο και με θέμα ανά τμήμα.
   actions:
-    - text: Getting started
+    - text: Ξεκινήστε
       link: getting-started/
       icon: right-arrow
-    - text: Components
+    - text: Στοιχεία
       link: components/button/
       variant: minimal
 ---
@@ -18,15 +18,15 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <CardGrid>
   <Card title="Tokens" icon="seti:config">
-    Colour, type, spacing, radius and motion as `--uoa-*` CSS variables. Built from DTCG JSON with Style Dictionary.
+    Χρώματα, τυπογραφία, αποστάσεις, ακτίνες και κίνηση ως μεταβλητές CSS `--uoa-*`. Παράγονται από DTCG JSON με το Style Dictionary.
   </Card>
-  <Card title="Plain HTML + CSS" icon="seti:html">
-    No framework. Works in TYPO3, Drupal, WordPress or a static page, with or without JavaScript.
+  <Card title="Σκέτο HTML + CSS" icon="seti:html">
+    Χωρίς framework. Λειτουργεί σε TYPO3, Drupal, WordPress ή στατική σελίδα, με ή χωρίς JavaScript.
   </Card>
-  <Card title="Department themes" icon="seti:favicon">
-    `data-uoa-brand` and `data-uoa-accent` reproduce the burgundy/teal schemes the NKUA sites use today. Try the pickers at the top.
+  <Card title="Θέματα τμημάτων" icon="seti:favicon">
+    Τα `data-uoa-brand` και `data-uoa-accent` αναπαράγουν τους μπορντό/πετρόλ χρωματικούς συνδυασμούς των σημερινών ιστοτόπων του ΕΚΠΑ. Δοκιμάστε την παλέτα επάνω δεξιά.
   </Card>
-  <Card title="Accessible by default" icon="approve-check">
-    WCAG 2.2 AA is a legal requirement for Greek universities. Every colour lists its contrast; every component its keyboard and screen-reader behaviour.
+  <Card title="Προσβάσιμο εξ ορισμού" icon="approve-check">
+    Το WCAG 2.2 AA είναι νομική υποχρέωση για τα ελληνικά πανεπιστήμια. Κάθε χρώμα δείχνει την αντίθεσή του· κάθε στοιχείο τη συμπεριφορά του με πληκτρολόγιο και αναγνώστη οθόνης.
   </Card>
 </CardGrid>

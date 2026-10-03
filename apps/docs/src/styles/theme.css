@@ -1,0 +1,72 @@
+/* Docs site theme, modelled on GitLab Pajamas and shadcn/ui (docs/references.md).
+   Starlight's sizes, greys and fonts mapped to @uoa/tokens; the accent follows the brand
+   picker (data-uoa-brand on <html>).
+   The other files in this folder style the parts of the page; see astro.config.mjs for the order. */
+
+:root {
+  --sl-font: var(--uoa-font-family-body);
+  --sl-content-width: 46rem;
+  --sl-sidebar-width: 16.5rem;
+  --sl-nav-height: 3.5rem;
+  --sl-text-h1: 2rem;
+  --sl-text-h2: 1.5rem;
+  --sl-text-h3: 1.1875rem;
+  --sl-text-h4: 1rem;
+  --sl-line-height: 1.7;
+  --sl-line-height-headings: 1.25;
+}
+
+@media (min-width: 50em) {
+  :root {
+    --sl-nav-height: 3.5rem;
+    --sl-text-h1: 2.25rem;
+    --sl-text-h2: 1.625rem;
+    --sl-text-h3: 1.25rem;
+    --sl-text-h4: 1.0625rem;
+  }
+}
+
+/* Neutral (zinc) greys instead of Starlight's blue-tinted ones. */
+:root[data-theme='light'] {
+  --sl-color-white: #09090b;
+  --sl-color-gray-1: #18181b;
+  --sl-color-gray-2: #3f3f46;
+  --sl-color-gray-3: #63636b; /* zinc-500 is 4.4:1 on gray-6; this passes 4.5:1 on every light surface */
+  --sl-color-gray-4: #a1a1aa;
+  --sl-color-gray-5: #e4e4e7;
+  --sl-color-gray-6: #f4f4f5;
+  --sl-color-gray-7: #fafafa;
+  --sl-color-black: #fff;
+  --sl-color-bg-nav: color-mix(in srgb, white 85%, transparent);
+  --sl-color-bg-sidebar: #fff;
+  --sl-color-hairline: #e4e4e7;
+  --sl-color-hairline-light: #e4e4e7;
+  --sl-color-hairline-shade: #e4e4e7;
+  --sl-color-accent-low: color-mix(in srgb, var(--uoa-color-brand-primary) 10%, white);
+  --sl-color-accent: var(--uoa-color-brand-primary);
+  --sl-color-accent-high: var(--uoa-color-brand-primary-hover);
+  --sl-color-text-accent: var(--uoa-color-brand-primary);
+}
+
+:root[data-theme='dark'] {
+  --sl-color-white: #fafafa;
+  --sl-color-gray-1: #f4f4f5;
+  --sl-color-gray-2: #d4d4d8;
+  --sl-color-gray-3: #a1a1aa;
+  --sl-color-gray-4: #71717a;
+  --sl-color-gray-5: #3f3f46;
+  --sl-color-gray-6: #27272a;
+  --sl-color-gray-7: #18181b;
+  --sl-color-black: #09090b;
+  --sl-color-bg: #09090b;
+  --sl-color-bg-nav: color-mix(in srgb, #09090b 85%, transparent);
+  --sl-color-bg-sidebar: #09090b;
+  --sl-color-hairline: #27272a;
+  --sl-color-hairline-light: #27272a;
+  --sl-color-hairline-shade: #27272a;
+  --sl-color-bg-inline-code: #27272a;
+  --sl-color-accent-low: color-mix(in srgb, var(--uoa-color-brand-primary) 45%, black);
+  --sl-color-accent: color-mix(in srgb, var(--uoa-color-brand-primary) 45%, white);
+  --sl-color-accent-high: color-mix(in srgb, var(--uoa-color-brand-primary) 15%, white);
+  --sl-color-text-accent: color-mix(in srgb, var(--uoa-color-brand-primary) 30%, white);
+}

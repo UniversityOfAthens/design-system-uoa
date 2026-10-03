@@ -1,0 +1,95 @@
+---
+// Compact top bar in the style of shadcn/ui: title and section links on the left,
+// search, GitHub and the theme pickers on the right.
+import Search from './Search.astro';
+import SocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
+import SiteTitle from './SiteTitle.astro';
+import ThemeSelect from './ThemeSelect.astro';
+
+const { t } = Astro.locals;
+const { locale } = Astro.locals.starlightRoute;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+// Path inside the locale, e.g. "/components/button/" for both / and /en/ pages.
+const prefix = locale ? `/${locale}` : '';
+const path = Astro.url.pathname.slice(base.length + prefix.length) || '/';
+const links = [
+  { label: t('uoa.nav.getStarted'), href: '/getting-started/', match: '/getting-started' },
+  { label: t('uoa.nav.foundations'), href: '/foundations/colour/', match: '/foundations' },
+  { label: t('uoa.nav.components'), href: '/components/button/', match: '/components' },
+  { label: t('uoa.nav.examples'), href: '/examples/department-page/', match: '/examples' },
+];
+// Same page in the other language: Greek at the root, English under /en/.
+const otherLang = locale === 'en' ? { href: base + path, lang: 'el' } : { href: `${base}/en${path}`, lang: 'en' };
+---
+<div class="uoa-header">
+  <div class="uoa-header__start">
+    <SiteTitle />
+    <nav class="uoa-header__nav" aria-label={t('uoa.nav.label')}>
+      {links.map((link) => (
+        <a href={base + prefix + link.href} aria-current={path.startsWith(link.match) ? 'true' : undefined}>
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+  <div class="uoa-header__end print:hidden">
+    <Search />
+    <div class="uoa-header__tools sl-hidden md:sl-flex">
+      <a class="uoa-header__lang" href={otherLang.href} hreflang={otherLang.lang} lang={otherLang.lang} title={t('uoa.language.switchLabel')}>
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        {t('uoa.language.switch')}
+      </a>
+      <SocialIcons />
+      <ThemeSelect />
+    </div>
+  </div>
+</div>
+
+<style>
+  .uoa-header {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+  .uoa-header__start,
+  .uoa-header__end {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    min-width: 0;
+  }
+  .uoa-header__end { flex: 1; gap: 0.75rem; justify-content: flex-end; }
+  .uoa-header__tools { flex-shrink: 0; gap: 0.25rem; align-items: center; }
+  .uoa-header__tools::before {
+    content: '';
+    height: 1.25rem;
+    margin-inline: 0.25rem 0.5rem;
+    border-inline-start: 1px solid var(--sl-color-hairline-light);
+  }
+  .uoa-header__nav { display: none; gap: 1.25rem; }
+  .uoa-header__nav a {
+    font-size: var(--sl-text-sm);
+    font-weight: 500;
+    color: var(--sl-color-gray-3);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .uoa-header__nav a:hover,
+  .uoa-header__nav a[aria-current] { color: var(--sl-color-white); }
+  @media (min-width: 64rem) { .uoa-header__nav { display: flex; } }
+  .uoa-header__lang {
+    display: inline-flex;
+    gap: 0.375rem;
+    align-items: center;
+    height: 2.25rem;
+    padding: 0 0.625rem;
+    font-size: var(--sl-text-sm);
+    font-weight: 500;
+    color: var(--sl-color-gray-2);
+    text-decoration: none;
+    border-radius: 0.5rem;
+  }
+  .uoa-header__lang:hover { color: var(--sl-color-white); background: var(--sl-color-gray-6); }
+</style>

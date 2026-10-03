@@ -3,15 +3,16 @@
 import { byPrefix, type Token } from '../lib/tokens';
 const { prefix, tier } = Astro.props as { prefix: string; tier?: Token['tier'] };
 const list = byPrefix(prefix, tier);
+const { t } = Astro.locals;
 ---
 <table>
-  <thead><tr><th>Token</th><th>Value</th><th>Notes</th></tr></thead>
+  <thead><tr><th>{t('uoa.table.token')}</th><th>{t('uoa.table.value')}</th><th>{t('uoa.table.notes')}</th></tr></thead>
   <tbody>
-    {list.map((t) => (
+    {list.map((token) => (
       <tr>
-        <td><code>{t.name}</code></td>
-        <td><code>{t.ref ? t.ref.slice(1, -1) : String(t.value)}</code>{t.ref && <><br /><small>{String(t.value)}</small></>}</td>
-        <td>{t.description ?? ''}</td>
+        <td><code>{token.name}</code></td>
+        <td><code>{token.ref ? token.ref.slice(1, -1) : String(token.value)}</code>{token.ref && <><br /><small>{String(token.value)}</small></>}</td>
+        <td>{token.description ?? ''}</td>
       </tr>
     ))}
   </tbody>

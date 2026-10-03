@@ -37,7 +37,13 @@ function luminance(hex: string) {
 }
 
 export const contrastOnWhite = (hex: string) => 1.05 / (luminance(hex) + 0.05);
-export const isDark = (hex: string) => luminance(hex) < 0.4;
+export const contrast = (a: string, b: string) => {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+};
+
+/** White or near-black, whichever has more contrast on `hex`. */
+export const textOn = (hex: string) => (contrast(hex, '#ffffff') >= contrast(hex, '#0f172a') ? '#fff' : '#0f172a');
 
 export function contrastLevel(hex: string): { level: 'aa' | 'ui' | 'deco'; label: string; ratio: number } {
   const ratio = contrastOnWhite(hex);

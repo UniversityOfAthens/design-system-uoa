@@ -1,5 +1,6 @@
 ---
-// Live example rendered in an isolated iframe with @uoa/core loaded, plus its source.
+// Live example rendered in an isolated iframe with @uoa/core loaded, plus its source
+// behind Preview/Code tabs.
 // Usage: <Example title="Variants" code={`<button class="uoa-button">…</button>`} />
 import { Code } from '@astrojs/starlight/components';
 
@@ -22,7 +23,9 @@ function dedent(source: string) {
 
 const source = dedent(code);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const bodyPadding = padding === 'none' ? '0' : '2rem 1.5rem';
+const bodyStyle = padding === 'none'
+  ? 'min-height:0;padding:0'
+  : 'display:grid;align-content:center;box-sizing:border-box;min-height:9rem;padding:2.5rem 2rem';
 const srcdoc = `<!doctype html>
 <html lang="el">
 <head>
@@ -30,19 +33,30 @@ const srcdoc = `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="${base}/uoa/fonts/fonts.css">
 <link rel="stylesheet" href="${base}/uoa/uoa.css">
-<style>html{background:transparent}body{min-height:0;padding:${bodyPadding}}</style>
+<style>html{background:transparent}body{${bodyStyle}}</style>
 </head>
 <body>${source}</body>
 </html>`;
+const { t } = Astro.locals;
+const label = title ?? t('uoa.example.default');
 ---
 <figure class="uoa-example not-content">
-  {title && <figcaption>{title}</figcaption>}
-  <iframe class="uoa-example__frame" srcdoc={srcdoc} title={title ?? 'Example'} data-padding={padding}></iframe>
+  <div class="uoa-example__bar">
+    <figcaption>{title}</figcaption>
+    {showCode && (
+      <div class="uoa-example__tabs" role="tablist" aria-label={`${label}: ${t('uoa.example.view')}`} hidden>
+        <button type="button" role="tab" aria-selected="true" data-panel="preview">{t('uoa.example.preview')}</button>
+        <button type="button" role="tab" aria-selected="false" data-panel="code">{t('uoa.example.code')}</button>
+      </div>
+    )}
+  </div>
+  <div class="uoa-example__panel" data-panel="preview">
+    <iframe class="uoa-example__frame" srcdoc={srcdoc} title={label} data-padding={padding}></iframe>
+  </div>
   {showCode && (
-    <details class="uoa-example__code">
-      <summary>Show code</summary>
+    <div class="uoa-example__panel uoa-example__code" data-panel="code">
       <Code code={source} lang="html" />
-    </details>
+    </div>
   )}
 </figure>
 
@@ -60,11 +74,33 @@ const srcdoc = `<!doctype html>
     }
   }
 
+  // A srcdoc iframe resolves links against the docs page URL, so "#id" or "#" would load the
+  // whole docs page inside the example. Keep examples inert: in-page links move to their
+  // target inside the example, every other link and form submit does nothing.
+  function keepInside(doc: Document) {
+    if (doc.documentElement.dataset.uoaInert) return;
+    doc.documentElement.dataset.uoaInert = 'true';
+    doc.addEventListener('click', (event) => {
+      const link = (event.target as Element).closest?.('a[href]');
+      if (!link) return;
+      event.preventDefault();
+      const id = decodeURIComponent(link.getAttribute('href')!.replace(/^#/, ''));
+      const target = link.getAttribute('href')!.startsWith('#') && id ? doc.getElementById(id) : null;
+      if (target) {
+        if (!target.matches('a, button, input, select, textarea, [tabindex]')) target.setAttribute('tabindex', '-1');
+        target.focus();
+        target.scrollIntoView({ block: 'nearest' });
+      }
+    });
+    doc.addEventListener('submit', (event) => event.preventDefault());
+  }
+
   function setup(frame: HTMLIFrameElement) {
     const doc = frame.contentDocument;
     if (!doc?.body) return;
     syncTheme(frame);
-    const fit = () => { frame.style.height = `${doc.documentElement.scrollHeight}px`; };
+    keepInside(doc);
+    const fit =() => { frame.style.height = `${doc.documentElement.scrollHeight}px`; };
     new ResizeObserver(fit).observe(doc.body);
     fit();
   }
@@ -74,6 +110,22 @@ const srcdoc = `<!doctype html>
     frame.addEventListener('load', () => setup(frame));
   }
 
+  // Preview/Code tabs. Without JavaScript both panels stay visible.
+  for (const example of document.querySelectorAll<HTMLElement>('.uoa-example')) {
+    const tablist = example.querySelector<HTMLElement>('[role="tablist"]');
+    if (!tablist) continue;
+    const tabs = [...tablist.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const select = (name: string) => {
+      for (const tab of tabs) tab.setAttribute('aria-selected', String(tab.dataset.panel === name));
+      for (const panel of example.querySelectorAll<HTMLElement>('.uoa-example__panel')) {
+        panel.hidden = panel.dataset.panel !== name;
+      }
+    };
+    for (const tab of tabs) tab.addEventListener('click', () => select(tab.dataset.panel!));
+    tablist.hidden = false;
+    select('preview');
+  }
+
   document.addEventListener('uoa-theme-change', () => {
     for (const frame of document.querySelectorAll<HTMLIFrameElement>('.uoa-example__frame')) syncTheme(frame);
   });
@@ -81,38 +133,67 @@ const srcdoc = `<!doctype html>
 
 <style>
   .uoa-example {
-    margin: 1.5rem 0;
+    margin: 1.5rem 0 2rem;
     overflow: hidden;
-    border: 1px solid var(--sl-color-gray-5);
+    background: var(--sl-color-gray-7);
+    border: 1px solid var(--sl-color-hairline-light);
     border-radius: 0.75rem;
   }
+  .uoa-example__bar {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.375rem 0.5rem 0.375rem 1rem;
+  }
   .uoa-example figcaption {
-    padding: 0.625rem 1rem;
     font-size: var(--sl-text-sm);
     font-weight: 600;
     color: var(--sl-color-white);
-    border-bottom: 1px solid var(--sl-color-gray-5);
   }
+  .uoa-example__tabs {
+    display: flex;
+    gap: 0.125rem;
+    padding: 0.1875rem;
+    background: var(--sl-color-gray-6);
+    border-radius: 0.5rem;
+  }
+  .uoa-example__tabs[hidden] { display: none; }
+  .uoa-example__tabs button {
+    padding: 0.1875rem 0.625rem;
+    font: inherit;
+    font-size: var(--sl-text-xs);
+    font-weight: 500;
+    color: var(--sl-color-gray-3);
+    background: none;
+    border: 0;
+    border-radius: 0.375rem;
+    cursor: pointer;
+  }
+  .uoa-example__tabs button:hover { color: var(--sl-color-white); }
+  .uoa-example__tabs button[aria-selected='true'] {
+    color: var(--sl-color-white);
+    background: var(--sl-color-black);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+  }
+  .uoa-example__panel {
+    margin: 0 0.375rem 0.375rem;
+    overflow: hidden;
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 0.5rem;
+  }
+  .uoa-example__panel[hidden] { display: none; }
   .uoa-example__frame {
     display: block;
     width: 100%;
-    height: 6rem;
+    height: 9rem;
     border: 0;
     /* Examples are always light: the design system has no dark theme yet. */
     background-color: #fff;
-    background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-    background-size: 16px 16px;
     color-scheme: light;
   }
-  .uoa-example__frame[data-padding='none'] { background-image: none; }
-  .uoa-example__code { border-top: 1px solid var(--sl-color-gray-5); }
-  .uoa-example__code summary {
-    padding: 0.5rem 1rem;
-    font-size: var(--sl-text-sm);
-    color: var(--sl-color-gray-3);
-    cursor: pointer;
-  }
-  .uoa-example__code summary:hover { color: var(--sl-color-white); }
   .uoa-example__code :global(.expressive-code) { margin: 0; }
   .uoa-example__code :global(.expressive-code .frame) { border-radius: 0; box-shadow: none; }
+  .uoa-example__code :global(.expressive-code pre) { border: 0; }
 </style>

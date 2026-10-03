@@ -1,47 +1,4 @@
-/* Docs site theme: Starlight's colours and fonts mapped to @uoa/tokens.
-   The accent follows the brand picker (data-uoa-brand on <html>). */
-
-:root {
-  --sl-font: var(--uoa-font-family-body);
-  --sl-content-width: 48rem;
-}
-
-:root[data-theme='light'] {
-  --sl-color-accent-low: color-mix(in srgb, var(--uoa-color-brand-primary) 12%, white);
-  --sl-color-accent: var(--uoa-color-brand-primary);
-  --sl-color-accent-high: var(--uoa-color-brand-primary-hover);
-  --sl-color-bg-nav: color-mix(in srgb, white 88%, transparent);
-}
-
-:root[data-theme='dark'] {
-  --sl-color-accent-low: color-mix(in srgb, var(--uoa-color-brand-primary) 45%, black);
-  --sl-color-accent: color-mix(in srgb, var(--uoa-color-brand-primary) 45%, white);
-  --sl-color-accent-high: color-mix(in srgb, var(--uoa-color-brand-primary) 15%, white);
-}
-
-/* Header: blurred, with the site accent as a thin top line. */
-.page > .header {
-  backdrop-filter: saturate(1.8) blur(12px);
-  box-shadow: inset 0 3px 0 var(--uoa-color-brand-accent);
-}
-
-/* Page titles in the brand serif, like h1 on NKUA sites. */
-h1#_top,
-.hero h1 {
-  font-family: var(--uoa-font-family-display);
-  font-weight: var(--uoa-font-weight-display);
-  letter-spacing: var(--uoa-font-letter-spacing-display);
-}
-
-.sl-markdown-content :is(h2, h3) { letter-spacing: var(--uoa-font-letter-spacing-heading); }
-
-/* Visually hidden labels inside custom components. */
-.sr-only {
-  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
-}
-
-/* ---- Token components -------------------------------------------------- */
+/* Token documentation components: swatches, palettes, type scale, spacing, shape tiles. */
 
 .uoa-pill {
   display: inline-block;
@@ -107,3 +64,6 @@ h1#_top,
 }
 .uoa-tile[data-kind='shadow'] { border: 0; border-radius: 12px; }
 .uoa-tile code { font-size: 0.75rem; background: none; padding: 0; color: #0f172a; }
+
+/* Component status pills (draft uses data-level="ui"). */
+.uoa-pill[data-level='beta'] { color: #1d4ed8; background: #e0ecff; }

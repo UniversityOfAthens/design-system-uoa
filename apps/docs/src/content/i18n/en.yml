@@ -1,0 +1,35 @@
+# UI strings for the English docs (/en/). Starlight's own strings (search, "On this page",
+# pagination…) come built in; these are the ones our components add.
+# Keys must match el.yml and the schema in src/content.config.ts.
+
+uoa.siteTitle: Design System
+
+uoa.nav.label: Sections
+uoa.nav.getStarted: Get started
+uoa.nav.foundations: Foundations
+uoa.nav.components: Components
+uoa.nav.examples: Examples
+
+uoa.language.switch: Ελληνικά
+uoa.language.switchLabel: Διαβάστε αυτή τη σελίδα στα ελληνικά
+
+uoa.theme.button: Department theme
+uoa.theme.brand: Brand
+uoa.theme.accent: Accent
+uoa.theme.accentDefault: Default (cyan)
+uoa.theme.darkMode: Dark mode
+uoa.theme.toggleDarkMode: Toggle dark mode
+
+uoa.example.default: Example
+uoa.example.view: view
+uoa.example.preview: Preview
+uoa.example.code: Code
+
+uoa.contrast.onWhite: on white
+uoa.contrast.decorative: Decorative
+
+uoa.table.token: Token
+uoa.table.value: Value
+uoa.table.notes: Notes
+uoa.table.attribute: Attribute on
+uoa.table.sets: Sets

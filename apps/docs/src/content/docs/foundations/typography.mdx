@@ -1,6 +1,6 @@
 ---
-title: Typography
-description: Typefaces, type scale, weights and Greek text rules.
+title: Τυπογραφία
+description: Γραμματοσειρές, κλίμακα μεγεθών, βάρη και κανόνες για ελληνικό κείμενο.
 sidebar:
   order: 2
 ---
@@ -8,32 +8,32 @@ sidebar:
 import TypeScale from '../../../components/TypeScale.astro';
 import TokenTable from '../../../components/TokenTable.astro';
 
-## Typefaces
+## Γραμματοσειρές
 
-| Role | Font | Token |
+| Ρόλος | Γραμματοσειρά | Token |
 | --- | --- | --- |
-| Display and `h1` | **Katsoulidis** (serif, 400/700) → Georgia | `--uoa-font-family-display` |
-| `h2`–`h6`, body, UI | **Open Sans** (variable, 300–800) → system sans | `--uoa-font-family-heading`, `--uoa-font-family-body` |
-| Code | System monospace | `--uoa-font-family-code` |
+| Display και `h1` | **Katsoulidis** (serif, 400/700) → Georgia | `--uoa-font-family-display` |
+| `h2`–`h6`, κείμενο, UI | **Open Sans** (variable, 300–800) → sans του συστήματος | `--uoa-font-family-heading`, `--uoa-font-family-body` |
+| Κώδικας | Monospace του συστήματος | `--uoa-font-family-code` |
 
-Both cover Latin and monotonic Greek. Neither has polytonic Greek. Katsoulidis files are not in
-the repository until the licence for web use is confirmed; without them, Georgia is used.
+Και οι δύο καλύπτουν λατινικά και μονοτονικά ελληνικά. Καμία δεν έχει πολυτονικό. Τα αρχεία της Katsoulidis
+δεν βρίσκονται στο αποθετήριο μέχρι να επιβεβαιωθεί η άδεια χρήσης στο web· χωρίς αυτά χρησιμοποιείται η Georgia.
 
-## Scale
+## Κλίμακα
 
-`display`, `heading-1`, `heading-2` and `heading-3` are fluid: they grow with the viewport
-between the two sizes shown. Resize the window to see them change.
+Τα `display`, `heading-1`, `heading-2` και `heading-3` είναι ρευστά: μεγαλώνουν με το πλάτος της οθόνης
+ανάμεσα στα δύο μεγέθη που φαίνονται. Αλλάξτε το μέγεθος του παραθύρου για να τα δείτε να αλλάζουν.
 
 <TypeScale />
 
-## Rules for Greek
+## Κανόνες για τα ελληνικά
 
-- **No `text-transform: uppercase` on Greek.** Uppercase Greek drops its accents; CSS only does it
-  correctly when `lang="el"` is set, and screen readers may spell out the result. Write the text in
-  the case you want instead.
-- **Headings keep a line height of at least 1.1.** Accented capitals (Ά, Έ, Ή) need the room.
-- **Test with long words.** Greek runs 20–30% longer than English; headings use
-  `text-wrap: balance` to avoid a single word on the last line.
+- **Όχι `text-transform: uppercase` σε ελληνικό κείμενο.** Τα κεφαλαία ελληνικά χάνουν τους τόνους τους· το CSS
+  το κάνει σωστά μόνο όταν υπάρχει `lang="el"`, και οι αναγνώστες οθόνης μπορεί να διαβάσουν το αποτέλεσμα γράμμα-γράμμα.
+  Γράψτε το κείμενο με τα πεζά/κεφαλαία που θέλετε.
+- **Οι επικεφαλίδες κρατούν ύψος γραμμής τουλάχιστον 1.1.** Τα τονισμένα κεφαλαία (Ά, Έ, Ή) χρειάζονται χώρο.
+- **Δοκιμάστε με μεγάλες λέξεις.** Τα ελληνικά είναι 20–30% μακρύτερα από τα αγγλικά· οι επικεφαλίδες
+  χρησιμοποιούν `text-wrap: balance` ώστε να μη μένει μία λέξη μόνη στην τελευταία γραμμή.
 
 ## Tokens
 

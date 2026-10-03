@@ -1,0 +1,166 @@
+---
+title: Alert
+description: A status message in the page flow — information, success, warning or error.
+sidebar:
+  badge:
+    text: beta
+    variant: note
+---
+
+import Example from '../../../../components/Example.astro';
+import TokenTable from '../../../../components/TokenTable.astro';
+
+Use it for messages about the page or the user's task that must not be missed: a deadline, the
+result of a submission, a form with errors.
+
+<p class="uoa-meta">
+  <span class="uoa-pill" data-level="beta">beta</span>
+  <a href="https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/alert">Source</a>
+</p>
+
+## Examples
+
+<Example
+  title="Variants"
+  code={`
+    <div class="uoa-stack" style="--uoa-stack-gap: var(--uoa-space-3)">
+      <div class="uoa-alert">
+        <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        <div class="uoa-alert__content">
+          <p>Οι εγγραφές για το χειμερινό εξάμηνο ανοίγουν στις 5 Οκτωβρίου.</p>
+        </div>
+      </div>
+      <div class="uoa-alert uoa-alert--success">
+        <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 15-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"/></svg>
+        <div class="uoa-alert__content">
+          <p>Οι αλλαγές αποθηκεύτηκαν.</p>
+        </div>
+      </div>
+      <div class="uoa-alert uoa-alert--warning">
+        <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+        <div class="uoa-alert__content">
+          <p>Η προθεσμία δήλωσης μαθημάτων λήγει αύριο στις 23:59.</p>
+        </div>
+      </div>
+      <div class="uoa-alert uoa-alert--danger">
+        <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        <div class="uoa-alert__content">
+          <p>Η σύνδεση με το σύστημα φοιτητολογίου απέτυχε. Δοκιμάστε ξανά σε λίγα λεπτά.</p>
+        </div>
+      </div>
+    </div>
+  `}
+/>
+
+<Example
+  title="With a title"
+  code={`
+    <div class="uoa-alert uoa-alert--success" role="status">
+      <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 15-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"/></svg>
+      <div class="uoa-alert__content">
+        <h2 class="uoa-alert__title">Η αίτηση υποβλήθηκε</h2>
+        <p>Θα λάβετε επιβεβαίωση στο ιδρυματικό σας email. Αριθμός πρωτοκόλλου: <strong>4521/2026</strong>.</p>
+      </div>
+    </div>
+  `}
+/>
+
+<Example
+  title="Error summary"
+  code={`
+    <div class="uoa-alert uoa-alert--danger" role="alert">
+      <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+      <div class="uoa-alert__content">
+        <h2 class="uoa-alert__title">Η φόρμα έχει 2 λάθη</h2>
+        <ul>
+          <li><a href="#am">Συμπληρώστε τον αριθμό μητρώου</a></li>
+          <li><a href="#email">Το email πρέπει να είναι της μορφής name@uoa.gr</a></li>
+        </ul>
+      </div>
+    </div>
+  `}
+/>
+
+## Structure
+
+1. **Container**: `<div class="uoa-alert">`. Tinted background and a 4px bar in the variant colour on the inline-start edge.
+2. **Icon** (recommended): inline SVG with `.uoa-alert__icon`, decorative.
+3. **Title** (optional): `.uoa-alert__title` on a heading of the right level for the page, or on a `<p>`.
+4. **Content**: `.uoa-alert__content` holds paragraphs, lists and links.
+
+## Guidelines
+
+### When to use
+
+- Information that applies to the whole page or task: registration dates, a service outage.
+- The result of something the user just did: a form was submitted, changes were saved.
+- An error summary at the top of a form, linking to each field with a problem.
+
+### When not to use
+
+- Errors about one field: show them next to the field (form error message, not built yet).
+- News or announcements: use a news card or list.
+- Promotional content: alerts lose their weight if they are used for everything.
+- More than one or two per page. Combine messages instead.
+
+### Variants
+
+| Variant | Class | Use for |
+| --- | --- | --- |
+| Info | `.uoa-alert` | Neutral information, the default |
+| Success | `.uoa-alert--success` | Something the user did worked |
+| Warning | `.uoa-alert--warning` | Something the user should act on soon |
+| Danger | `.uoa-alert--danger` | Something failed or is blocking |
+
+### Content
+
+- Lead with what happened or what to do: "Η αίτηση υποβλήθηκε", not "Επιτυχία!".
+- Keep it to one or two sentences. Add a title only when there is more than one sentence.
+- Say what the user should do next, and link to it.
+- Don't rely on colour or the icon alone: the words must say whether it's an error, a warning or information.
+
+### Behaviour
+
+- Static: no dismiss button, no auto-hide. A dismissible alert needs JavaScript and is not built yet.
+- The bar, background and icon follow the variant; body text stays the default text colour.
+- Width follows its container. Put it inside the content column, not full-bleed.
+
+## Accessibility
+
+- Messages present when the page loads need **no role**: they are read in order with the page.
+  Give them a heading (`.uoa-alert__title` on an `<h2>`/`<h3>`) when they matter, so they show up in the headings list.
+- Messages **inserted later** with JavaScript need a live region that exists before the text is inserted:
+  - `role="status"` for confirmations and information (polite).
+  - `role="alert"` for errors that need attention now (assertive). Use sparingly.
+- An error summary after a failed submit: move focus to it (`tabindex="-1"` and `focus()`) instead of, or as well as, `role="alert"`.
+- Icons are decorative (`aria-hidden="true" focusable="false"`).
+- Text and title colours meet 4.5:1 on their backgrounds (see [Colour → Feedback](../../foundations/colour/#feedback)).
+- In Windows High Contrast mode the alert gets a full border, since backgrounds are removed.
+- Screen-reader testing (NVDA, VoiceOver) hasn't been done yet.
+
+## Theming
+
+Component tokens, from `packages/tokens/src/component/alert.json`. The variant colours point to the
+semantic feedback colours.
+
+<TokenTable prefix="alert-" />
+
+## API
+
+### HTML / CSS
+
+`.uoa-alert` + optional `--success | --warning | --danger`; children `.uoa-alert__icon`,
+`.uoa-alert__content`, `.uoa-alert__title`. Links inside inherit the text colour.
+
+### JavaScript
+
+None. Add `role="status"` or `role="alert"` yourself when inserting messages dynamically.
+
+### Platform adapters
+
+Filled in once the first platform adapter is chosen (ADR 0003).
+
+## Related
+
+- [Button](../button/): for the action an alert points to.
+- Form error message (planned): for errors on a single field.

@@ -1,0 +1,109 @@
+/* Site chrome: header, left sidebar and the "On this page" list. */
+
+/* ---- Header ------------------------------------------------------------ */
+
+.page > .header {
+  backdrop-filter: saturate(1.8) blur(12px);
+  border-bottom-color: var(--sl-color-hairline);
+}
+
+site-search > button[data-open-modal] {
+  flex: 0 1 16rem;
+  min-width: 0;
+  height: 2.25rem;
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-3);
+  background: var(--sl-color-gray-6);
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+}
+site-search > button[data-open-modal]:hover { color: var(--sl-color-white); border-color: var(--sl-color-gray-5); }
+@media (max-width: 50rem) {
+  site-search > button[data-open-modal] { min-width: 0; background: none; }
+}
+
+/* GitHub link as an icon button, matching the theme buttons next to it. */
+:is(.uoa-header__tools, .mobile-preferences) a.sl-flex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  color: var(--sl-color-gray-2);
+  border-radius: 0.5rem;
+}
+:is(.uoa-header__tools, .mobile-preferences) a.sl-flex:hover { color: var(--sl-color-white); background: var(--sl-color-gray-6); }
+:is(.uoa-header__tools, .mobile-preferences) a.sl-flex svg { width: 1.125rem; height: 1.125rem; }
+
+/* ---- Left sidebar: muted section labels, grey pill for the current page -- */
+
+#starlight__sidebar .top-level > li + li { margin-top: 1.25rem; }
+#starlight__sidebar summary {
+  padding: 0.25rem 0.5rem;
+  cursor: default;
+  pointer-events: none;
+}
+#starlight__sidebar summary .caret { display: none; }
+#starlight__sidebar .large {
+  font-size: var(--sl-text-xs);
+  font-weight: 600;
+  color: var(--sl-color-gray-3);
+}
+/* Top-level links ("Getting started") look like the items below a label. */
+#starlight__sidebar .top-level > li > a.large {
+  font-size: var(--sl-text-sm);
+  font-weight: 500;
+  color: var(--sl-color-gray-2);
+}
+#starlight__sidebar ul ul li { margin-inline-start: 0; padding-inline-start: 0; border: 0; }
+#starlight__sidebar a {
+  padding: 0.375rem 0.5rem;
+  font-size: var(--sl-text-sm);
+  font-weight: 500;
+  color: var(--sl-color-gray-2);
+  border-radius: 0.375rem;
+}
+#starlight__sidebar a:hover { color: var(--sl-color-white); background: var(--sl-color-gray-6); }
+#starlight__sidebar a[aria-current='page'],
+#starlight__sidebar a[aria-current='page']:hover,
+#starlight__sidebar a[aria-current='page']:focus {
+  font-weight: 600;
+  color: var(--sl-color-white);
+  background: var(--sl-color-gray-6);
+}
+#starlight__sidebar .sl-badge {
+  padding: 0 0.375rem;
+  font-family: inherit;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #8a5a00;
+  background: #fff4d6;
+  border: 0;
+  border-radius: 999px;
+}
+
+/* ---- Right sidebar (On this page) ------------------------------------- */
+
+.right-sidebar { border-inline-start: 0; }
+.right-sidebar-panel { padding-top: 2rem; }
+.right-sidebar-panel h2 {
+  margin-bottom: 0.75rem;
+  font-size: var(--sl-text-xs);
+  font-weight: 600;
+  color: var(--sl-color-white);
+}
+starlight-toc nav > ul { border-inline-start: 1px solid var(--sl-color-hairline); }
+starlight-toc a {
+  margin-inline-start: -1px;
+  padding-block: 0.3125rem;
+  font-size: var(--sl-text-xs);
+  color: var(--sl-color-gray-3);
+  border-inline-start: 2px solid transparent;
+  border-radius: 0;
+}
+starlight-toc a[aria-current='true'] {
+  font-weight: 500;
+  color: var(--sl-color-white);
+  border-inline-start-color: var(--sl-color-white);
+}

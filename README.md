@@ -78,13 +78,9 @@ More in [docs/architecture.md](docs/architecture.md) and [docs/conventions.md](d
 
 ## Contributing
 
-- Work on a branch and open a pull request into `develop`.
-- Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/)
-  (`feat(button): …`, `fix(tokens): …`).
-- New components follow the [component docs template](docs/component-docs-template.md):
-  CSS and reference HTML in `packages/core/src/components/<name>/`, docs page in
-  `apps/docs/src/content/docs/components/<name>.mdx`.
-- Architectural decisions go in [`docs/adr/`](docs/adr).
+See [CONTRIBUTING.md](CONTRIBUTING.md): setup, where things live, adding a component, and
+writing the docs in Greek and English. In short: branch from `develop`, use
+[Conventional Commits](https://www.conventionalcommits.org/), and open a pull request into `develop`.
 
 ## License
 
