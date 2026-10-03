@@ -41,9 +41,17 @@ Last 2 versions of evergreen browsers + Safari iOS ≥ 16. Define in a shared
 `draft` → `beta` (usable, API may change) → `stable` (semver-protected) → `deprecated`
 (kept for at least one major version with a migration note).
 
-**Definition of done for `stable`:** tokens only, docs page complete per template, a11y
-checks passed (auto + manual), visual regression snapshot, Drupal SDC available, reviewed
-by design.
+**Definition of done for `beta`** (sites may start using it; class names and tokens may still change):
+
+- Tokens only: no hard-coded colours or sizes in the component CSS.
+- Docs pages complete per the [template](component-docs-template.md), in Greek and English.
+- `bun run test:a11y` passes: axe (WCAG 2.2 A/AA) finds nothing on its pages, light and dark.
+- `bun run test:visual` has snapshots for every example.
+- Checked by hand: keyboard only (every control reachable, visible focus), 320px width without
+  horizontal scrolling, and 200% zoom.
+
+**Definition of done for `stable`:** everything for `beta`, plus a manual screen-reader pass
+(NVDA + VoiceOver), the first platform adapter (ADR 0003), and a design review.
 
 ## Versioning & contributions
 

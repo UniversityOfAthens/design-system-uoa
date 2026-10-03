@@ -9,5 +9,8 @@ packages/tokens/fonts/katsoulidis/*
 
 # Docs site: generated copy of @uoa/core/dist and Astro output
 apps/docs/public/uoa/
+apps/docs/public/pagefind/
 apps/docs/.astro/
 apps/docs/dist/
+apps/docs/test-results/
+apps/docs/playwright-report/

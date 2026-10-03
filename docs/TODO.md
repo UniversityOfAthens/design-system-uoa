@@ -22,7 +22,7 @@
 - [ ] Changesets
 - [ ] GitHub Actions: lint, build, test, deploy docs site (GitHub Pages)
   — partial: docs site deploys to GitHub Pages (`.github/workflows/docs.yml`); lint/test not yet
-- [ ] CONTRIBUTING.md, CODE_OF_CONDUCT.md, PR/issue templates
+- [ ] CONTRIBUTING.md, CODE_OF_CONDUCT.md, PR/issue templates — CONTRIBUTING.md done
 
 ## Phase 2 — Foundations
 
@@ -36,11 +36,11 @@
 ## Phase 3 — Core components (MVP for the first platform)
 
 Atoms / basic
-- [x] Button / link button (`draft` — needs screen-reader pass, design review, adapter)
+- [x] Button / link button (`beta` — for stable: screen-reader pass, design review, adapter)
 - [ ] Link, Icon
 - [ ] Badge / Tag
 - [ ] Form elements: text input, textarea, select, checkbox, radio, switch, fieldset, error message
-- [ ] Alert / status message
+- [x] Alert / status message (`beta` — for stable: screen-reader pass, design review, adapter; no dismiss yet)
 
 Molecules
 - [ ] Accordion
@@ -84,7 +84,7 @@ Organisms / layout
 
 ## Ongoing
 
-- [ ] Visual regression + axe in CI for every component
+- [x] Visual regression + axe in CI for every component (`.github/workflows/ci.yml`)
 - [ ] Manual accessibility audit before each `stable` release
 - [ ] Release notes and migration guides per major version
 - [ ] Adoption tracking: which sites use which version

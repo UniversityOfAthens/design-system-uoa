@@ -4,14 +4,23 @@
   "type": "module",
   "scripts": {
     "sync": "rm -rf public/uoa && cp -r ../../packages/core/dist public/uoa",
-    "dev": "bun run sync && astro dev",
+    "search:index": "astro build && rm -rf public/pagefind && cp -r dist/pagefind public/pagefind",
+    "dev": "bun run sync && bun run search:index && astro dev",
     "build": "bun run sync && astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test:a11y": "playwright test --project=a11y",
+    "test:visual": "docker run --rm --ipc=host --user \"$(id -u):$(id -g)\" -e HOME=/tmp -v \"$(cd ../.. && pwd)\":/work -w /work/apps/docs mcr.microsoft.com/playwright:v1.63.0-noble node node_modules/@playwright/test/cli.js test --project=visual",
+    "test:visual:update": "docker run --rm --ipc=host --user \"$(id -u):$(id -g)\" -e HOME=/tmp -v \"$(cd ../.. && pwd)\":/work -w /work/apps/docs mcr.microsoft.com/playwright:v1.63.0-noble node node_modules/@playwright/test/cli.js test --project=visual --update-snapshots"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.42",
+    "@pagefind/default-ui": "^1.3.0",
     "@uoa/core": "workspace:*",
     "@uoa/tokens": "workspace:*",
     "astro": "^7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0"
   }
 }
