@@ -21,6 +21,7 @@
 - [ ] Prettier, ESLint, Stylelint, commitlint, EditorConfig
 - [ ] Changesets
 - [ ] GitHub Actions: lint, build, test, deploy docs site (GitHub Pages)
+  — partial: docs site deploys to GitHub Pages (`.github/workflows/docs.yml`); lint/test not yet
 - [ ] CONTRIBUTING.md, CODE_OF_CONDUCT.md, PR/issue templates
 
 ## Phase 2 — Foundations
