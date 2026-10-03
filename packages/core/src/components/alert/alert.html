@@ -1,0 +1,40 @@
+<!-- Reference markup for Alert. Adapters (Twig, PHP, React) must output exactly this.
+     Icons are decorative (aria-hidden); the title or text must say what kind of message it is. -->
+
+<!-- Info (default), message only -->
+<div class="uoa-alert">
+  <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+  <div class="uoa-alert__content">
+    <p>Οι εγγραφές για το χειμερινό εξάμηνο ανοίγουν στις 5 Οκτωβρίου.</p>
+  </div>
+</div>
+
+<!-- Success, with a title. role="status" only when the message is inserted after the page loads -->
+<div class="uoa-alert uoa-alert--success" role="status">
+  <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 15-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"/></svg>
+  <div class="uoa-alert__content">
+    <h2 class="uoa-alert__title">Η αίτηση υποβλήθηκε</h2>
+    <p>Θα λάβετε επιβεβαίωση στο ιδρυματικό σας email.</p>
+  </div>
+</div>
+
+<!-- Warning -->
+<div class="uoa-alert uoa-alert--warning">
+  <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+  <div class="uoa-alert__content">
+    <h2 class="uoa-alert__title">Η προθεσμία λήγει αύριο</h2>
+    <p>Υποβάλετε τη δήλωση μαθημάτων έως τις 23:59.</p>
+  </div>
+</div>
+
+<!-- Danger, e.g. a form error summary. role="alert" only when inserted after the page loads -->
+<div class="uoa-alert uoa-alert--danger" role="alert">
+  <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+  <div class="uoa-alert__content">
+    <h2 class="uoa-alert__title">Η φόρμα έχει 2 λάθη</h2>
+    <ul>
+      <li><a href="#am">Συμπληρώστε τον αριθμό μητρώου</a></li>
+      <li><a href="#email">Το email πρέπει να είναι της μορφής name@uoa.gr</a></li>
+    </ul>
+  </div>
+</div>

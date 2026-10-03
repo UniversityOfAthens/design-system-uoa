@@ -10,5 +10,6 @@
 @import "./base/reset.css" layer(uoa.reset);
 @import "./base/base.css" layer(uoa.base);
 @import "./base/layout.css" layer(uoa.layout);
+@import "./components/alert/alert.css" layer(uoa.components);
 @import "./components/button/button.css" layer(uoa.components);
 @import "./base/utilities.css" layer(uoa.utilities);

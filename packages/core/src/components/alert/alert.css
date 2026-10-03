@@ -1,0 +1,80 @@
+/* Alert — a status message in the page flow. Variants: info (default), success, warning,
+   danger. Optional title (.uoa-alert__title) and icon (.uoa-alert__icon). No JavaScript:
+   live-region roles are set in the markup by whoever inserts the message. */
+
+.uoa-alert {
+  /* Each variant only swaps these two. */
+  --_accent: var(--uoa-alert-info-accent);
+  --_surface: var(--uoa-alert-info-surface);
+
+  display: flex;
+  gap: var(--uoa-alert-gap);
+  align-items: flex-start;
+  padding-block: var(--uoa-alert-padding-block);
+  padding-inline: calc(var(--uoa-alert-padding-inline) - var(--uoa-alert-bar-width)) var(--uoa-alert-padding-inline);
+  font-size: var(--uoa-font-size-body-md);
+  line-height: var(--uoa-font-line-height-body);
+  color: var(--uoa-alert-text);
+  background-color: var(--_surface);
+  border-inline-start: var(--uoa-alert-bar-width) solid var(--_accent);
+  border-radius: var(--uoa-alert-radius);
+}
+
+.uoa-alert--success {
+  --_accent: var(--uoa-alert-success-accent);
+  --_surface: var(--uoa-alert-success-surface);
+}
+
+.uoa-alert--warning {
+  --_accent: var(--uoa-alert-warning-accent);
+  --_surface: var(--uoa-alert-warning-surface);
+}
+
+.uoa-alert--danger {
+  --_accent: var(--uoa-alert-danger-accent);
+  --_surface: var(--uoa-alert-danger-surface);
+}
+
+/* Sized to the first line of text so it lines up with the title or the first sentence. */
+.uoa-alert__icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: calc(1em * var(--uoa-font-line-height-body));
+  color: var(--_accent);
+  fill: currentColor;
+}
+
+.uoa-alert__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.uoa-alert__content > * {
+  margin-block: 0;
+}
+
+.uoa-alert__content > * + * {
+  margin-block-start: var(--uoa-space-2);
+}
+
+.uoa-alert__title {
+  font-family: var(--uoa-font-family-body);
+  font-size: var(--uoa-font-size-body-md);
+  font-weight: var(--uoa-font-weight-body-strong);
+  line-height: var(--uoa-font-line-height-body);
+  letter-spacing: normal;
+  color: var(--_accent);
+}
+
+.uoa-alert a {
+  color: inherit;
+  font-weight: var(--uoa-font-weight-body-strong);
+}
+
+/* Windows High Contrast: backgrounds disappear, so outline the whole message. */
+@media (forced-colors: active) {
+  .uoa-alert {
+    border: 1px solid CanvasText;
+    border-inline-start-width: var(--uoa-alert-bar-width);
+  }
+}
