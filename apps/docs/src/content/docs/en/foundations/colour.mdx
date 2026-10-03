@@ -1,0 +1,70 @@
+---
+title: Colour
+description: Brand, semantic and primitive colours, with contrast.
+sidebar:
+  order: 1
+---
+
+import ColourSwatches from '../../../../components/ColourSwatches.astro';
+import Palettes from '../../../../components/Palettes.astro';
+import ThemeTable from '../../../../components/ThemeTable.astro';
+
+Colours come in two tiers. **Semantic** tokens (`--uoa-color-text-default`, `--uoa-color-action-primary`)
+say what a colour is for; components use only these. **Primitive** tokens are the raw palette
+they point to.
+
+Contrast is measured against white:
+<span class="uoa-pill" data-level="aa">AA</span> text (4.5:1),
+<span class="uoa-pill" data-level="ui">UI</span> borders and icons only (3:1),
+<span class="uoa-pill" data-level="deco">Decorative</span> never for meaning.
+The swatches follow the brand picker at the top; hex values and contrast are for the default theme.
+
+## Brand
+
+The four colours a department theme changes.
+
+<ColourSwatches group="brand" />
+
+### Brand themes
+
+Mirrors the `Red` and `Green` schemes of the shared TYPO3 template (see the
+[site audit](https://github.com/UniversityOfAthens/design-system-uoa/blob/develop/docs/research/uoa-sites-audit.md)).
+
+<ThemeTable kind="brand" />
+
+### Accent themes
+
+A second colour for decoration: borders, highlights, the header line. Combine with any brand.
+
+<ThemeTable kind="accent" />
+
+## Text
+
+<ColourSwatches group="text" />
+
+## Surface
+
+Backgrounds. Put text colours on them; the pills under Text apply on `surface-default` and `surface-subtle`.
+
+<ColourSwatches group="surface" contrast={false} />
+
+## Border
+
+<ColourSwatches group="border" />
+
+## Action & focus
+
+<ColourSwatches group="action" />
+<ColourSwatches group="focus" />
+
+## Feedback
+
+Pair each `-text` with its `-surface`.
+
+<ColourSwatches group="feedback" />
+
+## Primitive palettes
+
+Hover a step for its token name and value. Don't use these in components.
+
+<Palettes />

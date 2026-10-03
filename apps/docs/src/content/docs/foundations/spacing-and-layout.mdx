@@ -1,6 +1,6 @@
 ---
-title: Spacing & layout
-description: The 4px spacing scale, containers and layout helpers.
+title: Αποστάσεις και διάταξη
+description: Η κλίμακα αποστάσεων των 4px, τα containers και τα βοηθητικά διάταξης.
 sidebar:
   order: 3
 ---
@@ -9,9 +9,9 @@ import SpacingScale from '../../../components/SpacingScale.astro';
 import TokenTable from '../../../components/TokenTable.astro';
 import Example from '../../../components/Example.astro';
 
-## Spacing
+## Αποστάσεις
 
-A 4px grid: the step number times 4 is the size in pixels, so `--uoa-space-4` is 16px.
+Πλέγμα 4px: ο αριθμός του βήματος επί 4 δίνει το μέγεθος σε pixel, άρα το `--uoa-space-4` είναι 16px.
 
 <SpacingScale />
 
@@ -19,15 +19,15 @@ A 4px grid: the step number times 4 is the size in pixels, so `--uoa-space-4` is
 
 <TokenTable prefix="container-" />
 
-`.uoa-container` centres content at `--uoa-container-max` with side gutters;
-add `.uoa-container--narrow` for long-form text.
+Το `.uoa-container` κεντράρει το περιεχόμενο στο `--uoa-container-max` με πλευρικά περιθώρια·
+προσθέστε `.uoa-container--narrow` για μεγάλα κείμενα.
 
-## Layout helpers
+## Βοηθητικά διάταξης
 
-Compose these instead of writing one-off margins. Each takes a custom property to change its gap.
+Συνδυάστε τα αντί να γράφετε μεμονωμένα margins. Το καθένα δέχεται μια custom property για το κενό του.
 
 <Example
-  title=".uoa-stack — vertical rhythm (--uoa-stack-gap)"
+  title=".uoa-stack — κάθετος ρυθμός (--uoa-stack-gap)"
   code={`
     <div class="uoa-stack" style="--uoa-stack-gap: var(--uoa-space-3)">
       <div style="padding: 1rem; background: #f1f5f9; border-radius: 8px">Πρώτο</div>
@@ -38,7 +38,7 @@ Compose these instead of writing one-off margins. Each takes a custom property t
 />
 
 <Example
-  title=".uoa-cluster — inline group that wraps (--uoa-cluster-gap)"
+  title=".uoa-cluster — οριζόντια ομάδα που αναδιπλώνεται (--uoa-cluster-gap)"
   code={`
     <div class="uoa-cluster">
       <button class="uoa-button" type="button">Υποβολή</button>
@@ -49,7 +49,7 @@ Compose these instead of writing one-off margins. Each takes a custom property t
 />
 
 <Example
-  title=".uoa-grid — as many columns as fit (--uoa-grid-min, --uoa-grid-gap)"
+  title=".uoa-grid — όσες στήλες χωρούν (--uoa-grid-min, --uoa-grid-gap)"
   code={`
     <div class="uoa-grid" style="--uoa-grid-min: 10rem">
       <div style="padding: 1.5rem; background: #f1f5f9; border-radius: 8px">1</div>
@@ -60,6 +60,6 @@ Compose these instead of writing one-off margins. Each takes a custom property t
   `}
 />
 
-## Breakpoints
+## Σημεία αλλαγής (breakpoints)
 
 <TokenTable prefix="breakpoint-" />

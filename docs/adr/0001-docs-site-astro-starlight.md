@@ -32,13 +32,15 @@ Build the docs site with **Astro + Starlight** in `apps/docs`.
   in the header is mirrored into every iframe.
 - Foundation pages are **generated from the tokens** (`@uoa/tokens/docs.json`), so values and
   contrast figures can't drift from the source.
-- Component documentation lives in `apps/docs/src/content/docs/components/<name>.mdx`, following
+- Component documentation lives in `apps/docs/src/content/docs/components/<name>.mdx` (Greek) and
+  `apps/docs/src/content/docs/en/components/<name>.mdx` (English), following
   `docs/component-docs-template.md`. The component folder keeps a short README pointing there.
 
 ## Consequences
 
 - One place to maintain docs; `apps/playground` is removed.
-- Greek/English docs are possible later with Starlight's i18n.
+- The docs are bilingual with Starlight's i18n: Greek at the root, English under `/en/`; our UI
+  strings in `apps/docs/src/content/i18n/{el,en}.yml` (see CONTRIBUTING.md).
 - No isolated component workbench. If developers need one, add Storybook (HTML) alongside —
   it doesn't replace this site.
 - Accessibility and visual-regression tests can run against the built docs pages.

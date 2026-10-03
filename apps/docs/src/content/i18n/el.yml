@@ -1,0 +1,35 @@
+# UI strings for the Greek docs (default locale). Starlight's own strings (search, "On this
+# page", pagination…) come built in; these are the ones our components add.
+# Keys must match en.yml and the schema in src/content.config.ts.
+
+uoa.siteTitle: Σύστημα σχεδίασης
+
+uoa.nav.label: Ενότητες
+uoa.nav.getStarted: Ξεκινήστε
+uoa.nav.foundations: Θεμέλια
+uoa.nav.components: Στοιχεία
+uoa.nav.examples: Παραδείγματα
+
+uoa.language.switch: English
+uoa.language.switchLabel: Read this page in English
+
+uoa.theme.button: Θέμα τμήματος
+uoa.theme.brand: Βασικό χρώμα
+uoa.theme.accent: Χρώμα έμφασης
+uoa.theme.accentDefault: Προεπιλογή (κυανό)
+uoa.theme.darkMode: Σκούρο θέμα
+uoa.theme.toggleDarkMode: Εναλλαγή σκούρου θέματος
+
+uoa.example.default: Παράδειγμα
+uoa.example.view: προβολή
+uoa.example.preview: Προεπισκόπηση
+uoa.example.code: Κώδικας
+
+uoa.contrast.onWhite: 'πάνω σε λευκό'
+uoa.contrast.decorative: Διακοσμητικό
+
+uoa.table.token: Token
+uoa.table.value: Τιμή
+uoa.table.notes: Σημειώσεις
+uoa.table.attribute: Χαρακτηριστικό στο
+uoa.table.sets: Ορίζει

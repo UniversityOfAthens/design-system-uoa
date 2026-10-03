@@ -1,24 +1,26 @@
 ---
-title: Button
-description: Starts an action — submit a form, open a dialog, download a file.
+title: Κουμπί
+description: Ξεκινά μια ενέργεια — υποβολή φόρμας, άνοιγμα διαλόγου, λήψη αρχείου.
 sidebar:
   badge:
-    text: draft
-    variant: caution
+    text: beta
+    variant: note
 ---
 
 import Example from '../../../components/Example.astro';
 import TokenTable from '../../../components/TokenTable.astro';
 
-Starts an action: submit a form, open a dialog, download a file. Styled links use the same look
-when they lead somewhere important.
+Οι σύνδεσμοι παίρνουν την ίδια εμφάνιση όταν οδηγούν κάπου σημαντικό.
 
-**Status:** `draft` · **Source:** [`packages/core/src/components/button`](https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/button)
+<p class="uoa-meta">
+  <span class="uoa-pill" data-level="beta">beta</span>
+  <a href="https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/button">Πηγαίος κώδικας</a>
+</p>
 
-## Examples
+## Παραδείγματα
 
 <Example
-  title="Variants"
+  title="Παραλλαγές"
   code={`
     <div class="uoa-cluster">
       <button class="uoa-button" type="button">Υποβολή αίτησης</button>
@@ -29,7 +31,7 @@ when they lead somewhere important.
 />
 
 <Example
-  title="Small"
+  title="Μικρό"
   code={`
     <div class="uoa-cluster">
       <button class="uoa-button uoa-button--sm" type="button">Φίλτρα</button>
@@ -40,7 +42,7 @@ when they lead somewhere important.
 />
 
 <Example
-  title="With icon, icon-only, link"
+  title="Με εικονίδιο, μόνο εικονίδιο, σύνδεσμος"
   code={`
     <div class="uoa-cluster">
       <button class="uoa-button" type="button">
@@ -56,7 +58,7 @@ when they lead somewhere important.
 />
 
 <Example
-  title="Disabled"
+  title="Απενεργοποιημένο"
   code={`
     <div class="uoa-cluster">
       <button class="uoa-button" type="button" disabled>Υποβολή αίτησης</button>
@@ -67,7 +69,7 @@ when they lead somewhere important.
 />
 
 <Example
-  title="Full width"
+  title="Πλήρες πλάτος"
   code={`
     <div style="max-width: 22rem">
       <button class="uoa-button uoa-button--block" type="submit">Σύνδεση</button>
@@ -75,73 +77,73 @@ when they lead somewhere important.
   `}
 />
 
-## Structure
+## Δομή
 
-1. **Container**: `<button>` or `<a>` with `.uoa-button`. It carries the background, border and focus ring.
-2. **Icon** (optional): inline SVG with `.uoa-button__icon`, before or after the label.
-3. **Label**: plain text. Required, except on icon-only buttons, which need `aria-label`.
+1. **Περιέκτης**: `<button>` ή `<a>` με `.uoa-button`. Φέρει το φόντο, το περίγραμμα και τον δακτύλιο εστίασης.
+2. **Εικονίδιο** (προαιρετικό): inline SVG με `.uoa-button__icon`, πριν ή μετά την ετικέτα.
+3. **Ετικέτα**: απλό κείμενο. Υποχρεωτική, εκτός από τα κουμπιά μόνο με εικονίδιο, που χρειάζονται `aria-label`.
 
-## Guidelines
+## Οδηγίες
 
-### When to use
+### Πότε να το χρησιμοποιείτε
 
-- The main action on a page or form (submit, apply, register).
-- Actions that change something: save, delete, download, open a dialog.
-- A link that must stand out, e.g. "Αιτήσεις" on an admissions landing page.
+- Για την κύρια ενέργεια μιας σελίδας ή φόρμας (υποβολή, αίτηση, εγγραφή).
+- Για ενέργειες που αλλάζουν κάτι: αποθήκευση, διαγραφή, λήψη, άνοιγμα διαλόγου.
+- Για σύνδεσμο που πρέπει να ξεχωρίζει, π.χ. «Αιτήσεις» στη σελίδα εισαγωγής.
 
-### When not to use
+### Πότε να μην το χρησιμοποιείτε
 
-- Navigation inside running text: use a normal link.
-- Several equal choices: use radio buttons or a select.
-- Switching views on the same page: use Tabs (not yet built).
-- More than one primary button in the same area. Pick one and make the rest secondary or tertiary.
+- Για πλοήγηση μέσα σε κείμενο: χρησιμοποιήστε απλό σύνδεσμο.
+- Για πολλές ισότιμες επιλογές: χρησιμοποιήστε κουμπιά επιλογής (radio) ή λίστα (select).
+- Για εναλλαγή προβολών στην ίδια σελίδα: χρησιμοποιήστε Καρτέλες (δεν υπάρχουν ακόμη).
+- Για περισσότερα από ένα κύρια κουμπιά στην ίδια περιοχή. Διαλέξτε ένα και κάντε τα υπόλοιπα δευτερεύοντα ή τριτεύοντα.
 
-### Variants
+### Παραλλαγές
 
-| Variant | Class | Use for |
+| Παραλλαγή | Κλάση | Χρήση |
 | --- | --- | --- |
-| Primary | `.uoa-button` | The one main action in an area |
-| Secondary | `.uoa-button--secondary` | Other actions next to a primary |
-| Tertiary | `.uoa-button--tertiary` | Low-emphasis actions (cancel, reset) |
-| Small | `.uoa-button--sm` | Dense UI: filters, table rows. Not for main actions |
-| Block | `.uoa-button--block` | Full width, e.g. login forms and mobile |
+| Κύριο | `.uoa-button` | Η μία κύρια ενέργεια μιας περιοχής |
+| Δευτερεύον | `.uoa-button--secondary` | Άλλες ενέργειες δίπλα σε ένα κύριο |
+| Τριτεύον | `.uoa-button--tertiary` | Ενέργειες χαμηλής έμφασης (ακύρωση, επαναφορά) |
+| Μικρό | `.uoa-button--sm` | Πυκνό UI: φίλτρα, γραμμές πινάκων. Όχι για κύριες ενέργειες |
+| Πλήρες πλάτος | `.uoa-button--block` | Όλο το πλάτος, π.χ. φόρμες σύνδεσης και κινητά |
 
-### Content
+### Περιεχόμενο
 
-- Start with a verb that says what happens: "Υποβολή αίτησης", "Λήψη PDF", not "OK" or "Εδώ".
-- Keep it short, about 1–3 words. Greek labels run 20–30% longer than English, so check that they fit.
-- Sentence case. Don't use `text-transform: uppercase`: Greek loses its accents and screen readers can misread it.
+- Ξεκινήστε με ρήμα ή ουσιαστικό ενέργειας που λέει τι θα γίνει: «Υποβολή αίτησης», «Λήψη PDF», όχι «OK» ή «Εδώ».
+- Κρατήστε την σύντομη, περίπου 1–3 λέξεις. Οι ελληνικές ετικέτες είναι 20–30% μακρύτερες από τις αγγλικές, οπότε ελέγξτε ότι χωρούν.
+- Κεφαλαίο μόνο το πρώτο γράμμα. Μη χρησιμοποιείτε `text-transform: uppercase`: τα ελληνικά χάνουν τους τόνους και οι αναγνώστες οθόνης μπορεί να τα διαβάσουν λάθος.
 
-### Behaviour
+### Συμπεριφορά
 
-- States: hover (darker fill and a slightly larger shadow, or a tint), active (1px press), focus-visible (3px ring), disabled (50% opacity, no hover).
-- The button grows in height if the label wraps.
-- Minimum target 44 × 44px at default size, and 36px tall at `--sm`. Both are above the WCAG 2.2 24px minimum.
-- Loading state is not built yet.
+- Καταστάσεις: hover (σκουρότερο γέμισμα και λίγο μεγαλύτερη σκιά, ή απόχρωση), active (πάτημα 1px), focus-visible (δακτύλιος 3px), disabled (αδιαφάνεια 50%, χωρίς hover).
+- Το κουμπί ψηλώνει αν η ετικέτα αναδιπλωθεί.
+- Ελάχιστη περιοχή αφής 44 × 44px στο κανονικό μέγεθος και ύψος 36px στο `--sm`. Και τα δύο ξεπερνούν το ελάχιστο των 24px του WCAG 2.2.
+- Η κατάσταση φόρτωσης δεν υπάρχει ακόμη.
 
-## Accessibility
+## Προσβασιμότητα
 
-- Use `<button type="button|submit">` for actions and `<a href>` for navigation. Never a `<div>` or `<span>`.
-- Keyboard:
+- Χρησιμοποιήστε `<button type="button|submit">` για ενέργειες και `<a href>` για πλοήγηση. Ποτέ `<div>` ή `<span>`.
+- Πληκτρολόγιο:
 
-  | Key | Action |
+  | Πλήκτρο | Ενέργεια |
   | --- | --- |
-  | `Tab` | Moves focus to the button |
-  | `Enter` | Activates (button and link) |
-  | `Space` | Activates (`<button>` only) |
+  | `Tab` | Μεταφέρει την εστίαση στο κουμπί |
+  | `Enter` | Ενεργοποιεί (κουμπί και σύνδεσμο) |
+  | `Space` | Ενεργοποιεί (μόνο `<button>`) |
 
-- Icon-only buttons need `aria-label`. Decorative icons get `aria-hidden="true" focusable="false"`.
-- Prefer leaving a button enabled and showing a validation error over disabling it. A disabled button can't be focused, so users can't find out why it's disabled.
-- A disabled `<a>` uses `aria-disabled="true"` and no `href`.
-- No JavaScript needed.
-- In Windows High Contrast mode, filled buttons keep a visible border.
-- The secondary button's light border is decorative: the label identifies the control (WCAG 1.4.11 doesn't require a 3:1 border when the text identifies it).
-- Screen-reader testing (NVDA, VoiceOver) hasn't been done yet.
+- Τα κουμπιά μόνο με εικονίδιο χρειάζονται `aria-label`. Τα διακοσμητικά εικονίδια παίρνουν `aria-hidden="true" focusable="false"`.
+- Προτιμήστε να αφήνετε το κουμπί ενεργό και να δείχνετε σφάλμα επικύρωσης αντί να το απενεργοποιείτε. Ένα απενεργοποιημένο κουμπί δεν δέχεται εστίαση, άρα ο χρήστης δεν μπορεί να μάθει γιατί είναι ανενεργό.
+- Ένα απενεργοποιημένο `<a>` έχει `aria-disabled="true"` και καθόλου `href`.
+- Δεν χρειάζεται JavaScript.
+- Στη λειτουργία υψηλής αντίθεσης των Windows, τα γεμάτα κουμπιά κρατούν ορατό περίγραμμα.
+- Το ανοιχτόχρωμο περίγραμμα του δευτερεύοντος κουμπιού είναι διακοσμητικό: η ετικέτα αναγνωρίζει το στοιχείο (το WCAG 1.4.11 δεν απαιτεί περίγραμμα 3:1 όταν το κείμενο αρκεί).
+- Δεν έχει γίνει ακόμη δοκιμή με αναγνώστες οθόνης (NVDA, VoiceOver).
 
-## Theming
+## Θέματα
 
-Component tokens, from `packages/tokens/src/component/button.json`. They follow the site's brand
-through `data-uoa-brand`.
+Tokens του στοιχείου, από το `packages/tokens/src/component/button.json`. Ακολουθούν το βασικό χρώμα
+του ιστοτόπου μέσω του `data-uoa-brand`.
 
 <TokenTable prefix="button-" />
 
@@ -149,18 +151,18 @@ through `data-uoa-brand`.
 
 ### HTML / CSS
 
-`.uoa-button` + optional `--secondary | --tertiary`, `--sm`, `--block`; child `.uoa-button__icon`.
-Disabled via `[disabled]` or `[aria-disabled="true"]`.
+`.uoa-button` + προαιρετικά `--secondary | --tertiary`, `--sm`, `--block`· παιδί `.uoa-button__icon`.
+Απενεργοποίηση με `[disabled]` ή `[aria-disabled="true"]`.
 
 ### JavaScript
 
-None.
+Καμία.
 
-### Platform adapters
+### Προσαρμογείς πλατφορμών
 
-Filled in once the first platform adapter is chosen (ADR 0003).
+Θα συμπληρωθεί όταν επιλεγεί ο πρώτος προσαρμογέας (ADR 0003).
 
-## Related
+## Σχετικά
 
-- Link: for navigation inside text.
-- Tabs (planned): for switching views.
+- Σύνδεσμος: για πλοήγηση μέσα σε κείμενο.
+- Καρτέλες (προγραμματισμένο): για εναλλαγή προβολών.

@@ -1,6 +1,7 @@
 # Component docs template
 
-Copy this into `apps/docs/src/content/docs/components/<name>.mdx` for every component (see ADR 0001).
+Copy this into `apps/docs/src/content/docs/components/<name>.mdx` (Greek) and
+`apps/docs/src/content/docs/en/components/<name>.mdx` (English) for every component (see ADR 0001).
 The component folder in `packages/core/src/components/<name>/` gets a short README that points to it.
 Merges the Pajamas guideline structure with Material Web's theming/API tables.
 

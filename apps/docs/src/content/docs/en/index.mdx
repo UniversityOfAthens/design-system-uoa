@@ -1,0 +1,32 @@
+---
+title: UOA Design System
+description: Tokens, base styles and components for NKUA websites.
+template: splash
+hero:
+  title: Σύστημα σχεδίασης ΕΚΠΑ
+  tagline: One set of tokens, styles and components for every National and Kapodistrian University of Athens website — accessible, bilingual and themeable per department.
+  actions:
+    - text: Getting started
+      link: getting-started/
+      icon: right-arrow
+    - text: Components
+      link: components/button/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="Tokens" icon="seti:config">
+    Colour, type, spacing, radius and motion as `--uoa-*` CSS variables. Built from DTCG JSON with Style Dictionary.
+  </Card>
+  <Card title="Plain HTML + CSS" icon="seti:html">
+    No framework. Works in TYPO3, Drupal, WordPress or a static page, with or without JavaScript.
+  </Card>
+  <Card title="Department themes" icon="seti:favicon">
+    `data-uoa-brand` and `data-uoa-accent` reproduce the burgundy/teal schemes the NKUA sites use today. Try the pickers at the top.
+  </Card>
+  <Card title="Accessible by default" icon="approve-check">
+    WCAG 2.2 AA is a legal requirement for Greek universities. Every colour lists its contrast; every component its keyboard and screen-reader behaviour.
+  </Card>
+</CardGrid>

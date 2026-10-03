@@ -1,6 +1,6 @@
 ---
-title: Shape & motion
-description: Radius, borders, shadows, motion and z-index.
+title: Σχήμα και κίνηση
+description: Ακτίνες, περιγράμματα, σκιές, κίνηση και z-index.
 sidebar:
   order: 4
 ---
@@ -8,27 +8,27 @@ sidebar:
 import ShapeTiles from '../../../components/ShapeTiles.astro';
 import TokenTable from '../../../components/TokenTable.astro';
 
-## Radius
+## Ακτίνα γωνιών
 
-Use the semantic tokens: `--uoa-radius-control` (8px) for buttons and inputs,
-`--uoa-radius-surface` (12px) for cards, alerts and panels.
+Χρησιμοποιήστε τα σημασιολογικά tokens: `--uoa-radius-control` (8px) για κουμπιά και πεδία,
+`--uoa-radius-surface` (12px) για κάρτες, ειδοποιήσεις και πλαίσια.
 
 <ShapeTiles kind="radius" />
 
-## Shadow
+## Σκιά
 
-Soft and layered. Use `sm` at rest, `md` on hover or for raised cards, `lg` for overlays.
+Απαλή και σε στρώσεις. Χρησιμοποιήστε `sm` σε ηρεμία, `md` στο hover ή για ανυψωμένες κάρτες, `lg` για επικαλύψεις.
 
 <ShapeTiles kind="shadow" />
 
-## Border width
+## Πάχος περιγράμματος
 
 <TokenTable prefix="border-width-" />
 
-## Motion
+## Κίνηση
 
-Keep transitions short. All motion is switched off for users with `prefers-reduced-motion`
-(handled in the reset).
+Κρατήστε τις μεταβάσεις σύντομες. Όλη η κίνηση απενεργοποιείται για χρήστες με `prefers-reduced-motion`
+(το χειρίζεται το reset).
 
 <TokenTable prefix="motion-" />
 

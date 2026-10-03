@@ -1,0 +1,168 @@
+---
+title: Button
+description: Starts an action — submit a form, open a dialog, download a file.
+sidebar:
+  badge:
+    text: beta
+    variant: note
+---
+
+import Example from '../../../../components/Example.astro';
+import TokenTable from '../../../../components/TokenTable.astro';
+
+Styled links use the same look when they lead somewhere important.
+
+<p class="uoa-meta">
+  <span class="uoa-pill" data-level="beta">beta</span>
+  <a href="https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/button">Source</a>
+</p>
+
+## Examples
+
+<Example
+  title="Variants"
+  code={`
+    <div class="uoa-cluster">
+      <button class="uoa-button" type="button">Υποβολή αίτησης</button>
+      <button class="uoa-button uoa-button--secondary" type="button">Αποθήκευση</button>
+      <button class="uoa-button uoa-button--tertiary" type="button">Ακύρωση</button>
+    </div>
+  `}
+/>
+
+<Example
+  title="Small"
+  code={`
+    <div class="uoa-cluster">
+      <button class="uoa-button uoa-button--sm" type="button">Φίλτρα</button>
+      <button class="uoa-button uoa-button--sm uoa-button--secondary" type="button">Εξαγωγή</button>
+      <button class="uoa-button uoa-button--sm uoa-button--tertiary" type="button">Καθαρισμός</button>
+    </div>
+  `}
+/>
+
+<Example
+  title="With icon, icon-only, link"
+  code={`
+    <div class="uoa-cluster">
+      <button class="uoa-button" type="button">
+        <svg class="uoa-button__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+        Λήψη προγράμματος
+      </button>
+      <button class="uoa-button uoa-button--secondary" type="button" aria-label="Αναζήτηση">
+        <svg class="uoa-button__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      </button>
+      <a class="uoa-button uoa-button--secondary" href="#">Εισαγωγή στο Τμήμα</a>
+    </div>
+  `}
+/>
+
+<Example
+  title="Disabled"
+  code={`
+    <div class="uoa-cluster">
+      <button class="uoa-button" type="button" disabled>Υποβολή αίτησης</button>
+      <button class="uoa-button uoa-button--secondary" type="button" disabled>Αποθήκευση</button>
+      <a class="uoa-button uoa-button--tertiary" aria-disabled="true">Ακύρωση</a>
+    </div>
+  `}
+/>
+
+<Example
+  title="Full width"
+  code={`
+    <div style="max-width: 22rem">
+      <button class="uoa-button uoa-button--block" type="submit">Σύνδεση</button>
+    </div>
+  `}
+/>
+
+## Structure
+
+1. **Container**: `<button>` or `<a>` with `.uoa-button`. It carries the background, border and focus ring.
+2. **Icon** (optional): inline SVG with `.uoa-button__icon`, before or after the label.
+3. **Label**: plain text. Required, except on icon-only buttons, which need `aria-label`.
+
+## Guidelines
+
+### When to use
+
+- The main action on a page or form (submit, apply, register).
+- Actions that change something: save, delete, download, open a dialog.
+- A link that must stand out, e.g. "Αιτήσεις" on an admissions landing page.
+
+### When not to use
+
+- Navigation inside running text: use a normal link.
+- Several equal choices: use radio buttons or a select.
+- Switching views on the same page: use Tabs (not yet built).
+- More than one primary button in the same area. Pick one and make the rest secondary or tertiary.
+
+### Variants
+
+| Variant | Class | Use for |
+| --- | --- | --- |
+| Primary | `.uoa-button` | The one main action in an area |
+| Secondary | `.uoa-button--secondary` | Other actions next to a primary |
+| Tertiary | `.uoa-button--tertiary` | Low-emphasis actions (cancel, reset) |
+| Small | `.uoa-button--sm` | Dense UI: filters, table rows. Not for main actions |
+| Block | `.uoa-button--block` | Full width, e.g. login forms and mobile |
+
+### Content
+
+- Start with a verb that says what happens: "Υποβολή αίτησης", "Λήψη PDF", not "OK" or "Εδώ".
+- Keep it short, about 1–3 words. Greek labels run 20–30% longer than English, so check that they fit.
+- Sentence case. Don't use `text-transform: uppercase`: Greek loses its accents and screen readers can misread it.
+
+### Behaviour
+
+- States: hover (darker fill and a slightly larger shadow, or a tint), active (1px press), focus-visible (3px ring), disabled (50% opacity, no hover).
+- The button grows in height if the label wraps.
+- Minimum target 44 × 44px at default size, and 36px tall at `--sm`. Both are above the WCAG 2.2 24px minimum.
+- Loading state is not built yet.
+
+## Accessibility
+
+- Use `<button type="button|submit">` for actions and `<a href>` for navigation. Never a `<div>` or `<span>`.
+- Keyboard:
+
+  | Key | Action |
+  | --- | --- |
+  | `Tab` | Moves focus to the button |
+  | `Enter` | Activates (button and link) |
+  | `Space` | Activates (`<button>` only) |
+
+- Icon-only buttons need `aria-label`. Decorative icons get `aria-hidden="true" focusable="false"`.
+- Prefer leaving a button enabled and showing a validation error over disabling it. A disabled button can't be focused, so users can't find out why it's disabled.
+- A disabled `<a>` uses `aria-disabled="true"` and no `href`.
+- No JavaScript needed.
+- In Windows High Contrast mode, filled buttons keep a visible border.
+- The secondary button's light border is decorative: the label identifies the control (WCAG 1.4.11 doesn't require a 3:1 border when the text identifies it).
+- Screen-reader testing (NVDA, VoiceOver) hasn't been done yet.
+
+## Theming
+
+Component tokens, from `packages/tokens/src/component/button.json`. They follow the site's brand
+through `data-uoa-brand`.
+
+<TokenTable prefix="button-" />
+
+## API
+
+### HTML / CSS
+
+`.uoa-button` + optional `--secondary | --tertiary`, `--sm`, `--block`; child `.uoa-button__icon`.
+Disabled via `[disabled]` or `[aria-disabled="true"]`.
+
+### JavaScript
+
+None.
+
+### Platform adapters
+
+Filled in once the first platform adapter is chosen (ADR 0003).
+
+## Related
+
+- Link: for navigation inside text.
+- Tabs (planned): for switching views.

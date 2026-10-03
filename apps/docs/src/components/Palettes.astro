@@ -1,6 +1,6 @@
 ---
 // Primitive colour palettes as strips.
-import { byPrefix, isDark } from '../lib/tokens';
+import { byPrefix, textOn } from '../lib/tokens';
 
 const palettes = ['uoa', 'burgundy', 'teal', 'accent', 'grey', 'green', 'amber', 'red', 'blue'];
 ---
@@ -11,7 +11,7 @@ const palettes = ['uoa', 'burgundy', 'teal', 'accent', 'grey', 'green', 'amber',
       <div class="uoa-palette__strip">
         {byPrefix(`color-${p}-`, 'primitive').map((t) => (
           <span
-            style={`background: ${t.value}; color: ${isDark(String(t.value)) ? '#fff' : '#0f172a'}`}
+            style={`background: ${t.value}; color: ${textOn(String(t.value))}`}
             title={`${t.name}: ${t.value}${t.description ? ' — ' + t.description : ''}`}
           >
             {t.name.replace(`--uoa-color-${p}-`, '')}
