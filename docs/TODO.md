@@ -38,13 +38,13 @@
 Atoms / basic
 - [x] Button / link button (`beta` — for stable: screen-reader pass, design review, adapter)
 - [ ] Link, Icon
-- [ ] Badge / Tag
+- [x] Badge / Tag (`beta` — for stable: screen-reader pass, design review, adapter)
 - [ ] Form elements: text input, textarea, select, checkbox, radio, switch, fieldset, error message
-- [x] Alert / status message (`beta` — for stable: screen-reader pass, design review, adapter; no dismiss yet)
+- [x] Alert / status message (`beta` — for stable: screen-reader pass, design review, adapter; dismissible via `alert.js`)
 
 Molecules
-- [ ] Accordion
-- [ ] Tabs
+- [x] Accordion (`beta` — for stable: screen-reader pass, design review, adapter; single-open via `accordion.js`)
+- [x] Tabs (`beta` — for stable: screen-reader pass, design review, adapter; APG automatic activation via `tabs.js`)
 - [ ] Card (news, event, person/staff, course)
 - [ ] Breadcrumb
 - [ ] Pagination
