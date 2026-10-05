@@ -1,0 +1,166 @@
+---
+title: Accordion
+description: Stacked collapsible sections — FAQs, form sections.
+sidebar:
+  badge:
+    text: beta
+    variant: note
+---
+
+import Example from '../../../../components/Example.astro';
+import TokenTable from '../../../../components/TokenTable.astro';
+
+Use it to split large content into sections that open and close: FAQs, sections of a long form, filters.
+
+<p class="uoa-meta">
+  <span class="uoa-pill" data-level="beta">beta</span>
+  <a href="https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/accordion">Source</a>
+</p>
+
+## Examples
+
+<Example
+  title="Default"
+  code={`
+    <div class="uoa-accordion" data-uoa-accordion>
+      <details class="uoa-accordion__item" open>
+        <summary class="uoa-accordion__trigger">
+          <span class="uoa-accordion__title">When does enrolment open?</span>
+          <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+        </summary>
+        <div class="uoa-accordion__panel">
+          <div class="uoa-accordion__content">
+            <p>Enrolment for the winter semester opens on 5 October.</p>
+          </div>
+        </div>
+      </details>
+      <details class="uoa-accordion__item">
+        <summary class="uoa-accordion__trigger">
+          <span class="uoa-accordion__title">How do I register for courses?</span>
+          <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+        </summary>
+        <div class="uoa-accordion__panel">
+          <div class="uoa-accordion__content">
+            <p>From the student portal, <em>Declarations → Course registration</em>.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  `}
+/>
+
+<Example
+  title="One open at a time"
+  code={`
+    <div class="uoa-accordion" data-uoa-accordion="single">
+      <details class="uoa-accordion__item" open>
+        <summary class="uoa-accordion__trigger">
+          <span class="uoa-accordion__title">Thesis</span>
+          <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+        </summary>
+        <div class="uoa-accordion__panel">
+          <div class="uoa-accordion__content">
+            <p>Declared in the 7th semester with an application to the Secretariat.</p>
+          </div>
+        </div>
+      </details>
+      <details class="uoa-accordion__item">
+        <summary class="uoa-accordion__trigger">
+          <span class="uoa-accordion__title">Internship</span>
+          <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+        </summary>
+        <div class="uoa-accordion__panel">
+          <div class="uoa-accordion__content">
+            <p>Lasts two months and carries 5 ECTS.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  `}
+/>
+
+## Structure
+
+1. **Container**: `<div class="uoa-accordion">` with `data-uoa-accordion` (many open) or
+   `data-uoa-accordion="single"` (one open — needs `accordion.js`).
+2. **Item**: `<details class="uoa-accordion__item">`. `open` sets which start open.
+3. **Button**: `<summary class="uoa-accordion__trigger">` with the title (`.uoa-accordion__title`) and the chevron
+   (`.uoa-accordion__icon`, decorative).
+4. **Content**: `.uoa-accordion__panel` (> `.uoa-accordion__content`) holds paragraphs, lists and links.
+
+## Guidelines
+
+### When to use
+
+- For frequently asked questions and answers.
+- For sections of a long form or page where users scan titles first.
+- For filters and advanced options not everyone needs.
+
+### When not to use
+
+- For critical information that must be read: don't hide it.
+- For primary navigation: use a navigation menu.
+- For short content that fits on screen: show it directly.
+- For switching between equivalent views: use tabs.
+
+### Variants
+
+| Variant | Attribute | Use for |
+| --- | --- | --- |
+| Multiple | `data-uoa-accordion` | The default; users compare sections |
+| Single | `data-uoa-accordion="single"` | Large sections, one at a time — needs JavaScript |
+
+### Content
+
+- Keep titles short, as questions or topics: "When does enrolment open?".
+- Make each section self-contained: users can read one without the others.
+- Start with one open section when there is an obvious first choice, otherwise all closed.
+
+### Behaviour
+
+- Without JavaScript everything works: toggling is native (`<details>`), with no animation.
+- With JavaScript: smooth height animation and, in the single variant, auto-collapse of the others.
+  Without JavaScript the single variant behaves as multiple — all content stays reachable.
+- The chevron rotates 180° on the open section. Motion is disabled under `prefers-reduced-motion`.
+
+## Accessibility
+
+- `<summary>` is natively keyboard-accessible (Enter/Space) and correctly announced —
+  no ARIA attributes or custom key handling needed.
+- Don't put a heading inside `<summary>` at the wrong level: a `<span>` title is enough for short
+  lists; for long pages with many sections, prefer headings wrapping the button.
+- Chevrons are decorative (`aria-hidden="true" focusable="false"`).
+- In Windows High Contrast mode the container border and dividers stay visible.
+- Screen-reader testing (NVDA, VoiceOver) hasn't been done yet.
+
+## Theming
+
+Component tokens, from `packages/tokens/src/component/accordion.json`.
+
+<TokenTable prefix="accordion-" />
+
+## API
+
+### HTML / CSS
+
+`.uoa-accordion` (+ `[data-uoa-accordion]` / `[data-uoa-accordion="single"]`); children `.uoa-accordion__item`
+(`<details>`, `open` for initially open), `.uoa-accordion__trigger` (`<summary>`), `.uoa-accordion__title`,
+`.uoa-accordion__icon`, `.uoa-accordion__panel`, `.uoa-accordion__content`.
+
+### JavaScript
+
+`accordion.js` (entry: `@uoa/core/js`): `init(root)` wires every `[data-uoa-accordion="single"]` not yet wired;
+auto-runs on load. The multiple variant needs no JavaScript.
+
+| Option / method / event | Type | Description |
+| --- | --- | --- |
+| `data-uoa-accordion="single"` | attribute | The container that auto-collapses the other sections |
+
+### Platform adapters
+
+Filled in once the first platform adapter is chosen (ADR 0003).
+
+## Related
+
+- Tabs (planned): for switching between equivalent views instead of stacking.
+- [Alert](../alert/): for status messages in the page flow.

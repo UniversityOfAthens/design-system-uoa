@@ -33,8 +33,10 @@ await writeFile('dist/uoa.css', out.join('\n\n') + '\n');
 
 // JS: copy the entry + component modules verbatim (no bundling for the spike;
 // adapters and <script type="module"> import dist/uoa.js directly).
+await mkdir('dist/components/accordion', { recursive: true });
 await mkdir('dist/components/alert', { recursive: true });
 await cp('src/uoa.js', 'dist/uoa.js');
+await cp('src/components/accordion/accordion.js', 'dist/components/accordion/accordion.js');
 await cp('src/components/alert/alert.js', 'dist/components/alert/alert.js');
 
 // Fonts: copy the whole folder so fonts.css keeps its relative urls.

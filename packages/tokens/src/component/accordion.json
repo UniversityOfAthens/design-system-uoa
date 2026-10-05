@@ -1,0 +1,46 @@
+{
+  "accordion": {
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{border-width.thin}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.surface}"
+    },
+    "padding-block": {
+      "$type": "dimension",
+      "$value": "{space.3}"
+    },
+    "padding-inline": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.3}",
+      "$description": "Between the title and the chevron"
+    },
+    "title": {
+      "$type": "color",
+      "$value": "{color.text.heading}"
+    },
+    "title-weight": {
+      "$type": "fontWeight",
+      "$value": "{font.weight.body-strong}"
+    },
+    "text": {
+      "$type": "color",
+      "$value": "{color.text.default}"
+    },
+    "hover": {
+      "$type": "color",
+      "$value": "{color.surface.subtle}",
+      "$description": "Trigger hover background"
+    }
+  }
+}

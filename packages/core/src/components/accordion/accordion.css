@@ -1,0 +1,113 @@
+/* Accordion — stacked disclosure rows on native <details>/<summary>.
+   Works fully without JS: toggle and keyboard come from the browser.
+   With JS (accordion.js), open and close animate smoothly with WAAPI; the grid
+   transition below is the no-JS baseline (animates open only). Single-open
+   auto-collapse ([data-uoa-accordion="single"]) also needs the JS. */
+
+.uoa-accordion {
+  overflow: clip;
+  border: var(--uoa-accordion-border-width) solid var(--uoa-accordion-border);
+  border-radius: var(--uoa-accordion-radius);
+}
+
+.uoa-accordion__item + .uoa-accordion__item {
+  border-top: var(--uoa-accordion-border-width) solid var(--uoa-accordion-border);
+}
+
+.uoa-accordion__trigger {
+  display: flex;
+  gap: var(--uoa-accordion-gap);
+  align-items: center;
+  width: 100%;
+  padding-block: var(--uoa-accordion-padding-block);
+  padding-inline: var(--uoa-accordion-padding-inline);
+  font-family: var(--uoa-font-family-body);
+  font-size: var(--uoa-font-size-body-md);
+  font-weight: var(--uoa-accordion-title-weight);
+  line-height: var(--uoa-font-line-height-body);
+  color: var(--uoa-accordion-title);
+  list-style: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide the native marker in every engine; the chevron replaces it. */
+.uoa-accordion__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.uoa-accordion__trigger::marker {
+  content: "";
+}
+
+.uoa-accordion__trigger:hover {
+  background-color: var(--uoa-accordion-hover);
+}
+
+.uoa-accordion__trigger:focus-visible {
+  outline: var(--uoa-focus-ring-width) solid var(--uoa-color-focus-ring);
+  /* Negative so the ring stays inside the container (which clips overflow). */
+  outline-offset: calc(-1 * var(--uoa-focus-ring-offset));
+}
+
+.uoa-accordion__title {
+  flex: 1;
+  text-align: start;
+}
+
+.uoa-accordion__icon {
+  flex: none;
+  width: 1.25em;
+  height: 1.25em;
+  fill: currentColor;
+}
+
+.uoa-accordion__item[open] > .uoa-accordion__trigger > .uoa-accordion__icon {
+  transform: rotate(180deg);
+}
+
+/* Height animation without JS: the panel is always rendered, 0fr hides it. */
+.uoa-accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+}
+
+.uoa-accordion__item[open] > .uoa-accordion__panel {
+  grid-template-rows: 1fr;
+}
+
+.uoa-accordion__content {
+  min-height: 0;
+  overflow: hidden;
+  padding-block: var(--uoa-accordion-padding-block);
+  padding-inline: var(--uoa-accordion-padding-inline);
+  font-size: var(--uoa-font-size-body-md);
+  line-height: var(--uoa-font-line-height-body);
+  color: var(--uoa-accordion-text);
+}
+
+.uoa-accordion__content > * {
+  margin-block: 0;
+}
+
+.uoa-accordion__content > * + * {
+  margin-block-start: var(--uoa-space-2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .uoa-accordion__panel {
+    transition: grid-template-rows var(--uoa-motion-duration-base) var(--uoa-motion-easing-standard);
+  }
+
+  .uoa-accordion__icon {
+    transition: transform var(--uoa-motion-duration-base) var(--uoa-motion-easing-standard);
+  }
+}
+
+/* Windows High Contrast: keep the container and dividers visible. */
+@media (forced-colors: active) {
+  .uoa-accordion,
+  .uoa-accordion__item + .uoa-accordion__item {
+    border-color: CanvasText;
+  }
+}

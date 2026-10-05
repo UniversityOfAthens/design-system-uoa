@@ -1,0 +1,167 @@
+---
+title: Ακορντεόν
+description: Στοιβαγμένες αναδιπλούμενες ενότητες — συχνές ερωτήσεις, τμήματα φόρμας.
+sidebar:
+  badge:
+    text: beta
+    variant: note
+---
+
+import Example from '../../../components/Example.astro';
+import TokenTable from '../../../components/TokenTable.astro';
+
+Χρησιμοποιήστε το για να χωρίσετε μεγάλο περιεχόμενο σε ενότητες που ανοίγουν και κλείνουν:
+συχνές ερωτήσεις, τμήματα μιας μεγάλης φόρμας, φίλτρα.
+
+<p class="uoa-meta">
+  <span class="uoa-pill" data-level="beta">beta</span>
+  <a href="https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/accordion">Πηγαίος κώδικας</a>
+</p>
+
+## Παραδείγματα
+
+<Example
+  title="Προεπιλογή"
+  code={`
+    <div class="uoa-accordion" data-uoa-accordion>
+      <details class="uoa-accordion__item" open>
+        <summary class="uoa-accordion__trigger">
+          <span class="uoa-accordion__title">Πότε ανοίγουν οι εγγραφές;</span>
+          <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+        </summary>
+        <div class="uoa-accordion__panel">
+          <div class="uoa-accordion__content">
+            <p>Οι εγγραφές για το χειμερινό εξάμηνο ανοίγουν στις 5 Οκτωβρίου.</p>
+          </div>
+        </div>
+      </details>
+      <details class="uoa-accordion__item">
+        <summary class="uoa-accordion__trigger">
+          <span class="uoa-accordion__title">Πώς δηλώνω μαθήματα;</span>
+          <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+        </summary>
+        <div class="uoa-accordion__panel">
+          <div class="uoa-accordion__content">
+            <p>Από τη φοιτητική πύλη, <em>Δηλώσεις → Δήλωση μαθημάτων</em>.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  `}
+/>
+
+<Example
+  title="Μία ανοιχτή κάθε φορά"
+  code={`
+    <div class="uoa-accordion" data-uoa-accordion="single">
+      <details class="uoa-accordion__item" open>
+        <summary class="uoa-accordion__trigger">
+          <span class="uoa-accordion__title">Πτυχιακή εργασία</span>
+          <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+        </summary>
+        <div class="uoa-accordion__panel">
+          <div class="uoa-accordion__content">
+            <p>Δηλώνεται στο 7ο εξάμηνο με αίτηση προς τη Γραμματεία.</p>
+          </div>
+        </div>
+      </details>
+      <details class="uoa-accordion__item">
+        <summary class="uoa-accordion__trigger">
+          <span class="uoa-accordion__title">Πρακτική άσκηση</span>
+          <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+        </summary>
+        <div class="uoa-accordion__panel">
+          <div class="uoa-accordion__content">
+            <p>Διαρκεί δύο μήνες και μοριοδοτείται με 5 ECTS.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  `}
+/>
+
+## Δομή
+
+1. **Περιέκτης**: `<div class="uoa-accordion">` με `data-uoa-accordion` (πολλές ανοιχτές) ή
+   `data-uoa-accordion="single"` (μία ανοιχτή — χρειάζεται το `accordion.js`).
+2. **Στοιχείο**: `<details class="uoa-accordion__item">`. Το `open` ορίζει ποια ξεκινούν ανοιχτά.
+3. **Κουμπί**: `<summary class="uoa-accordion__trigger">` με τον τίτλο (`.uoa-accordion__title`) και το βέλος
+   (`.uoa-accordion__icon`, διακοσμητικό).
+4. **Περιεχόμενο**: το `.uoa-accordion__panel` (> `.uoa-accordion__content`) περιέχει παραγράφους, λίστες και συνδέσμους.
+
+## Οδηγίες
+
+### Πότε να το χρησιμοποιείτε
+
+- Για συχνές ερωτήσεις και απαντήσεις.
+- Για τμήματα μιας μεγάλης φόρμας ή σελίδας που ο χρήστης σαρώνει πρώτα τους τίτλους.
+- Για φίλτρα και προχωρημένες επιλογές που δεν χρειάζονται όλοι.
+
+### Πότε να μην το χρησιμοποιείτε
+
+- Για κρίσιμη πληροφορία που πρέπει να διαβαστεί οπωσδήποτε: μην την κρύβετε.
+- Για κύρια πλοήγηση: χρησιμοποιήστε μενού πλοήγησης.
+- Για λίγο περιεχόμενο που χωράει ολόκληρο: δείξτε το κατευθείαν.
+- Για εναλλαγή μεταξύ ισοδύναμων προβολών: χρησιμοποιήστε καρτέλες.
+
+### Παραλλαγές
+
+| Παραλλαγή | Χαρακτηριστικό | Χρήση |
+| --- | --- | --- |
+| Πολλαπλή | `data-uoa-accordion` | Η προεπιλογή· ο χρήστης συγκρίνει ενότητες |
+| Μονή | `data-uoa-accordion="single"` | Μεγάλες ενότητες, μία κάθε φορά — χρειάζεται JavaScript |
+
+### Περιεχόμενο
+
+- Τίτλοι σύντομοι, σε μορφή ερώτησης ή θέματος: «Πότε ανοίγουν οι εγγραφές;».
+- Κάθε ενότητα αυτοτελής: ο χρήστης μπορεί να διαβάσει μία χωρίς τις άλλες.
+- Ξεκινήστε με μία ανοιχτή ενότητα όταν υπάρχει προφανής πρώτη επιλογή, αλλιώς με όλες κλειστές.
+
+### Συμπεριφορά
+
+- Χωρίς JavaScript όλα δουλεύουν: το άνοιγμα/κλείσιμο είναι εγγενές (`<details>`), χωρίς κίνηση.
+- Με JavaScript: ομαλή κίνηση ύψους και, στη μονή παραλλαγή, αυτόματο κλείσιμο των άλλων.
+  Χωρίς JavaScript η μονή παραλλαγή συμπεριφέρεται σαν πολλαπλή — όλο το περιεχόμενο παραμένει προσβάσιμο.
+- Το βέλος περιστρέφεται 180° στην ανοιχτή ενότητα. Η κίνηση απενεργοποιείται με `prefers-reduced-motion`.
+
+## Προσβασιμότητα
+
+- Το `<summary>` είναι εγγενώς προσβάσιμο από πληκτρολόγιο (Enter/Space) και αναγγέλλεται σωστά —
+  δεν χρειάζονται ARIA χαρακτηριστικά ούτε δικό μας χειρισμός πλήκτρων.
+- Μην βάζετε επικεφαλίδα μέσα στο `<summary>` με λάθος επίπεδο: ο τίτλος σε `<span>` αρκεί για
+  σύντομες λίστες· για μεγάλες σελίδες με πολλές ενότητες, προτιμήστε επικεφαλίδες που περιέχουν το κουμπί.
+- Τα βέλη είναι διακοσμητικά (`aria-hidden="true" focusable="false"`).
+- Στη λειτουργία υψηλής αντίθεσης των Windows το περίγραμμα και οι διαχωριστικές μένουν ορατές.
+- Δεν έχει γίνει ακόμη δοκιμή με αναγνώστες οθόνης (NVDA, VoiceOver).
+
+## Θέματα
+
+Tokens του στοιχείου, από το `packages/tokens/src/component/accordion.json`.
+
+<TokenTable prefix="accordion-" />
+
+## API
+
+### HTML / CSS
+
+`.uoa-accordion` (+ `[data-uoa-accordion]` / `[data-uoa-accordion="single"]`)· παιδιά `.uoa-accordion__item`
+(`<details>`, `open` για αρχικά ανοιχτό), `.uoa-accordion__trigger` (`<summary>`), `.uoa-accordion__title`,
+`.uoa-accordion__icon`, `.uoa-accordion__panel`, `.uoa-accordion__content`.
+
+### JavaScript
+
+`accordion.js` (είσοδος: `@uoa/core/js`): `init(root)` συνδέει κάθε `[data-uoa-accordion="single"]` που δεν έχει
+συνδεθεί· τρέχει αυτόματα στο φόρτωμα. Η πολλαπλή παραλλαγή δεν χρειάζεται JavaScript.
+
+| Επιλογή / μέθοδος / γεγονός | Τύπος | Περιγραφή |
+| --- | --- | --- |
+| `data-uoa-accordion="single"` | attribute | Ο περιέκτης που κλείνει αυτόματα τις άλλες ενότητες |
+
+### Προσαρμογείς πλατφορμών
+
+Θα συμπληρωθεί όταν επιλεγεί ο πρώτος προσαρμογέας (ADR 0003).
+
+## Σχετικά
+
+- Καρτέλες (προγραμματισμένες): για εναλλαγή μεταξύ ισοδύναμων προβολών αντί για στοίβαξη.
+- [Ειδοποίηση](../alert/): για μηνύματα κατάστασης μέσα στη σελίδα.
