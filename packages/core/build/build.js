@@ -31,8 +31,14 @@ await rm('dist', { recursive: true, force: true });
 await mkdir('dist', { recursive: true });
 await writeFile('dist/uoa.css', out.join('\n\n') + '\n');
 
+// JS: copy the entry + component modules verbatim (no bundling for the spike;
+// adapters and <script type="module"> import dist/uoa.js directly).
+await mkdir('dist/components/alert', { recursive: true });
+await cp('src/uoa.js', 'dist/uoa.js');
+await cp('src/components/alert/alert.js', 'dist/components/alert/alert.js');
+
 // Fonts: copy the whole folder so fonts.css keeps its relative urls.
 const fontsDir = dirname(fileURLToPath(import.meta.resolve('@uoa/tokens/fonts.css')));
 await cp(fontsDir, 'dist/fonts', { recursive: true, filter: (src) => !src.endsWith('.md') });
 
-console.log('@uoa/core built → dist/uoa.css, dist/fonts/');
+console.log('@uoa/core built → dist/uoa.css, dist/uoa.js, dist/fonts/');

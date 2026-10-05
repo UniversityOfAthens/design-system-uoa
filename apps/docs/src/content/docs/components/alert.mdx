@@ -81,12 +81,29 @@ import TokenTable from '../../../components/TokenTable.astro';
   `}
 />
 
+<Example
+  title="Με κουμπί κλεισίματος"
+  code={`
+    <div class="uoa-alert uoa-alert--warning" data-uoa-alert-dismissible>
+      <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+      <div class="uoa-alert__content">
+        <p>Η βιβλιοθήκη θα είναι κλειστή το Σάββατο λόγω συντήρησης.</p>
+      </div>
+      <button class="uoa-alert__close" type="button" data-uoa-alert-close aria-label="Απόρριψη ειδοποίησης">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg>
+      </button>
+    </div>
+  `}
+/>
+
 ## Δομή
 
 1. **Περιέκτης**: `<div class="uoa-alert">`. Χρωματιστό φόντο και μπάρα 4px στο χρώμα της παραλλαγής στην αρχή της γραμμής.
 2. **Εικονίδιο** (συνιστάται): inline SVG με `.uoa-alert__icon`, διακοσμητικό.
 3. **Τίτλος** (προαιρετικός): `.uoa-alert__title` σε επικεφαλίδα του σωστού επιπέδου για τη σελίδα, ή σε `<p>`.
 4. **Περιεχόμενο**: το `.uoa-alert__content` περιέχει παραγράφους, λίστες και συνδέσμους.
+5. **Κουμπί κλεισίματος** (προαιρετικό): `.uoa-alert__close` με `data-uoa-alert-close` μέσα σε περιέκτη με
+   `data-uoa-alert-dismissible`. Χρειάζεται το `alert.js` — χωρίς JavaScript το μήνυμα μένει ορατό και το κουμπί δεν κάνει τίποτα.
 
 ## Οδηγίες
 
@@ -121,7 +138,9 @@ import TokenTable from '../../../components/TokenTable.astro';
 
 ### Συμπεριφορά
 
-- Στατική: χωρίς κουμπί κλεισίματος και χωρίς αυτόματη απόκρυψη. Η ειδοποίηση που κλείνει χρειάζεται JavaScript και δεν υπάρχει ακόμη.
+- Στατική από προεπιλογή: χωρίς κουμπί κλεισίματος και χωρίς αυτόματη απόκρυψη. Η παραλλαγή με κουμπί
+  κλεισίματος (`data-uoa-alert-dismissible` + `alert.js`) αφαιρεί το μήνυμα από τη σελίδα και στέλνει το γεγονός
+  `uoa:alert:dismiss` — χρήσιμη μόνο για μηνύματα χαμηλής σημασίας, ποτέ για σφάλματα που πρέπει να διαβαστούν.
 - Η μπάρα, το φόντο και το εικονίδιο ακολουθούν την παραλλαγή· το κείμενο μένει στο προεπιλεγμένο χρώμα.
 - Το πλάτος ακολουθεί τον περιέκτη. Βάλτε τη μέσα στη στήλη περιεχομένου, όχι σε όλο το πλάτος της οθόνης.
 
@@ -150,11 +169,19 @@ Tokens του στοιχείου, από το `packages/tokens/src/component/ale
 ### HTML / CSS
 
 `.uoa-alert` + προαιρετικά `--success | --warning | --danger`· παιδιά `.uoa-alert__icon`,
-`.uoa-alert__content`, `.uoa-alert__title`. Οι σύνδεσμοι μέσα παίρνουν το χρώμα του κειμένου.
+`.uoa-alert__content`, `.uoa-alert__title`, `.uoa-alert__close`. Οι σύνδεσμοι μέσα παίρνουν το χρώμα του κειμένου.
 
 ### JavaScript
 
-Καμία. Προσθέστε μόνοι σας `role="status"` ή `role="alert"` όταν εισάγετε μηνύματα δυναμικά.
+`alert.js` (είσοδος: `@uoa/core/js`): `init(root)` συνδέει κάθε `[data-uoa-alert-dismissible]` που δεν έχει
+συνδεθεί· τρέχει αυτόματα στο φόρτωμα. Προσθέστε μόνοι σας `role="status"` ή `role="alert"` όταν εισάγετε
+μηνύματα δυναμικά.
+
+| Επιλογή / μέθοδος / γεγονός | Τύπος | Περιγραφή |
+| --- | --- | --- |
+| `data-uoa-alert-dismissible` | attribute | Ο περιέκτης `.uoa-alert` που μπορεί να κλείσει |
+| `data-uoa-alert-close` | attribute | Το κουμπί `.uoa-alert__close` — η ετικέτα του (`aria-label`) γράφεται στο markup, στα Ελληνικά ή Αγγλικά |
+| `uoa:alert:dismiss` | event (bubbles) | Στέλνεται στον περιέκτη λίγο πριν αφαιρεθεί |
 
 ### Προσαρμογείς πλατφορμών
 
