@@ -12,5 +12,6 @@
 @import "./base/layout.css" layer(uoa.layout);
 @import "./components/accordion/accordion.css" layer(uoa.components);
 @import "./components/alert/alert.css" layer(uoa.components);
+@import "./components/badge/badge.css" layer(uoa.components);
 @import "./components/button/button.css" layer(uoa.components);
 @import "./base/utilities.css" layer(uoa.utilities);

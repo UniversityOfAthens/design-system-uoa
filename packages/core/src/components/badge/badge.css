@@ -1,0 +1,50 @@
+/* Badge — a small status label. Variants: neutral (default), info, success, warning,
+   danger. Text-only; colour never carries the meaning alone, the words do. No JavaScript. */
+
+.uoa-badge {
+  /* Each variant only swaps these two. */
+  --_bg: var(--uoa-badge-neutral-bg);
+  --_text: var(--uoa-badge-neutral-text);
+
+  display: inline-flex;
+  gap: var(--uoa-badge-gap);
+  align-items: center;
+  padding-block: var(--uoa-badge-padding-block);
+  padding-inline: var(--uoa-badge-padding-inline);
+  font-family: var(--uoa-font-family-body);
+  font-size: var(--uoa-badge-font-size);
+  font-weight: var(--uoa-badge-font-weight);
+  line-height: 1.25;
+  white-space: nowrap;
+  color: var(--_text);
+  background-color: var(--_bg);
+  border: var(--uoa-border-width-thin) solid currentColor;
+  border-radius: var(--uoa-badge-radius);
+}
+
+.uoa-badge--info {
+  --_bg: var(--uoa-badge-info-bg);
+  --_text: var(--uoa-badge-info-text);
+}
+
+.uoa-badge--success {
+  --_bg: var(--uoa-badge-success-bg);
+  --_text: var(--uoa-badge-success-text);
+}
+
+.uoa-badge--warning {
+  --_bg: var(--uoa-badge-warning-bg);
+  --_text: var(--uoa-badge-warning-text);
+}
+
+.uoa-badge--danger {
+  --_bg: var(--uoa-badge-danger-bg);
+  --_text: var(--uoa-badge-danger-text);
+}
+
+/* Windows High Contrast: backgrounds disappear, the currentColor border keeps the shape. */
+@media (forced-colors: active) {
+  .uoa-badge {
+    border-color: CanvasText;
+  }
+}
