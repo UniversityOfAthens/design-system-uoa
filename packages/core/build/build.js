@@ -35,9 +35,11 @@ await writeFile('dist/uoa.css', out.join('\n\n') + '\n');
 // adapters and <script type="module"> import dist/uoa.js directly).
 await mkdir('dist/components/accordion', { recursive: true });
 await mkdir('dist/components/alert', { recursive: true });
+await mkdir('dist/components/tabs', { recursive: true });
 await cp('src/uoa.js', 'dist/uoa.js');
 await cp('src/components/accordion/accordion.js', 'dist/components/accordion/accordion.js');
 await cp('src/components/alert/alert.js', 'dist/components/alert/alert.js');
+await cp('src/components/tabs/tabs.js', 'dist/components/tabs/tabs.js');
 
 // Fonts: copy the whole folder so fonts.css keeps its relative urls.
 const fontsDir = dirname(fileURLToPath(import.meta.resolve('@uoa/tokens/fonts.css')));

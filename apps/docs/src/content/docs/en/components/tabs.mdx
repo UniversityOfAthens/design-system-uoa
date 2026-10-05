@@ -1,0 +1,151 @@
+---
+title: Tabs
+description: Switch between equivalent views — programme, enrolment, grants.
+sidebar:
+  badge:
+    text: beta
+    variant: note
+---
+
+import Example from '../../../../components/Example.astro';
+import TokenTable from '../../../../components/TokenTable.astro';
+
+Use them to switch between equivalent views in the same spot: programme tabs, language, category.
+
+<p class="uoa-meta">
+  <span class="uoa-pill" data-level="beta">beta</span>
+  <a href="https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/tabs">Source</a>
+</p>
+
+## Examples
+
+<Example
+  title="Basic"
+  code={`
+    <div class="uoa-tabs" data-uoa-tabs>
+      <div class="uoa-tabs__list" aria-label="Studies">
+        <button type="button" class="uoa-tabs__tab" id="entab-ex1-programme" aria-controls="enpanel-ex1-programme">Programme</button>
+        <button type="button" class="uoa-tabs__tab" id="entab-ex1-enrolment" aria-controls="enpanel-ex1-enrolment">Enrolment</button>
+        <button type="button" class="uoa-tabs__tab" id="entab-ex1-grants" aria-controls="enpanel-ex1-grants">Grants</button>
+      </div>
+      <section class="uoa-tabs__panel" id="enpanel-ex1-programme" aria-labelledby="entab-ex1-programme" tabindex="0">
+        <p>The programme spans 8 semesters plus a thesis.</p>
+      </section>
+      <section class="uoa-tabs__panel" id="enpanel-ex1-enrolment" aria-labelledby="entab-ex1-enrolment" tabindex="0">
+        <p>Enrolment is online from 5 October.</p>
+      </section>
+      <section class="uoa-tabs__panel" id="enpanel-ex1-grants" aria-labelledby="entab-ex1-grants" tabindex="0">
+        <p>Merit grants for the top 10% of entrants.</p>
+      </section>
+    </div>
+  `}
+/>
+
+<Example
+  title="Many tabs"
+  code={`
+    <div class="uoa-tabs" data-uoa-tabs>
+      <div class="uoa-tabs__list" aria-label="Schools">
+        <button type="button" class="uoa-tabs__tab" id="entab-ex2-1" aria-controls="enpanel-ex2-1">Theology</button>
+        <button type="button" class="uoa-tabs__tab" id="entab-ex2-2" aria-controls="enpanel-ex2-2">Law</button>
+        <button type="button" class="uoa-tabs__tab" id="entab-ex2-3" aria-controls="enpanel-ex2-3">Medicine</button>
+        <button type="button" class="uoa-tabs__tab" id="entab-ex2-4" aria-controls="enpanel-ex2-4">Philosophy</button>
+        <button type="button" class="uoa-tabs__tab" id="entab-ex2-5" aria-controls="enpanel-ex2-5">Science</button>
+        <button type="button" class="uoa-tabs__tab" id="entab-ex2-6" aria-controls="enpanel-ex2-6">Economics</button>
+      </div>
+      <section class="uoa-tabs__panel" id="enpanel-ex2-1" aria-labelledby="entab-ex2-1" tabindex="0"><p>School of Theology.</p></section>
+      <section class="uoa-tabs__panel" id="enpanel-ex2-2" aria-labelledby="entab-ex2-2" tabindex="0"><p>School of Law.</p></section>
+      <section class="uoa-tabs__panel" id="enpanel-ex2-3" aria-labelledby="entab-ex2-3" tabindex="0"><p>School of Medicine.</p></section>
+      <section class="uoa-tabs__panel" id="enpanel-ex2-4" aria-labelledby="entab-ex2-4" tabindex="0"><p>School of Philosophy.</p></section>
+      <section class="uoa-tabs__panel" id="enpanel-ex2-5" aria-labelledby="entab-ex2-5" tabindex="0"><p>School of Science.</p></section>
+      <section class="uoa-tabs__panel" id="enpanel-ex2-6" aria-labelledby="entab-ex2-6" tabindex="0"><p>School of Economics and Political Sciences.</p></section>
+    </div>
+  `}
+/>
+
+## Structure
+
+1. **Container**: `<div class="uoa-tabs" data-uoa-tabs>`.
+2. **List**: `<div class="uoa-tabs__list">` with an `aria-label` naming the set.
+3. **Tabs**: `<button type="button" class="uoa-tabs__tab">` with a unique `id` and `aria-controls` to the panel.
+4. **Panels**: `<section class="uoa-tabs__panel">` with a unique `id`, `aria-labelledby` to the tab and `tabindex="0"`.
+   The first tab is active — markup order defines the default.
+
+## Guidelines
+
+### When to use
+
+- For switching between equivalent views in the same spot: categories, languages, semesters.
+- When users need one view at a time and the others stay available.
+
+### When not to use
+
+- For stacking independent sections read in sequence: use an accordion.
+- For primary navigation between pages: use a navigation menu.
+- For critical content that must be seen without clicking.
+- For a single view: show it directly, without tabs.
+
+### Variants
+
+One variant: horizontal tabs with automatic activation (focus selects).
+On narrow screens the list scrolls horizontally.
+
+### Content
+
+- Keep labels short, one or two words, parallel in form: "Programme · Enrolment · Grants".
+- Make each panel self-contained, with its own heading when large.
+- Keep `id`s unique per page — two groups never share an `id`.
+
+### Behaviour
+
+- Without JavaScript: buttons do nothing and all panels stay visible — nothing is lost.
+- With JavaScript: automatic activation — arrows, Home/End and clicks select immediately.
+- Only the active tab is in the Tab order (roving tabindex); inactive panels hide with `hidden`.
+
+## Accessibility
+
+- `tablist`/`tab`/`tabpanel` roles, `aria-selected` and roving tabindex are added by `tabs.js`
+  (WAI-ARIA tabs pattern, automatic activation).
+- Keyboard interaction:
+
+  | Key | Action |
+  | --- | --- |
+  | `←` / `→` | Previous / next tab (flipped in RTL) |
+  | `Home` / `End` | First / last tab |
+  | `Tab` | Leave the list for the active panel |
+
+- The list needs an `aria-label` (written in the markup, Greek or English).
+- Panels have `tabindex="0"` so they stay keyboard-reachable when content overflows.
+- In Windows High Contrast mode the list rule and the active indicator stay visible.
+- Screen-reader testing (NVDA, VoiceOver) hasn't been done yet.
+
+## Theming
+
+Component tokens, from `packages/tokens/src/component/tabs.json`.
+
+<TokenTable prefix="tabs-" />
+
+## API
+
+### HTML / CSS
+
+`.uoa-tabs` (+ `[data-uoa-tabs]`); children `.uoa-tabs__list` (`aria-label`), `.uoa-tabs__tab`
+(`id` + `aria-controls`), `.uoa-tabs__panel` (`id` + `aria-labelledby` + `tabindex="0"`).
+
+### JavaScript
+
+`tabs.js` (entry: `@uoa/core/js`): `init(root)` wires every `[data-uoa-tabs]` not yet wired;
+auto-runs on load. Also exports `select(group, tab, focus)` for adapters.
+
+| Option / method / event | Type | Description |
+| --- | --- | --- |
+| `data-uoa-tabs` | attribute | The container that becomes a tab group |
+
+### Platform adapters
+
+Filled in once the first platform adapter is chosen (ADR 0003).
+
+## Related
+
+- [Accordion](../accordion/): for stacking independent sections instead of switching views.
+- [Alert](../alert/): for status messages in the page flow.

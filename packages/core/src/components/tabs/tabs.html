@@ -1,0 +1,21 @@
+<!-- Reference markup for Tabs. Adapters (Twig, PHP, React) must output exactly this.
+     Plain buttons + sections: without tabs.js every panel stays visible. IDs and the
+     aria-controls/aria-labelledby pairs are required — tabs.js adds the rest
+     (roles, aria-selected, roving tabindex, hidden). The first tab is active. -->
+
+<div class="uoa-tabs" data-uoa-tabs>
+  <div class="uoa-tabs__list" aria-label="Σπουδές">
+    <button type="button" class="uoa-tabs__tab" id="uoa-tab-programme" aria-controls="uoa-panel-programme">Πρόγραμμα</button>
+    <button type="button" class="uoa-tabs__tab" id="uoa-tab-enrolment" aria-controls="uoa-panel-enrolment">Εγγραφές</button>
+    <button type="button" class="uoa-tabs__tab" id="uoa-tab-grants" aria-controls="uoa-panel-grants">Υποτροφίες</button>
+  </div>
+  <section class="uoa-tabs__panel" id="uoa-panel-programme" aria-labelledby="uoa-tab-programme" tabindex="0">
+    <p>Το πρόγραμμα σπουδών περιλαμβάνει 8 εξάμηνα και πτυχιακή εργασία.</p>
+  </section>
+  <section class="uoa-tabs__panel" id="uoa-panel-enrolment" aria-labelledby="uoa-tab-enrolment" tabindex="0">
+    <p>Οι εγγραφές γίνονται ηλεκτρονικά από τις 5 Οκτωβρίου.</p>
+  </section>
+  <section class="uoa-tabs__panel" id="uoa-panel-grants" aria-labelledby="uoa-tab-grants" tabindex="0">
+    <p>Υποτροφίες αριστείας για το 10% των εισακτέων.</p>
+  </section>
+</div>
