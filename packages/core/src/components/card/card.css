@@ -1,0 +1,137 @@
+/* Card — a teaser for one item: news, event, person/staff, course. The variants
+   differ by content (eyebrow, <time>, badge, footer link), not by container style;
+   the only structural modifier is --horizontal for person/staff. No JavaScript:
+   when the title is a link it stretches over the whole card, so the card stays
+   fully usable with keyboard and screen reader as a normal link. */
+
+.uoa-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--uoa-card-text-color);
+  background-color: var(--uoa-card-bg);
+  border: var(--uoa-card-border-width) solid var(--uoa-card-border);
+  border-radius: var(--uoa-card-radius);
+  box-shadow: var(--uoa-shadow-sm);
+}
+
+/* Only cards whose title links somewhere lift on hover — static cards stay put. */
+.uoa-card:has(.uoa-card__title a):hover {
+  box-shadow: var(--uoa-shadow-md);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .uoa-card {
+    transition: box-shadow var(--uoa-motion-duration-fast) var(--uoa-motion-easing-standard);
+  }
+}
+
+.uoa-card__media {
+  margin: 0;
+  background-color: var(--uoa-card-media-bg);
+}
+
+.uoa-card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.uoa-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--uoa-card-gap);
+  min-width: 0;
+  padding: var(--uoa-card-padding);
+}
+
+.uoa-card__eyebrow {
+  margin: 0;
+  font-size: var(--uoa-font-size-body-sm);
+  font-weight: var(--uoa-font-weight-body-strong);
+  color: var(--uoa-card-eyebrow-color);
+}
+
+.uoa-card__title {
+  margin: 0;
+  font-family: var(--uoa-font-family-body);
+  font-size: var(--uoa-font-size-heading-5);
+  line-height: var(--uoa-font-line-height-heading);
+  color: var(--uoa-card-title-color);
+}
+
+.uoa-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.uoa-card__title a:hover {
+  text-decoration: underline;
+}
+
+/* Stretched link: the whole card forwards clicks to the title link. The focus
+   ring stays on the title text itself, so it is always visible. */
+.uoa-card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.uoa-card__title a:focus-visible {
+  outline: var(--uoa-focus-ring-width) solid var(--uoa-color-focus-ring);
+  outline-offset: var(--uoa-focus-ring-offset);
+}
+
+.uoa-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--uoa-card-meta-gap);
+  align-items: center;
+  margin: 0;
+  font-size: var(--uoa-font-size-body-sm);
+  color: var(--uoa-card-meta-color);
+}
+
+.uoa-card__text {
+  margin: 0;
+  font-size: var(--uoa-font-size-body-md);
+  line-height: var(--uoa-font-line-height-body);
+}
+
+/* Pinned to the bottom so cards in a row end evenly. Footer links sit above
+   the stretched title link (tree order), so they stay clickable. */
+.uoa-card__footer {
+  margin-top: auto;
+}
+
+.uoa-card__footer a {
+  position: relative;
+}
+
+/* Person/staff: square photo at the inline-start, text beside it. */
+.uoa-card--horizontal {
+  flex-direction: row;
+}
+
+.uoa-card--horizontal .uoa-card__media {
+  flex: none;
+  width: var(--uoa-card-media-width-horizontal);
+}
+
+.uoa-card--horizontal .uoa-card__media img {
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+/* Windows High Contrast: surfaces disappear, the border keeps the shape. */
+@media (forced-colors: active) {
+  .uoa-card {
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+}

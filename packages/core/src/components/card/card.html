@@ -1,0 +1,62 @@
+<!-- Reference markup for Card. Adapters (Twig, PHP, React) must output exactly this.
+     Placeholder images are inline SVG data URIs — adapters output real image URLs.
+     The heading level follows the page outline (h3 here); the class carries the style.
+     When the title is a link it stretches over the whole card via CSS. -->
+
+<!-- News: image, kicker, linked title, date, teaser -->
+<article class="uoa-card">
+  <p class="uoa-card__media">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%23e2e8f0'/%3E%3C/svg%3E" alt="Φοιτητές στο αμφιθέατρο κατά την τελετή έναρξης" width="800" height="450">
+  </p>
+  <div class="uoa-card__body">
+    <p class="uoa-card__eyebrow">Νέα</p>
+    <h3 class="uoa-card__title"><a href="#anakoinosi">Έναρξη εγγραφών εαρινού εξαμήνου</a></h3>
+    <p class="uoa-card__meta"><time datetime="2026-02-09">9 Φεβρουαρίου 2026</time></p>
+    <p class="uoa-card__text">Οι εγγραφές γίνονται ηλεκτρονικά μέσω της θυρίδας φοιτητή έως τις 27 Φεβρουαρίου.</p>
+  </div>
+</article>
+
+<!-- Event: date + venue in the meta row -->
+<article class="uoa-card">
+  <p class="uoa-card__media">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%23e2e8f0'/%3E%3C/svg%3E" alt="Η κεντρική βιβλιοθήκη τη νύχτα" width="800" height="450">
+  </p>
+  <div class="uoa-card__body">
+    <p class="uoa-card__eyebrow">Εκδήλωση</p>
+    <h3 class="uoa-card__title"><a href="#ekdilosi">Βραδιά ερευνητή: ανοιχτές πόρτες στα εργαστήρια</a></h3>
+    <p class="uoa-card__meta"><time datetime="2026-03-13T19:00">13 Μαρτίου, 19:00</time><span>Κεντρικό κτήριο, Μεγάλη Αίθουσα</span></p>
+    <p class="uoa-card__text">Ερευνητές παρουσιάζουν το έργο τους με πειράματα για μικρούς και μεγάλους. Είσοδος ελεύθερη.</p>
+  </div>
+</article>
+
+<!-- Person/staff: horizontal, photo beside the text, contact link in the footer -->
+<article class="uoa-card uoa-card--horizontal">
+  <p class="uoa-card__media">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23e2e8f0'/%3E%3C/svg%3E" alt="Πορτρέτο της διδάσκουσας" width="400" height="400">
+  </p>
+  <div class="uoa-card__body">
+    <h3 class="uoa-card__title"><a href="#profil">Μαρία Παπαδοπούλου</a></h3>
+    <p class="uoa-card__meta"><span>Καθηγήτρια Γλωσσολογίας</span><span>Τμήμα Φιλολογίας</span></p>
+    <p class="uoa-card__footer"><a href="mailto:mpapadopoulou@uoa.gr">mpapadopoulou@uoa.gr</a></p>
+  </div>
+</article>
+
+<!-- Course: no image, code and credits in the meta row, status badge -->
+<article class="uoa-card">
+  <div class="uoa-card__body">
+    <p class="uoa-card__eyebrow">Προπτυχιακό μάθημα</p>
+    <h3 class="uoa-card__title"><a href="#mathima">Εισαγωγή στη Γλωσσολογία</a></h3>
+    <p class="uoa-card__meta"><span>ΓΛΩ 101</span><span>6 ECTS</span><span class="uoa-badge uoa-badge--success">Εαρινό εξάμηνο</span></p>
+    <p class="uoa-card__text">Βασικές έννοιες φωνητικής, μορφολογίας και σύνταξης, με παραδείγματα από την ελληνική.</p>
+    <p class="uoa-card__footer"><a href="#perigramma">Περίγραμμα μαθήματος (PDF)</a></p>
+  </div>
+</article>
+
+<!-- Static: no image, title is not a link — nothing stretches, nothing lifts -->
+<article class="uoa-card">
+  <div class="uoa-card__body">
+    <p class="uoa-card__eyebrow">Ανακοίνωση</p>
+    <h3 class="uoa-card__title">Συντήρηση δικτύου το Σαββατοκύριακο</h3>
+    <p class="uoa-card__text">Το Σάββατο 14 Μαρτίου, 08:00–12:00, θα υπάρξουν σύντομες διακοπές στην πρόσβαση στο VPN.</p>
+  </div>
+</article>
