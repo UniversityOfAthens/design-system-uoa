@@ -8,7 +8,7 @@ const list = Object.entries(icons as Record<string, { group: string; body: strin
 <ul class="uoa-icons not-content">
   {list.map(([name, { body }]) => (
     <li class="uoa-icons__item">
-      <svg class="uoa-icon uoa-icon--lg" aria-hidden="true" focusable="false" viewBox="0 0 24 24" set:html={body} />
+      <svg class="uoa-icon uoa-icon--lg" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" set:html={body} />
       <code>{name}</code>
     </li>
   ))}

@@ -10,5 +10,6 @@ Status: `draft` (see [lifecycle](../../../../../docs/conventions.md#component-li
 - **Reference markup**: [`icon.html`](icon.html) · **Styles**: [`icon.css`](icon.css) · **Tokens**: `packages/tokens/src/component/icon.json`
 
 Classes: `.uoa-icon` + `--sm | --lg` (default is 1.25em), `--directional` for arrows and chevrons that
-flip in right-to-left text. Every icon is `aria-hidden="true" focusable="false"`; when an icon is the
+flip in right-to-left text. Every icon is `aria-hidden="true" focusable="false" fill="currentColor"` (the fill keeps the text colour
+even without the CSS); when an icon is the
 only content of a control, the accessible name goes on the control (`aria-label`).

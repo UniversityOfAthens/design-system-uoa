@@ -72,3 +72,4 @@
 .uoa-icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: 0.75rem; margin-block: 1rem 2rem; padding: 0; list-style: none; }
 .uoa-icons__item { display: grid; justify-items: center; gap: 0.5rem; padding: 1rem 0.5rem; color: var(--sl-color-white); border: 1px solid var(--sl-color-gray-5); border-radius: 0.5rem; }
 .uoa-icons__item code { font-size: 0.75rem; color: var(--sl-color-gray-2); background: none; padding: 0; overflow-wrap: anywhere; text-align: center; }
+.uoa-icons__item svg { inline-size: 1.5rem; block-size: 1.5rem; }
