@@ -35,7 +35,7 @@ Read before changing anything non-trivial:
 ## Commands
 
 ```sh
-bun run build        # tokens + core
+bun run build        # tokens + icons + core
 bun run docs:build   # build + docs site
 bun run test:a11y    # axe on every docs page, el/en, light/dark
 bun run test:visual  # screenshot tests (Docker); update: cd apps/docs && bun run test:visual:update
