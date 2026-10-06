@@ -1,0 +1,152 @@
+---
+title: Καρτέλες
+description: Εναλλαγή μεταξύ ισοδύναμων προβολών — πρόγραμμα, εγγραφές, υποτροφίες.
+sidebar:
+  badge:
+    text: beta
+    variant: note
+---
+
+import Example from '../../../components/Example.astro';
+import TokenTable from '../../../components/TokenTable.astro';
+
+Χρησιμοποιήστε τις για εναλλαγή μεταξύ ισοδύναμων προβολών στο ίδιο σημείο της σελίδας:
+καρτέλες προγράμματος, γλώσσας ή κατηγορίας.
+
+<p class="uoa-meta">
+  <span class="uoa-pill" data-level="beta">beta</span>
+  <a href="https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/tabs">Πηγαίος κώδικας</a>
+</p>
+
+## Παραδείγματα
+
+<Example
+  title="Βασικές"
+  code={`
+    <div class="uoa-tabs" data-uoa-tabs>
+      <div class="uoa-tabs__list" aria-label="Σπουδές">
+        <button type="button" class="uoa-tabs__tab" id="tab-ex1-programme" aria-controls="panel-ex1-programme">Πρόγραμμα</button>
+        <button type="button" class="uoa-tabs__tab" id="tab-ex1-enrolment" aria-controls="panel-ex1-enrolment">Εγγραφές</button>
+        <button type="button" class="uoa-tabs__tab" id="tab-ex1-grants" aria-controls="panel-ex1-grants">Υποτροφίες</button>
+      </div>
+      <section class="uoa-tabs__panel" id="panel-ex1-programme" aria-labelledby="tab-ex1-programme" tabindex="0">
+        <p>Το πρόγραμμα σπουδών περιλαμβάνει 8 εξάμηνα και πτυχιακή εργασία.</p>
+      </section>
+      <section class="uoa-tabs__panel" id="panel-ex1-enrolment" aria-labelledby="tab-ex1-enrolment" tabindex="0">
+        <p>Οι εγγραφές γίνονται ηλεκτρονικά από τις 5 Οκτωβρίου.</p>
+      </section>
+      <section class="uoa-tabs__panel" id="panel-ex1-grants" aria-labelledby="tab-ex1-grants" tabindex="0">
+        <p>Υποτροφίες αριστείας για το 10% των εισακτέων.</p>
+      </section>
+    </div>
+  `}
+/>
+
+<Example
+  title="Πολλές καρτέλες"
+  code={`
+    <div class="uoa-tabs" data-uoa-tabs>
+      <div class="uoa-tabs__list" aria-label="Σχολές">
+        <button type="button" class="uoa-tabs__tab" id="tab-ex2-1" aria-controls="panel-ex2-1">Θεολογική</button>
+        <button type="button" class="uoa-tabs__tab" id="tab-ex2-2" aria-controls="panel-ex2-2">Νομική</button>
+        <button type="button" class="uoa-tabs__tab" id="tab-ex2-3" aria-controls="panel-ex2-3">Ιατρική</button>
+        <button type="button" class="uoa-tabs__tab" id="tab-ex2-4" aria-controls="panel-ex2-4">Φιλοσοφική</button>
+        <button type="button" class="uoa-tabs__tab" id="tab-ex2-5" aria-controls="panel-ex2-5">Θετικών Επιστημών</button>
+        <button type="button" class="uoa-tabs__tab" id="tab-ex2-6" aria-controls="panel-ex2-6">Οικονομικών</button>
+      </div>
+      <section class="uoa-tabs__panel" id="panel-ex2-1" aria-labelledby="tab-ex2-1" tabindex="0"><p>Θεολογική Σχολή.</p></section>
+      <section class="uoa-tabs__panel" id="panel-ex2-2" aria-labelledby="tab-ex2-2" tabindex="0"><p>Νομική Σχολή.</p></section>
+      <section class="uoa-tabs__panel" id="panel-ex2-3" aria-labelledby="tab-ex2-3" tabindex="0"><p>Ιατρική Σχολή.</p></section>
+      <section class="uoa-tabs__panel" id="panel-ex2-4" aria-labelledby="tab-ex2-4" tabindex="0"><p>Φιλοσοφική Σχολή.</p></section>
+      <section class="uoa-tabs__panel" id="panel-ex2-5" aria-labelledby="tab-ex2-5" tabindex="0"><p>Σχολή Θετικών Επιστημών.</p></section>
+      <section class="uoa-tabs__panel" id="panel-ex2-6" aria-labelledby="tab-ex2-6" tabindex="0"><p>Σχολή Οικονομικών και Πολιτικών Επιστημών.</p></section>
+    </div>
+  `}
+/>
+
+## Δομή
+
+1. **Περιέκτης**: `<div class="uoa-tabs" data-uoa-tabs>`.
+2. **Λίστα**: `<div class="uoa-tabs__list">` με `aria-label` που ονομάζει το σύνολο.
+3. **Καρτέλες**: `<button type="button" class="uoa-tabs__tab">` με μοναδικό `id` και `aria-controls` προς το πάνελ.
+4. **Πάνελ**: `<section class="uoa-tabs__panel">` με μοναδικό `id`, `aria-labelledby` προς την καρτέλα και `tabindex="0"`.
+   Η πρώτη καρτέλα είναι ενεργή — η σειρά του markup ορίζει την προεπιλογή.
+
+## Οδηγίες
+
+### Πότε να τις χρησιμοποιείτε
+
+- Για εναλλαγή μεταξύ ισοδύναμων προβολών στο ίδιο σημείο: κατηγορίες, γλώσσες, εξάμηνα.
+- Όταν ο χρήστης χρειάζεται μόνο μία προβολή κάθε φορά και οι άλλες μένουν διαθέσιμες.
+
+### Πότε να μην τις χρησιμοποιείτε
+
+- Για στοίβαξη ανεξάρτητων ενοτήτων που διαβάζονται σειριακά: χρησιμοποιήστε ακορντεόν.
+- Για κύρια πλοήγηση μεταξύ σελίδων: χρησιμοποιήστε μενού πλοήγησης.
+- Για κρίσιμο περιεχόμενο που πρέπει να φαίνεται χωρίς κλικ.
+- Για μία μόνο προβολή: δείξτε την κατευθείαν, χωρίς καρτέλες.
+
+### Παραλλαγές
+
+Μία παραλλαγή: οριζόντιες καρτέλες με αυτόματη ενεργοποίηση (η εστίαση επιλέγει).
+Σε στενές οθόνες η λίστα κυλά οριζόντια.
+
+### Περιεχόμενο
+
+- Ετικέτες σύντομες, μία ή δύο λέξεις, παράλληλης δομής: «Πρόγραμμα · Εγγραφές · Υποτροφίες».
+- Κάθε πάνελ αυτοτελές, με τον δικό του τίτλο όταν είναι μεγάλο.
+- Τα `id` μοναδικά ανά σελίδα — δύο ομάδες δεν μοιράζονται ποτέ `id`.
+
+### Συμπεριφορά
+
+- Χωρίς JavaScript: τα κουμπιά δεν κάνουν τίποτα και όλα τα πάνελ μένουν ορατά — τίποτα δεν χάνεται.
+- Με JavaScript: αυτόματη ενεργοποίηση — βέλη, Home/End και κλικ επιλέγουν αμέσως.
+- Μόνο η ενεργή καρτέλα είναι στο Tab order (roving tabindex)· τα ανενεργά πάνελ κρύβονται με `hidden`.
+
+## Προσβασιμότητα
+
+- Ρόλοι `tablist`/`tab`/`tabpanel`, `aria-selected` και roving tabindex προστίθενται από το `tabs.js`
+  (WAI-ARIA tabs pattern, αυτόματη ενεργοποίηση).
+- Χειρισμός πληκτρολογίου:
+
+  | Πλήκτρο | Ενέργεια |
+  | --- | --- |
+  | `←` / `→` | Προηγούμενη / επόμενη καρτέλα (αντεστραμμένα σε RTL) |
+  | `Home` / `End` | Πρώτη / τελευταία καρτέλα |
+  | `Tab` | Έξοδος από τη λίστα προς το ενεργό πάνελ |
+
+- Η λίστα χρειάζεται `aria-label` (γράφεται στο markup, στα Ελληνικά ή Αγγλικά).
+- Τα πάνελ έχουν `tabindex="0"` ώστε να είναι προσβάσιμα με πληκτρολόγιο όταν το περιεχόμενο ξεχειλίζει.
+- Στη λειτουργία υψηλής αντίθεσης των Windows η γραμμή της λίστας και η ένδειξη ενεργής καρτέλας μένουν ορατές.
+- Δεν έχει γίνει ακόμη δοκιμή με αναγνώστες οθόνης (NVDA, VoiceOver).
+
+## Θέματα
+
+Tokens του στοιχείου, από το `packages/tokens/src/component/tabs.json`.
+
+<TokenTable prefix="tabs-" />
+
+## API
+
+### HTML / CSS
+
+`.uoa-tabs` (+ `[data-uoa-tabs]`)· παιδιά `.uoa-tabs__list` (`aria-label`), `.uoa-tabs__tab`
+(`id` + `aria-controls`), `.uoa-tabs__panel` (`id` + `aria-labelledby` + `tabindex="0"`).
+
+### JavaScript
+
+`tabs.js` (είσοδος: `@uoa/core/js`): `init(root)` συνδέει κάθε `[data-uoa-tabs]` που δεν έχει
+συνδεθεί· τρέχει αυτόματα στο φόρτωμα. Εξάγει και `select(group, tab, focus)` για προσαρμογείς.
+
+| Επιλογή / μέθοδος / γεγονός | Τύπος | Περιγραφή |
+| --- | --- | --- |
+| `data-uoa-tabs` | attribute | Ο περιέκτης που γίνεται ομάδα καρτελών |
+
+### Προσαρμογείς πλατφορμών
+
+Θα συμπληρωθεί όταν επιλεγεί ο πρώτος προσαρμογέας (ADR 0003).
+
+## Σχετικά
+
+- [Ακορντεόν](../accordion/): για στοίβαξη ανεξάρτητων ενοτήτων αντί για εναλλαγή προβολών.
+- [Ειδοποίηση](../alert/): για μηνύματα κατάστασης μέσα στη σελίδα.

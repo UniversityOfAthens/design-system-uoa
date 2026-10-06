@@ -1,0 +1,42 @@
+{
+  "tabs": {
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "indicator-width": {
+      "$type": "dimension",
+      "$value": "{border-width.thick}",
+      "$description": "Active tab underline. Painted with box-shadow so it never shifts layout"
+    },
+    "indicator": {
+      "$type": "color",
+      "$value": "{color.action.primary}"
+    },
+    "text": {
+      "$type": "color",
+      "$value": "{color.text.default}"
+    },
+    "active-text": {
+      "$type": "color",
+      "$value": "{color.action.primary}"
+    },
+    "hover": {
+      "$type": "color",
+      "$value": "{color.surface.subtle}",
+      "$description": "Tab hover background"
+    },
+    "padding-block": {
+      "$type": "dimension",
+      "$value": "{space.2}"
+    },
+    "padding-inline": {
+      "$type": "dimension",
+      "$value": "{space.3}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.1}"
+    }
+  }
+}

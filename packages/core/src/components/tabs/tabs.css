@@ -1,0 +1,75 @@
+/* Tabs — horizontal tablist following the WAI-ARIA tabs pattern.
+   Without JS: the buttons are inert and every panel stays visible, so no content
+   is lost. tabs.js adds the roles, roving tabindex, arrow-key support and
+   automatic activation. The list scrolls horizontally on narrow screens. */
+
+.uoa-tabs__list {
+  display: flex;
+  gap: var(--uoa-tabs-gap);
+  overflow-x: auto;
+  border-bottom: var(--uoa-border-width-thin) solid var(--uoa-tabs-border);
+}
+
+.uoa-tabs__tab {
+  flex: none;
+  padding-block: var(--uoa-tabs-padding-block);
+  padding-inline: var(--uoa-tabs-padding-inline);
+  font-family: var(--uoa-font-family-body);
+  font-size: var(--uoa-font-size-body-md);
+  line-height: var(--uoa-font-line-height-body);
+  color: var(--uoa-tabs-text);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.uoa-tabs__tab:hover {
+  background-color: var(--uoa-tabs-hover);
+}
+
+.uoa-tabs__tab:focus-visible {
+  outline: var(--uoa-focus-ring-width) solid var(--uoa-color-focus-ring);
+  /* Negative so the ring survives the list's scroll container. */
+  outline-offset: calc(-1 * var(--uoa-focus-ring-offset));
+}
+
+.uoa-tabs__tab[aria-selected="true"] {
+  color: var(--uoa-tabs-active-text);
+  box-shadow: inset 0 calc(-1 * var(--uoa-tabs-indicator-width)) 0 0 var(--uoa-tabs-indicator);
+}
+
+.uoa-tabs__panel {
+  padding-block: var(--uoa-space-4) 0;
+  color: var(--uoa-tabs-text);
+}
+
+.uoa-tabs__panel > * {
+  margin-block: 0;
+}
+
+.uoa-tabs__panel > * + * {
+  margin-block-start: var(--uoa-space-2);
+}
+
+/* `hidden` is set by tabs.js on inactive panels; enforce it even if a site
+   reset drops the UA rule. */
+.uoa-tabs__panel[hidden] {
+  display: none;
+}
+
+.uoa-tabs__panel:focus-visible {
+  outline: var(--uoa-focus-ring-width) solid var(--uoa-color-focus-ring);
+  outline-offset: var(--uoa-focus-ring-offset);
+}
+
+/* Windows High Contrast: keep the list rule and the active indicator. */
+@media (forced-colors: active) {
+  .uoa-tabs__list {
+    border-color: CanvasText;
+  }
+
+  .uoa-tabs__tab[aria-selected="true"] {
+    box-shadow: inset 0 calc(-1 * var(--uoa-tabs-indicator-width)) 0 0 Highlight;
+  }
+}

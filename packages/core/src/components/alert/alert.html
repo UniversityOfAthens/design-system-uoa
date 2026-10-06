@@ -38,3 +38,15 @@
     </ul>
   </div>
 </div>
+
+<!-- Dismissible: needs alert.js (auto-inits on [data-uoa-alert-dismissible]).
+     Without JS the message stays readable and the button does nothing. -->
+<div class="uoa-alert uoa-alert--warning" data-uoa-alert-dismissible>
+  <svg class="uoa-alert__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+  <div class="uoa-alert__content">
+    <p>Η βιβλιοθήκη θα είναι κλειστή το Σάββατο λόγω συντήρησης.</p>
+  </div>
+  <button class="uoa-alert__close" type="button" data-uoa-alert-close aria-label="Απόρριψη ειδοποίησης">
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg>
+  </button>
+</div>

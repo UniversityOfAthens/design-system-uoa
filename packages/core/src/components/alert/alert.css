@@ -71,6 +71,40 @@
   font-weight: var(--uoa-font-weight-body-strong);
 }
 
+/* Dismissible: close button pushed to the inline-end. Without JS the button is
+   inert but the message stays fully readable. */
+.uoa-alert__close {
+  flex: none;
+  align-self: flex-start;
+  margin-inline-start: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--uoa-space-8);
+  height: var(--uoa-space-8);
+  padding: 0;
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+  border-radius: var(--uoa-radius-md);
+  cursor: pointer;
+}
+
+.uoa-alert__close:hover {
+  opacity: 0.7;
+}
+
+.uoa-alert__close:focus-visible {
+  outline: var(--uoa-focus-ring-width) solid var(--uoa-color-focus-ring);
+  outline-offset: var(--uoa-focus-ring-offset);
+}
+
+.uoa-alert__close svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
 /* Windows High Contrast: backgrounds disappear, so outline the whole message. */
 @media (forced-colors: active) {
   .uoa-alert {

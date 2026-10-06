@@ -8,7 +8,8 @@ Status: `beta` (see [lifecycle](../../../../../docs/conventions.md#component-lif
   (English: `apps/docs/src/content/docs/en/components/alert.mdx`), or run `bun run dev` and open
   *Στοιχεία → Ειδοποίηση*.
 - **Reference markup**: [`alert.html`](alert.html) — adapters must output exactly this.
-- **Styles**: [`alert.css`](alert.css) · **Tokens**: `packages/tokens/src/component/alert.json`
+- **Styles**: [`alert.css`](alert.css) · **Behaviour**: [`alert.js`](alert.js) (dismissible only, auto-inits) · **Tokens**: `packages/tokens/src/component/alert.json`
 
 Classes: `.uoa-alert` + `--success | --warning | --danger` (info is the default); children
-`.uoa-alert__icon`, `.uoa-alert__content`, `.uoa-alert__title`. No JavaScript.
+`.uoa-alert__icon`, `.uoa-alert__content`, `.uoa-alert__title`, `.uoa-alert__close`.
+Dismissible adds `data-uoa-alert-dismissible` on the alert and `data-uoa-alert-close` on the button.

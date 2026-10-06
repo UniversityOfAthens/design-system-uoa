@@ -1,0 +1,114 @@
+---
+title: Badge
+description: A small status label — new programme, deadline, approval, cancellation.
+sidebar:
+  badge:
+    text: beta
+    variant: note
+---
+
+import Example from '../../../../components/Example.astro';
+import TokenTable from '../../../../components/TokenTable.astro';
+
+Use it for short status labels next to headings, cards and lists: new programme, open enrolment,
+cancelled event.
+
+<p class="uoa-meta">
+  <span class="uoa-pill" data-level="beta">beta</span>
+  <a href="https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/badge">Source</a>
+</p>
+
+## Examples
+
+<Example
+  title="Variants"
+  code={`
+    <div class="uoa-stack" style="--uoa-stack-gap: var(--uoa-space-2); flex-direction: row; flex-wrap: wrap">
+      <span class="uoa-badge">New programme</span>
+      <span class="uoa-badge uoa-badge--info">Deadline: 12 Oct</span>
+      <span class="uoa-badge uoa-badge--success">Approved</span>
+      <span class="uoa-badge uoa-badge--warning">Few places left</span>
+      <span class="uoa-badge uoa-badge--danger">Cancelled</span>
+    </div>
+  `}
+/>
+
+<Example
+  title="Next to a heading"
+  code={`
+    <h2 style="margin: 0">MSc in Digital Humanities <span class="uoa-badge uoa-badge--success">Enrolment open</span></h2>
+  `}
+/>
+
+## Structure
+
+1. **Container**: `<span class="uoa-badge">` with short text — one or two words.
+2. **Variant**: `--info | --success | --warning | --danger`; without a class it is neutral.
+
+## Guidelines
+
+### When to use
+
+- For status next to a heading, card or list row: new, open, cancelled.
+- For deadlines and numbers that must stand out at a glance.
+- Inside filters and lists with many entries.
+
+### When not to use
+
+- For messages that need a sentence: use an alert.
+- For actions: use a button or link.
+- For more than two or three badges together: they stop standing out.
+
+### Variants
+
+| Variant | Class | Use for |
+| --- | --- | --- |
+| Neutral | `.uoa-badge` | General highlight, the default |
+| Info | `.uoa-badge--info` | Neutral information with a date or number |
+| Success | `.uoa-badge--success` | Something open, approved, available |
+| Warning | `.uoa-badge--warning` | Something expiring or running out |
+| Danger | `.uoa-badge--danger` | Something cancelled or failed |
+
+### Content
+
+- One or two words: "New", "Enrolment open", not sentences.
+- The words state the status on their own — colour alone is not enough.
+
+### Behaviour
+
+- Static: no JavaScript, no interaction. It is not a button — don't wrap actions in a badge.
+- Never wraps onto two lines (`white-space: nowrap`).
+
+## Accessibility
+
+- A badge is plain text in the flow: read with the page, no roles.
+- Don't rely on colour alone: the words must say whether it's an error, a warning or success.
+- Text colours meet at least 4.5:1 on their backgrounds (same pairs as the alert).
+- In Windows High Contrast mode the `currentColor` border keeps the shape, since backgrounds are removed.
+- Screen-reader testing (NVDA, VoiceOver) hasn't been done yet.
+
+## Theming
+
+Component tokens, from `packages/tokens/src/component/badge.json`. The variant colours point to the
+semantic feedback colours.
+
+<TokenTable prefix="badge-" />
+
+## API
+
+### HTML / CSS
+
+`.uoa-badge` + optional `--info | --success | --warning | --danger`.
+
+### JavaScript
+
+None.
+
+### Platform adapters
+
+Filled in once the first platform adapter is chosen (ADR 0003).
+
+## Related
+
+- [Alert](../alert/): for status messages with a sentence.
+- [Button](../button/): for actions.

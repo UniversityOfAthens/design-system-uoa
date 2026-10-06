@@ -1,0 +1,185 @@
+---
+title: Card
+description: A short teaser for one item — news, event, person, course.
+sidebar:
+  badge:
+    text: draft
+    variant: caution
+---
+
+import Example from '../../../../components/Example.astro';
+import TokenTable from '../../../../components/TokenTable.astro';
+
+Use it for lists of similar items: news, events, staff, courses. Each card previews one item
+and links to its page.
+
+<p class="uoa-meta">
+  <span class="uoa-pill" data-level="ui">draft</span>
+  <a href="https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/card">Source</a>
+</p>
+
+## Examples
+
+<Example
+  title="News"
+  code={`
+    <article class="uoa-card">
+      <p class="uoa-card__media">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%23e2e8f0'/%3E%3C/svg%3E" alt="Students in the auditorium at the opening ceremony" width="800" height="450">
+      </p>
+      <div class="uoa-card__body">
+        <p class="uoa-card__eyebrow">News</p>
+        <h3 class="uoa-card__title"><a href="#announcement">Spring semester enrolment opens</a></h3>
+        <p class="uoa-card__meta"><time datetime="2026-02-09">9 February 2026</time></p>
+        <p class="uoa-card__text">Enrol online through the student portal by 27 February.</p>
+      </div>
+    </article>
+  `}
+/>
+
+<Example
+  title="Event"
+  code={`
+    <article class="uoa-card">
+      <p class="uoa-card__media">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%23e2e8f0'/%3E%3C/svg%3E" alt="The central library at night" width="800" height="450">
+      </p>
+      <div class="uoa-card__body">
+        <p class="uoa-card__eyebrow">Event</p>
+        <h3 class="uoa-card__title"><a href="#event">Researchers' night: open labs</a></h3>
+        <p class="uoa-card__meta"><time datetime="2026-03-13T19:00">13 March, 19:00</time><span>Main building, Great Hall</span></p>
+        <p class="uoa-card__text">Researchers present their work with hands-on experiments for all ages. Free entry.</p>
+      </div>
+    </article>
+  `}
+/>
+
+<Example
+  title="Person (horizontal)"
+  code={`
+    <article class="uoa-card uoa-card--horizontal">
+      <p class="uoa-card__media">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23e2e8f0'/%3E%3C/svg%3E" alt="Portrait of the lecturer" width="400" height="400">
+      </p>
+      <div class="uoa-card__body">
+        <h3 class="uoa-card__title"><a href="#profile">Maria Papadopoulou</a></h3>
+        <p class="uoa-card__meta"><span>Professor of Linguistics</span><span>Department of Philology</span></p>
+        <p class="uoa-card__footer"><a href="mailto:mpapadopoulou@uoa.gr">mpapadopoulou@uoa.gr</a></p>
+      </div>
+    </article>
+  `}
+/>
+
+<Example
+  title="Course (no image)"
+  code={`
+    <article class="uoa-card">
+      <div class="uoa-card__body">
+        <p class="uoa-card__eyebrow">Undergraduate course</p>
+        <h3 class="uoa-card__title"><a href="#course">Introduction to Linguistics</a></h3>
+        <p class="uoa-card__meta"><span>LIN 101</span><span>6 ECTS</span><span class="uoa-badge uoa-badge--success">Spring semester</span></p>
+        <p class="uoa-card__text">Basic concepts of phonetics, morphology and syntax, with examples from Greek.</p>
+        <p class="uoa-card__footer"><a href="#syllabus">Course syllabus (PDF)</a></p>
+      </div>
+    </article>
+  `}
+/>
+
+<Example
+  title="Static (no link)"
+  code={`
+    <article class="uoa-card">
+      <div class="uoa-card__body">
+        <p class="uoa-card__eyebrow">Notice</p>
+        <h3 class="uoa-card__title">Network maintenance this weekend</h3>
+        <p class="uoa-card__text">On Saturday 14 March, 08:00–12:00, there will be brief interruptions to VPN access.</p>
+      </div>
+    </article>
+  `}
+/>
+
+## Structure
+
+1. **Container**: `<article class="uoa-card">` — a self-contained item that could stand on its own.
+2. **Image** (optional): `<p class="uoa-card__media">` with one `<img>` with `alt` and dimensions.
+3. **Body**: `<div class="uoa-card__body">` with blocks in order:
+   - `<p class="uoa-card__eyebrow">` — the category: "News", "Event", "Undergraduate course".
+   - `<h3 class="uoa-card__title">` — the title, linking to the item's page. The heading level
+     follows the page outline; the class carries the style.
+   - `<p class="uoa-card__meta">` — date (`<time datetime="…">`), venue, codes, badges.
+   - `<p class="uoa-card__text">` — one or two sentences of summary.
+   - `<p class="uoa-card__footer">` — secondary links (email, PDF), with a **different**
+     destination from the title.
+4. **Horizontal**: `uoa-card--horizontal` for people — fixed-width photo at the side.
+
+## Guidelines
+
+### When to use
+
+- For lists of similar items: news, events, staff, courses.
+- When each item needs an image, a date or a summary before the click.
+- Inside a grid: footers pin themselves to the bottom.
+
+### When not to use
+
+- For a single status message: use an alert.
+- For a plain list of links with no summary: a link list is enough.
+- For presenting a single item: write a normal article, not a card.
+
+### Variants
+
+| Variant | Structure | Use for |
+| --- | --- | --- |
+| News / event | image + linked title + `<time>` | Announcements, events with date and venue |
+| Person | `--horizontal` + photo + email in the footer | Academic and administrative staff |
+| Course | no image + code/ECTS + badge | Course catalogue |
+| Static | title without a link | Notices that lead nowhere |
+
+### Content
+
+- Short titles, noun first: "Spring semester enrolment…", not "Click here…".
+- One or two sentences of summary — the card previews, it doesn't narrate.
+- Dates always with `<time datetime="…">` in ISO format, for machines and screen readers.
+- `alt` text that says what the image shows; if the image is decorative, `alt=""`.
+
+### Behaviour
+
+- Static: no JavaScript. When the title is a link, the whole card clicks through to it.
+- In a row of equal-height cards, the footer stays at the bottom.
+- At 320px the horizontal card keeps a narrower side photo — no horizontal scrolling.
+
+## Accessibility
+
+- A card is an `<article>` with a heading and plain links — no roles, no ARIA.
+- The stretched title link is read once; there are no duplicate links to the same destination.
+- The focus ring shows on the title; footer links stay clickable above it.
+- Dates meet at least 4.5:1 (muted grey on white).
+- In Windows High Contrast mode the `CanvasText` border keeps the shape, since backgrounds and shadows are removed.
+- Screen-reader testing (NVDA, VoiceOver) hasn't been done yet.
+
+## Theming
+
+Component tokens, from `packages/tokens/src/component/card.json`.
+
+<TokenTable prefix="card-" />
+
+## API
+
+### HTML / CSS
+
+`.uoa-card` + optional `--horizontal`; children `__media`, `__body`, `__eyebrow`, `__title`,
+`__meta`, `__text`, `__footer`.
+
+### JavaScript
+
+None.
+
+### Platform adapters
+
+Filled in once the first platform adapter is chosen (ADR 0003).
+
+## Related
+
+- [Badge](../badge/): for status labels inside the card's meta row.
+- [Alert](../alert/): for status messages with a sentence.
+- [Button](../button/): for actions.

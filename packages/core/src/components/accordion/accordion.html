@@ -1,0 +1,67 @@
+<!-- Reference markup for Accordion. Adapters (Twig, PHP, React) must output exactly this.
+     Native <details>/<summary>: keyboard (Enter/Space) and no-JS toggle are built in.
+     The chevron is decorative (aria-hidden); the title carries the meaning. -->
+
+<!-- Multiple open (default). No JavaScript needed. -->
+<div class="uoa-accordion" data-uoa-accordion>
+  <details class="uoa-accordion__item" open>
+    <summary class="uoa-accordion__trigger">
+      <span class="uoa-accordion__title">Πότε ανοίγουν οι εγγραφές;</span>
+      <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+    </summary>
+    <div class="uoa-accordion__panel">
+      <div class="uoa-accordion__content">
+        <p>Οι εγγραφές για το χειμερινό εξάμηνο ανοίγουν στις 5 Οκτωβρίου και γίνονται ηλεκτρονικά.</p>
+      </div>
+    </div>
+  </details>
+  <details class="uoa-accordion__item">
+    <summary class="uoa-accordion__trigger">
+      <span class="uoa-accordion__title">Πώς δηλώνω μαθήματα;</span>
+      <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+    </summary>
+    <div class="uoa-accordion__panel">
+      <div class="uoa-accordion__content">
+        <p>Από τη φοιτητική πύλη, <em>Δηλώσεις → Δήλωση μαθημάτων</em>, έως την καταληκτική ημερομηνία.</p>
+      </div>
+    </div>
+  </details>
+  <details class="uoa-accordion__item">
+    <summary class="uoa-accordion__trigger">
+      <span class="uoa-accordion__title">Πού βρίσκω το πρόγραμμα σπουδών;</span>
+      <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+    </summary>
+    <div class="uoa-accordion__panel">
+      <div class="uoa-accordion__content">
+        <p>Στη σελίδα <a href="/studies">Σπουδές</a> του Τμήματος, σε PDF και HTML.</p>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- Single open: needs accordion.js (auto-inits on [data-uoa-accordion="single"]).
+     Without JS it degrades to multiple open — all content stays reachable. -->
+<div class="uoa-accordion" data-uoa-accordion="single">
+  <details class="uoa-accordion__item" open>
+    <summary class="uoa-accordion__trigger">
+      <span class="uoa-accordion__title">Πτυχιακή εργασία</span>
+      <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+    </summary>
+    <div class="uoa-accordion__panel">
+      <div class="uoa-accordion__content">
+        <p>Δηλώνεται στο 7ο εξάμηνο με αίτηση προς τη Γραμματεία.</p>
+      </div>
+    </div>
+  </details>
+  <details class="uoa-accordion__item">
+    <summary class="uoa-accordion__trigger">
+      <span class="uoa-accordion__title">Πρακτική άσκηση</span>
+      <svg class="uoa-accordion__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z"/></svg>
+    </summary>
+    <div class="uoa-accordion__panel">
+      <div class="uoa-accordion__content">
+        <p>Διαρκεί δύο μήνες και μοριοδοτείται με 5 ECTS.</p>
+      </div>
+    </div>
+  </details>
+</div>
