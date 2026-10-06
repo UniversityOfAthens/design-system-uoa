@@ -1,0 +1,19 @@
+{
+  "icon": {
+    "size-sm": {
+      "$type": "dimension",
+      "$value": "1em",
+      "$description": "Same as the surrounding text. Inline in body copy and links"
+    },
+    "size-md": {
+      "$type": "dimension",
+      "$value": "1.25em",
+      "$description": "Default. Next to a label in buttons, tabs and form fields"
+    },
+    "size-lg": {
+      "$type": "dimension",
+      "$value": "1.5em",
+      "$description": "Standalone or icon-only controls"
+    }
+  }
+}

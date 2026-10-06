@@ -1,0 +1,15 @@
+---
+// One group of @uoa/icons as a grid: the icon and its name (the Iconify / file name).
+import icons from '@uoa/icons/icons.json';
+const { group } = Astro.props as { group: string };
+const list = Object.entries(icons as Record<string, { group: string; body: string }>)
+  .filter(([, icon]) => icon.group === group);
+---
+<ul class="uoa-icons not-content">
+  {list.map(([name, { body }]) => (
+    <li class="uoa-icons__item">
+      <svg class="uoa-icon uoa-icon--lg" aria-hidden="true" focusable="false" viewBox="0 0 24 24" set:html={body} />
+      <code>{name}</code>
+    </li>
+  ))}
+</ul>

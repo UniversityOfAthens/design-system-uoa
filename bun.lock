@@ -11,6 +11,7 @@
         "@astrojs/starlight": "^0.42",
         "@pagefind/default-ui": "^1.3.0",
         "@uoa/core": "workspace:*",
+        "@uoa/icons": "workspace:*",
         "@uoa/tokens": "workspace:*",
         "astro": "^7",
       },
@@ -24,6 +25,13 @@
       "version": "0.0.0",
       "dependencies": {
         "@uoa/tokens": "workspace:*",
+      },
+    },
+    "packages/icons": {
+      "name": "@uoa/icons",
+      "version": "0.0.0",
+      "devDependencies": {
+        "@iconify-json/material-symbols": "1.2.94",
       },
     },
     "packages/tokens": {
@@ -180,6 +188,10 @@
     "@expressive-code/plugin-shiki": ["@expressive-code/plugin-shiki@0.44.2", "", { "dependencies": { "@expressive-code/core": "^0.44.2", "shiki": "^4.0.2" } }, "sha512-ebWIvCDzXvjyD8rH6T6DfytYJw1GoArLR4nusIAE4VxXrCQf3d+owytiv010KU/dUg+SRLZskDn0N+HaFXeuSg=="],
 
     "@expressive-code/plugin-text-markers": ["@expressive-code/plugin-text-markers@0.44.2", "", { "dependencies": { "@expressive-code/core": "^0.44.2" } }, "sha512-SNI7EgUSiADqbqUzzMbj1ZeC/r2pa5eg3KyFOGAd3a7EsIA4qzjXQLp+ODWQtHVDKFCdGs4J3ovSJUqvKIK96g=="],
+
+    "@iconify-json/material-symbols": ["@iconify-json/material-symbols@1.2.94", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-9fcCVDfSF9tUy7j9BJmyIAeHJNsxv92U1sGgF0Lm9asu2hzsU8dmxeD5ckOApnC28Ira/N+5Nms/0h38P7c57Q=="],
+
+    "@iconify/types": ["@iconify/types@2.0.0", "", {}, "sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg=="],
 
     "@img/colour": ["@img/colour@1.1.0", "", {}, "sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ=="],
 
@@ -366,6 +378,8 @@
     "@uoa/core": ["@uoa/core@workspace:packages/core"],
 
     "@uoa/docs": ["@uoa/docs@workspace:apps/docs"],
+
+    "@uoa/icons": ["@uoa/icons@workspace:packages/icons"],
 
     "@uoa/tokens": ["@uoa/tokens@workspace:packages/tokens"],
 

@@ -33,6 +33,7 @@ commit them with the change. CI (`.github/workflows/ci.yml`) runs both on every 
 | Folder | What it is | Who uses it |
 | --- | --- | --- |
 | `packages/tokens` | Design tokens as DTCG JSON, built to CSS variables, SCSS and JS | Published; every site and `core` |
+| `packages/icons` | Material Symbols subset as SVG files, a sprite and JSON | Published; sites, adapters and the docs site |
 | `packages/core` | The CSS (reset, base, layout, components) and reference HTML | Published; every site |
 | `apps/docs` | The documentation site (Astro + Starlight) | Not published as a package; deployed to GitHub Pages |
 | `docs/` | Planning: architecture, conventions, roadmap, ADRs, research | Maintainers |

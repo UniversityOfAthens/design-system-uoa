@@ -1,0 +1,28 @@
+/* Icon — an inline SVG from @uoa/icons (Material Symbols). Sized in em, so it follows the
+   font size of its context; coloured with currentColor, so it follows the text colour.
+   Components with their own icon part (.uoa-button__icon, .uoa-alert__icon) size it themselves. */
+
+.uoa-icon {
+  flex: none;
+  inline-size: var(--uoa-icon-size-md);
+  block-size: var(--uoa-icon-size-md);
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.uoa-icon--sm {
+  inline-size: var(--uoa-icon-size-sm);
+  block-size: var(--uoa-icon-size-sm);
+  /* Sit on the text's x-height instead of the line box's middle. */
+  vertical-align: -0.125em;
+}
+
+.uoa-icon--lg {
+  inline-size: var(--uoa-icon-size-lg);
+  block-size: var(--uoa-icon-size-lg);
+}
+
+/* Directional icons point the other way in right-to-left text. */
+[dir="rtl"] .uoa-icon--directional {
+  transform: scaleX(-1);
+}

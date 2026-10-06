@@ -1,0 +1,19 @@
+{
+  "name": "@uoa/icons",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "files": ["dist", "LICENSE", "README.md"],
+  "exports": {
+    "./sprite.svg": "./dist/sprite.svg",
+    "./icons.json": "./dist/icons.json",
+    "./svg/*": "./dist/svg/*"
+  },
+  "scripts": {
+    "build": "node build/build.js"
+  },
+  "devDependencies": {
+    "@iconify-json/material-symbols": "1.2.94"
+  }
+}

@@ -16,6 +16,7 @@
     "@astrojs/starlight": "^0.42",
     "@pagefind/default-ui": "^1.3.0",
     "@uoa/core": "workspace:*",
+    "@uoa/icons": "workspace:*",
     "@uoa/tokens": "workspace:*",
     "astro": "^7"
   },

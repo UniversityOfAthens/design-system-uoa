@@ -6,7 +6,7 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "cd packages/tokens && bun run build && cd ../core && bun run build",
+    "build": "cd packages/tokens && bun run build && cd ../icons && bun run build && cd ../core && bun run build",
     "dev": "bun run build && cd apps/docs && bun run dev",
     "docs:build": "bun run build && cd apps/docs && bun run build",
     "test:a11y": "bun run docs:build && cd apps/docs && bun run test:a11y",

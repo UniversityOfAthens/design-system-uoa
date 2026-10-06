@@ -29,15 +29,16 @@
 - [x] Tokens package: colour, typography, spacing, layout, radius, shadow, motion, z-index
 - [ ] Style Dictionary build → CSS, SCSS, JS, WP theme.json — CSS/SCSS/JS done, theme.json missing
 - [x] Base CSS: reset, typography, links, focus styles, layout grid/container, utilities
-- [ ] Icons package (SVG sprite) + usage rules
+- [x] Icons package (SVG sprite) + usage rules — `@uoa/icons`, Material Symbols (Apache-2.0); `.uoa-icon` in core
 - [ ] Foundation doc pages: colour, typography, spacing, layout, iconography, accessibility
-  — partial: colour, typography, spacing & layout, shape & motion in `apps/docs`; iconography and accessibility missing
+  — partial: colour, typography, spacing & layout, shape & motion, iconography in `apps/docs`; accessibility missing
 
 ## Phase 3 — Core components (MVP for the first platform)
 
 Atoms / basic
 - [x] Button / link button (`beta` — for stable: screen-reader pass, design review, adapter)
-- [ ] Link, Icon
+- [ ] Link
+- [x] Icon (`draft` — `.uoa-icon` + sizes; Alert, Accordion and Button use the set)
 - [x] Badge / Tag (`beta` — for stable: screen-reader pass, design review, adapter)
 - [ ] Form elements: text input, textarea, select, checkbox, radio, switch, fieldset, error message
 - [x] Alert / status message (`beta` — for stable: screen-reader pass, design review, adapter; dismissible via `alert.js`)
