@@ -5,6 +5,7 @@ import StyleDictionary from 'style-dictionary';
 const BASE = ['src/primitive/**/*.json', 'src/semantic/**/*.json', 'src/component/**/*.json'];
 const CSS_DIR = 'dist/css/';
 const DOCS_DIR = 'dist/docs/';
+const WP_DIR = 'dist/wp/';
 
 // Flat token list for the docs site: CSS name, resolved value, raw reference, tier.
 StyleDictionary.registerFormat({
@@ -18,6 +19,99 @@ StyleDictionary.registerFormat({
     description: token.$description,
     tier: token.filePath.split('/')[1],
   })), null, 2),
+});
+
+// WordPress theme.json v3 (ADR 0003). Resolved values only — the block editor rejects
+// var() in palette colours — and no transforms, so dimensions stay as authored.
+// The list of what the editor gets is deliberate: semantics, not the primitive ramps.
+const WP_COLORS = [
+  ['brand', 'primary', 'color.brand.primary'],
+  ['brand', 'primary-hover', 'color.brand.primary-hover'],
+  ['brand', 'link', 'color.brand.link'],
+  ['brand', 'accent', 'color.brand.accent'],
+  ['text', 'default', 'color.text.default'],
+  ['text', 'muted', 'color.text.muted'],
+  ['text', 'heading', 'color.text.heading'],
+  ['text', 'link', 'color.text.link'],
+  ['text', 'link-hover', 'color.text.link-hover'],
+  ['text', 'inverse', 'color.text.inverse'],
+  ['surface', 'default', 'color.surface.default'],
+  ['surface', 'subtle', 'color.surface.subtle'],
+  ['surface', 'muted', 'color.surface.muted'],
+  ['surface', 'brand', 'color.surface.brand'],
+  ['border', 'subtle', 'color.border.subtle'],
+  ['border', 'default', 'color.border.default'],
+  ['border', 'strong', 'color.border.strong'],
+  ['action', 'primary', 'color.action.primary'],
+  ['action', 'primary-hover', 'color.action.primary-hover'],
+  ['action', 'primary-text', 'color.action.primary-text'],
+  ['focus', 'ring', 'color.focus.ring'],
+  ['feedback', 'info-text', 'color.feedback.info-text'],
+  ['feedback', 'info-surface', 'color.feedback.info-surface'],
+  ['feedback', 'success-text', 'color.feedback.success-text'],
+  ['feedback', 'success-surface', 'color.feedback.success-surface'],
+  ['feedback', 'warning-text', 'color.feedback.warning-text'],
+  ['feedback', 'warning-surface', 'color.feedback.warning-surface'],
+  ['feedback', 'danger-text', 'color.feedback.danger-text'],
+  ['feedback', 'danger-surface', 'color.feedback.danger-surface'],
+];
+
+const WP_SPACING = [
+  ['0', 'space.0'], ['1', 'space.1'], ['2', 'space.2'], ['3', 'space.3'], ['4', 'space.4'],
+  ['5', 'space.5'], ['6', 'space.6'], ['8', 'space.8'], ['10', 'space.10'], ['12', 'space.12'],
+  ['16', 'space.16'], ['20', 'space.20'], ['24', 'space.24'],
+];
+
+const WP_FONT_SIZES = [
+  ['100', 'font.size.100'], ['200', 'font.size.200'], ['300', 'font.size.300'],
+  ['400', 'font.size.400'], ['500', 'font.size.500'], ['600', 'font.size.600'],
+  ['700', 'font.size.700'], ['800', 'font.size.800'], ['900', 'font.size.900'],
+];
+
+const WP_FONT_FAMILIES = [
+  ['body', 'font.family.body'], ['heading', 'font.family.heading'],
+  ['display', 'font.family.display'], ['code', 'font.family.code'],
+];
+
+StyleDictionary.registerFormat({
+  name: 'uoa/wp-theme-json',
+  format: ({ dictionary }) => {
+    const at = (path) => {
+      const token = dictionary.allTokens.find((t) => t.path.join('.') === path);
+      if (!token) throw new Error(`theme.json: no token at ${path}`);
+      return token.$value;
+    };
+    return JSON.stringify({
+      $schema: 'https://schemas.wp.org/trunk/theme.json',
+      version: 3,
+      settings: {
+        // Matches the core's container tokens so the editor's wide/full width match the front end.
+        layout: { contentSize: at('container.narrow'), wideSize: at('container.max') },
+        color: {
+          custom: false,
+          customDuotone: false,
+          palette: WP_COLORS.map(([group, step, path]) => ({
+            slug: `${group}-${step}`, name: `${group}-${step}`, color: at(path),
+          })),
+        },
+        typography: {
+          fontSizes: WP_FONT_SIZES.map(([slug, path]) => ({ slug, name: slug, size: at(path) })),
+          fontFamilies: WP_FONT_FAMILIES.map(([slug, path]) => ({
+            slug, name: slug, fontFamily: at(path).join(', '),
+          })),
+        },
+        spacing: {
+          units: ['px', 'rem', '%', 'vw'],
+          spacingScale: {
+            // 0 = the sizes below are used as authored, not multiplied by a ratio.
+            steps: 0,
+            spacingSizes: WP_SPACING.map(([slug, path]) => ({ slug, name: slug, size: at(path) })),
+          },
+        },
+        border: { color: true, radius: true, style: true, width: true },
+      },
+    }, null, 2);
+  },
 });
 
 await rm('dist', { recursive: true, force: true });
@@ -57,6 +151,11 @@ await new StyleDictionary({
       prefix: 'uoa',
       buildPath: DOCS_DIR,
       files: [{ destination: 'base.json', format: 'uoa/docs-json' }],
+    },
+    // theme.json for the WordPress block theme (ADR 0003). No transformGroup on purpose.
+    wp: {
+      buildPath: WP_DIR,
+      files: [{ destination: 'theme.json', format: 'uoa/wp-theme-json' }],
     },
   },
 }).buildAllPlatforms();
