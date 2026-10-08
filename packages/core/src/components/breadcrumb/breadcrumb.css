@@ -27,12 +27,21 @@
   min-width: 0;
 }
 
+/* No underline until hover or focus: each crumb is a separate list item, so the
+   link colour (and the cursor) is enough to mark it, and the trail stays quiet.
+   The underline comes back for keyboard users, who need the affordance. */
 .uoa-breadcrumb__link {
   color: var(--uoa-breadcrumb-link);
+  text-decoration: none;
 }
 
 .uoa-breadcrumb__link:hover {
   color: var(--uoa-breadcrumb-link-hover);
+  text-decoration: underline;
+}
+
+.uoa-breadcrumb__link:focus-visible {
+  text-decoration: underline;
 }
 
 /* The current page is plain text, so it can never look like a link by accident. */

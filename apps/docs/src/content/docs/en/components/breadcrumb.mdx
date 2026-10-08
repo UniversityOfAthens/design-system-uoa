@@ -136,7 +136,8 @@ Shows where you are in the site's hierarchy and takes you one level up, with no 
 - The list needs no ARIA: the order of the `<li>` elements already expresses the hierarchy.
 - The separators are `aria-hidden="true"`: "Home, Studies, Department" is read without symbols in between.
 - The `aria-current="page"` sits on the last element, which is text and not a link — screen readers announce it.
-- Links keep their underline and their own colour (`--uoa-breadcrumb-link`), so they don't rely on colour alone.
+- Links carry no underline; it appears on hover and on keyboard focus, so the trail stays quiet.
+- Every crumb is its own list item, so links are told apart from text by their colour (`--uoa-breadcrumb-link`) rather than by the underline alone.
 - The "›" chevron is decorative and needs no alternative text.
 - Screen-reader testing (NVDA, VoiceOver) hasn't been done yet.
 
