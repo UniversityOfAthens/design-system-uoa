@@ -1,0 +1,170 @@
+---
+title: Breadcrumb
+description: The trail of ancestor pages above the current one — Home › Studies › Department.
+sidebar:
+  breadcrumb:
+    text: draft
+    variant: note
+---
+
+import Example from '../../../../components/Example.astro';
+import TokenTable from '../../../../components/TokenTable.astro';
+
+Shows where you are in the site's hierarchy and takes you one level up, with no JavaScript: a
+`<nav>` wrapping an `<ol>`, where the order of the items carries the meaning.
+
+<p class="uoa-meta">
+  <span class="uoa-pill" data-level="draft">draft</span>
+  <a href="https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/breadcrumb">Source</a>
+</p>
+
+## Examples
+
+<Example
+  title="Standard trail"
+  code={`
+    <nav class="uoa-breadcrumb" aria-label="Breadcrumb">
+      <ol class="uoa-breadcrumb__list">
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/">Home</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/studies">Studies</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/studies/undergraduate">Undergraduate studies</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <span class="uoa-breadcrumb__current" aria-current="page">Department of Philology</span>
+        </li>
+      </ol>
+    </nav>
+  `}
+/>
+
+<Example
+  title="A single level"
+  code={`
+    <nav class="uoa-breadcrumb" aria-label="Breadcrumb">
+      <ol class="uoa-breadcrumb__list">
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/">Home</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <span class="uoa-breadcrumb__current" aria-current="page">Events</span>
+        </li>
+      </ol>
+    </nav>
+  `}
+/>
+
+<Example
+  title="Long trail: wraps, never truncates"
+  code={`
+    <nav class="uoa-breadcrumb" aria-label="Breadcrumb">
+      <ol class="uoa-breadcrumb__list">
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/">Home</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/research">Research</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/research/labs">Labs</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/research/labs/nlg">Neuro linguistics lab</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/research/labs/nlg/publications">Publications</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <span class="uoa-breadcrumb__current" aria-current="page">Computational processing of Greek natural language</span>
+        </li>
+      </ol>
+    </nav>
+  `}
+/>
+
+## Structure
+
+1. **Container**: `<nav class="uoa-breadcrumb">` with a translated `aria-label` (e.g. "Breadcrumb").
+2. **List**: `<ol class="uoa-breadcrumb__list">` — the order is the hierarchy, hence a list, not a `<div>`.
+3. **Items**: `<li class="uoa-breadcrumb__item">` with `__link` for every ancestor and `__current` for the last one.
+4. **Separator**: the `<svg class="uoa-breadcrumb__separator">` at the end of every item except the last.
+
+## Guidelines
+
+### When to use
+
+- On pages at least two levels deep: departments, studies, research, events.
+- To show the position in the site without opening the menu.
+- On search and results pages, where the trail keeps the composition of the filter.
+
+### When not to use
+
+- On the home page and top-level pages: there is no trail.
+- In endless feeds (news lists, calendar): it would repeat on every card.
+- On pages with many states (e.g. search): the trail doesn't describe the filter state.
+- As a sub-menu: for a second level of navigation use the department menu.
+
+### Content
+
+- One level per crumb, named exactly as in the menu: "Studies", not "Academic programmes & courses".
+- Ancestors are links; the current page is always plain text with `aria-current="page"`.
+- Never drop the "Home" crumb, not even in a long trail.
+- The last item is the name of the page, not the phrase "Current page".
+
+### Behaviour
+
+- Static: no JavaScript, no interaction — just links and text.
+- The separators are decorative: the trail must not depend on the "›" symbol.
+- On a narrow screen or a long trail the list wraps onto a second line; no text is clipped.
+
+## Accessibility
+
+- The `<nav>` has an accessible name (`aria-label`) so screen readers announce "navigation" rather than a bare list.
+- The list needs no ARIA: the order of the `<li>` elements already expresses the hierarchy.
+- The separators are `aria-hidden="true"`: "Home, Studies, Department" is read without symbols in between.
+- The `aria-current="page"` sits on the last element, which is text and not a link — screen readers announce it.
+- Links keep their underline and their own colour (`--uoa-breadcrumb-link`), so they don't rely on colour alone.
+- The "›" chevron is decorative and needs no alternative text.
+- Screen-reader testing (NVDA, VoiceOver) hasn't been done yet.
+
+## Theming
+
+Component tokens, from `packages/tokens/src/component/breadcrumb.json`. The font size signals that the
+trail is orientation, not content.
+
+<TokenTable prefix="breadcrumb-" />
+
+## API
+
+### HTML / CSS
+
+`<nav class="uoa-breadcrumb" aria-label="…">` → `<ol class="uoa-breadcrumb__list">` →
+`<li class="uoa-breadcrumb__item">` with `__link`, `__current` and `__separator`. No class variants.
+
+### JavaScript
+
+None.
+
+### Platform adapters
+
+Filled in once the first platform adapter is chosen (ADR 0003). Each adapter supplies its own
+`aria-label` through its translation mechanism.
+
+## Related
+
+- [Iconography](../foundations/iconography/): the "›" separator comes from the `@uoa/icons` set.
+- The main menu and side navigation arrive with the Header and Side navigation components; until then
+  the second level stays in the department menu.

@@ -1,0 +1,170 @@
+---
+title: Διαδρομή πλοήγησης
+description: Το μονοπάτι των προγόνων σελίδων πάνω από την τρέχουσα — Αρχική › Σπουδές › Τμήμα.
+sidebar:
+  breadcrumb:
+    text: draft
+    variant: note
+---
+
+import Example from '../../../components/Example.astro';
+import TokenTable from '../../../components/TokenTable.astro';
+
+Δείχνει πού βρίσκεστε στην ιεραρχία του ιστότοπου και σας επιστρέφει ένα επίπεδο πάνω,
+χωρίς να χρειάζεται JavaScript: ένα `<nav>` με `<ol>` και η σειρά των στοιχείων.
+
+<p class="uoa-meta">
+  <span class="uoa-pill" data-level="draft">draft</span>
+  <a href="https://github.com/UniversityOfAthens/design-system-uoa/tree/develop/packages/core/src/components/breadcrumb">Πηγαίος κώδικας</a>
+</p>
+
+## Παραδείγματα
+
+<Example
+  title="Τυπική διαδρομή"
+  code={`
+    <nav class="uoa-breadcrumb" aria-label="Διαδρομή πλοήγησης">
+      <ol class="uoa-breadcrumb__list">
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/">Αρχική</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/studies">Σπουδές</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/studies/undergraduate">Προπτυχιακές σπουδές</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <span class="uoa-breadcrumb__current" aria-current="page">Τμήμα Φιλολογίας</span>
+        </li>
+      </ol>
+    </nav>
+  `}
+/>
+
+<Example
+  title="Μία μόνο στάθμη"
+  code={`
+    <nav class="uoa-breadcrumb" aria-label="Διαδρομή πλοήγησης">
+      <ol class="uoa-breadcrumb__list">
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/">Αρχική</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <span class="uoa-breadcrumb__current" aria-current="page">Εκδηλώσεις</span>
+        </li>
+      </ol>
+    </nav>
+  `}
+/>
+
+<Example
+  title="Μεγάλο μονοπάτι: αναδίπλωση, όχι απόκομμα"
+  code={`
+    <nav class="uoa-breadcrumb" aria-label="Διαδρομή πλοήγησης">
+      <ol class="uoa-breadcrumb__list">
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/">Αρχική</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/research">Έρευνα</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/research/labs">Εργαστήρια</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/research/labs/nlg">Εργαστήριο Νευρογλωσσολογίας</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <a class="uoa-breadcrumb__link" href="/research/labs/nlg/publications">Δημοσιεύσεις</a>
+          <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </li>
+        <li class="uoa-breadcrumb__item">
+          <span class="uoa-breadcrumb__current" aria-current="page">Κατανοητική επεξεργασία φυσικής γλώσσας στα ελληνικά</span>
+        </li>
+      </ol>
+    </nav>
+  `}
+/>
+
+## Δομή
+
+1. **Περιέκτης**: `<nav class="uoa-breadcrumb">` με μεταφρασμένο `aria-label` (π.χ. «Διαδρομή πλοήγησης»).
+2. **Λίστα**: `<ol class="uoa-breadcrumb__list">` — η σειρά είναι η ιεραρχία, γι' αυτό και λίστα, όχι `<div>`.
+3. **Στοιχεία**: `<li class="uoa-breadcrumb__item">` με `__link` σε κάθε πρόγονο και `__current` στο τελευταίο.
+4. **Διαχωριστικό**: το `<svg class="uoa-breadcrumb__separator">` στο τέλος κάθε στοιχείου, εκτός του τελευταίου.
+
+## Οδηγίες
+
+### Πότε να το χρησιμοποιείτε
+
+- Σε σελίδες με τουλάχιστον δύο επίπεδα ιεραρχίας: τμήματα, σπουδές, έρευνα, εκδηλώσεις.
+- Για να δείξετε τη θέση στον ιστότοπο χωρίς να ανοίξετε το μενού.
+- Σε σελίδες αναζήτησης και αποτελεσμάτων, όπου η διαδρομή κρατά τη σύνθεση του φίλτρου.
+
+### Πότε να μην το χρησιμοποιείτε
+
+- Στην αρχική σελίδα και σε σελίδες ανώτατου επιπέδου: δεν υπάρχει μονοπάτι.
+- Σε συνεχείς ροές (λίστες νέων, ημερολόγιο): θα έπρεπε να επαναλαμβάνεται σε κάθε κάρτα.
+- Σε σελίδες με πολλές εναλλαγές (π.χ. αναζήτηση): το μονοπάτι δεν περιγράφει την κατάσταση του φίλτρου.
+- Ως υπομενού: για δεύτερο επίπεδο πλοήγησης χρησιμοποιήστε το μενού του τμήματος.
+
+### Περιεχόμενο
+
+- Ένα επίπεδο ανά γραμμή, με την ίδια ονομασία που έχει η σελίδα στο μενού: «Σπουδές» και όχι «Σπουδαστικά θέματα & προγράμματα».
+- Οι πρόγονοι σύνδεσμοι, η τρέχουσα σελίδα πάντα απλό κείμενο με `aria-current="page"`.
+- Μην αφήσετε τον κόμβο «Αρχική» εκτός, ακόμη και σε μεγάλα μονοπάτια.
+- Το τελευταίο στοιχείο είναι το όνομα της σελίδας, όχι η διατύπωση «Τρέχουσα σελίδα».
+
+### Συμπεριφορά
+
+- Στατικό: χωρίς JavaScript, χωρίς αλληλεπίδραση — μόνο σύνδεσμοι και κείμενο.
+- Οι διαχωριστικοί είναι διακοσμητικά: το μονοπάτι δεν εξαρτάται από το σύμβολο «›».
+- Σε στενή οθόνη ή μεγάλο μονοπάτι η λίστα αναδιπλώνεται σε δεύτερη γραμμή· δεν αποκόπτεται κείμενο.
+
+## Προσβασιμότητα
+
+- `<nav>` με όνομα (`aria-label`) ώστε ο αναγνώστης οθόνης να πει «πλοήγηση» και όχι απλώς «λίστα».
+- Καμία ARIA ιδιότητα δεν χρειάζεται για τη λίστα: η σειρά των `<li>` λέει ήδη την ιεραρχία.
+- Τα διαχωριστικά είναι `aria-hidden="true"`: τα κομμάτια «Αρχική, Σπουδές, Τμήμα» διαβάζονται χωρίς σύμβολα ανάμεσα.
+- Οι διαχωριστικές κλάσεις δεν κρύβουν πληροφορία που λείπει αλλού.
+- Το `aria-current="page"` είναι στο τελευταίο στοιχείο, όχι σε link — ο αναγνώστης οθόνης το προφέρει.
+- Οι σύνδεσμοι κρατούν την υπογράμμιση και το δικό τους χρώμα (`--uoa-breadcrumb-link`), άρα δεν ξεχωρίζουν μόνο με το χρώμα.
+- Το διάδικο «›» είναι διακοσμητικό και δεν χρειάζεται εναλλακτικό κείμενο.
+- Δεν έχει γίνει ακόμη δοκιμή με αναγνώστες οθόνης (NVDA, VoiceOver).
+
+## Θέματα
+
+Tokens του στοιχείου, από το `packages/tokens/src/component/breadcrumb.json`. Το μέγεθος γράμματος
+δείχνει ότι η διαδρομή είναι βοήθεια πλοήγησης, όχι περιεχόμενο.
+
+<TokenTable prefix="breadcrumb-" />
+
+## API
+
+### HTML / CSS
+
+`<nav class="uoa-breadcrumb" aria-label="…">` → `<ol class="uoa-breadcrumb__list">` →
+`<li class="uoa-breadcrumb__item">` με `__link`, `__current` και `__separator`. Καμία παραλλαγή κλάσης.
+
+### JavaScript
+
+Καμία.
+
+### Προσαρμογείς πλατφορμών
+
+Θα συμπληρωθεί όταν επιλεγεί ο πρώτος προσαρμογέας (ADR 0003). Κάθε προσαρμογέας δίνει το δικό του
+`aria-label` μέσω του μηχανισμού μετάφρασής του.
+
+## Σχετικά
+
+- [Ικονογραφία](../foundations/iconography/): το διαχωριστικό `›` προέρχεται από το σύνολο `@uoa/icons`.
+- Το κύριο μενού και η πλευρική πλοήγηση θα προστεθούν με τα στοιχεία Header και Side navigation· μέχρι τότε το δεύτερο επίπεδο παραμένει στο μενού του τμήματος.

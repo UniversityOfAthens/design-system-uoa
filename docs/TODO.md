@@ -47,7 +47,7 @@ Molecules
 - [x] Accordion (`beta` — for stable: screen-reader pass, design review, adapter; single-open via `accordion.js`)
 - [x] Tabs (`beta` — for stable: screen-reader pass, design review, adapter; APG automatic activation via `tabs.js`)
 - [x] Card (news, event, person/staff, course) (`draft` — CSS-only, stretched title link)
-- [ ] Breadcrumb
+- [x] Breadcrumb (`draft` — CSS-only, wraps instead of truncating; no JS)
 - [ ] Pagination
 - [ ] Table
 - [ ] Modal/dialog

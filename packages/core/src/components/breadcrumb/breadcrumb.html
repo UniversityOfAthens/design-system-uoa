@@ -1,0 +1,79 @@
+<!-- Reference markup for Breadcrumb. Adapters (Twig, PHP, React) must output exactly this.
+     Native <nav> + <ol>: the list order carries the hierarchy, so no ARIA roles
+     are added. The accessible name lives on the <nav> so platforms translate it.
+     The separator is decorative (aria-hidden); the last crumb is the current page
+     and is never a link. -->
+
+<!-- Standard trail: root → section → subsection → current page -->
+<nav class="uoa-breadcrumb" aria-label="Διαδρομή πλοήγησης">
+  <ol class="uoa-breadcrumb__list">
+    <li class="uoa-breadcrumb__item">
+      <a class="uoa-breadcrumb__link" href="/">Αρχική</a>
+      <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+    </li>
+    <li class="uoa-breadcrumb__item">
+      <a class="uoa-breadcrumb__link" href="/studies">Σπουδές</a>
+      <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+    </li>
+    <li class="uoa-breadcrumb__item">
+      <a class="uoa-breadcrumb__link" href="/studies/undergraduate">Προπτυχιακές σπουδές</a>
+      <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+    </li>
+    <li class="uoa-breadcrumb__item">
+      <span class="uoa-breadcrumb__current" aria-current="page">Τμήμα Φιλολογίας</span>
+    </li>
+  </ol>
+</nav>
+
+<!-- Shallow: a site with one level of hierarchy -->
+<nav class="uoa-breadcrumb" aria-label="Διαδρομή πλοήγησης">
+  <ol class="uoa-breadcrumb__list">
+    <li class="uoa-breadcrumb__item">
+      <a class="uoa-breadcrumb__link" href="/">Αρχική</a>
+      <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+    </li>
+    <li class="uoa-breadcrumb__item">
+      <span class="uoa-breadcrumb__current" aria-current="page">Εκδηλώσεις</span>
+    </li>
+  </ol>
+</nav>
+
+<!-- Single crumb: renders, but a trail with nothing to go back to is noise —
+     omit the whole component when the page sits directly under the root. -->
+<nav class="uoa-breadcrumb" aria-label="Διαδρομή πλοήγησης">
+  <ol class="uoa-breadcrumb__list">
+    <li class="uoa-breadcrumb__item">
+      <span class="uoa-breadcrumb__current" aria-current="page">Επικοινωνία</span>
+    </li>
+  </ol>
+</nav>
+
+<!-- Deep trail: no truncation. Long trails wrap onto a second line rather than
+     hiding part of the hierarchy — keep the root for orientation. -->
+<nav class="uoa-breadcrumb" aria-label="Διαδρομή πλοήγησης">
+  <ol class="uoa-breadcrumb__list">
+    <li class="uoa-breadcrumb__item">
+      <a class="uoa-breadcrumb__link" href="/">Αρχική</a>
+      <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+    </li>
+    <li class="uoa-breadcrumb__item">
+      <a class="uoa-breadcrumb__link" href="/research">Έρευνα</a>
+      <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+    </li>
+    <li class="uoa-breadcrumb__item">
+      <a class="uoa-breadcrumb__link" href="/research/labs">Εργαστήρια</a>
+      <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+    </li>
+    <li class="uoa-breadcrumb__item">
+      <a class="uoa-breadcrumb__link" href="/research/labs/nlg">Εργαστήριο Νευρογλωσσολογίας</a>
+      <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+    </li>
+    <li class="uoa-breadcrumb__item">
+      <a class="uoa-breadcrumb__link" href="/research/labs/nlg/publications">Δημοσιεύσεις</a>
+      <svg class="uoa-breadcrumb__separator" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+    </li>
+    <li class="uoa-breadcrumb__item">
+      <span class="uoa-breadcrumb__current" aria-current="page">Κατανοητική επεξεργασία φυσικής γλώσσας στα ελληνικά</span>
+    </li>
+  </ol>
+</nav>

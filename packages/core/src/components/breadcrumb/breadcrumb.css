@@ -1,0 +1,52 @@
+/* Breadcrumb — the trail of ancestors above the current page. Native <nav> +
+   <ol>: the list order carries the hierarchy, so no ARIA roles are added.
+   Works fully without JavaScript. The separators are decorative icons; the
+   current page is the last crumb and is not a link. */
+
+.uoa-breadcrumb {
+  font-family: var(--uoa-font-family-body);
+  font-size: var(--uoa-breadcrumb-font-size);
+  line-height: var(--uoa-font-line-height-body);
+  color: var(--uoa-breadcrumb-current);
+}
+
+.uoa-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--uoa-breadcrumb-gap);
+  margin: 0;
+  padding-inline: 0;
+  list-style: none;
+}
+
+.uoa-breadcrumb__item {
+  display: flex;
+  gap: var(--uoa-breadcrumb-item-gap);
+  align-items: center;
+  min-width: 0;
+}
+
+.uoa-breadcrumb__link {
+  color: var(--uoa-breadcrumb-link);
+}
+
+.uoa-breadcrumb__link:hover {
+  color: var(--uoa-breadcrumb-link-hover);
+}
+
+/* The current page is plain text, so it can never look like a link by accident. */
+.uoa-breadcrumb__current {
+  color: var(--uoa-breadcrumb-current);
+}
+
+.uoa-breadcrumb__separator {
+  flex: none;
+  width: var(--uoa-breadcrumb-separator-size);
+  height: var(--uoa-breadcrumb-separator-size);
+  color: var(--uoa-breadcrumb-separator);
+  fill: currentColor;
+}
+
+/* Windows High Contrast: text colours are overridden by the OS, nothing to
+   restore — the separators stay visible as currentColor shapes. */
