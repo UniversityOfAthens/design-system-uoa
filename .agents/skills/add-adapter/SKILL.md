@@ -30,7 +30,7 @@ language and loads `@uoa/core` CSS/JS. It owns **no styles** and **no design dec
 ## Before the first component of a new platform
 
 The platform needs an ADR in `docs/adr/`, and the first adapter is decided: WordPress, in ADR 0003
-(block theme + plugin, WP 6.6+). 44 of 54 NKUA sites still run TYPO3, so any further platform needs
+(plugin + optional block theme, WP 6.6+). 44 of 54 NKUA sites still run TYPO3, so any further platform needs
 its own ADR before you scaffold `packages/<platform>/`.
 The ADR should fix: supported platform versions, package location (`packages/<platform>/`),
 how core assets are pulled in, and how it is tested.

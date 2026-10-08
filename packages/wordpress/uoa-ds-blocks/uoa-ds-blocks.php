@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       UOA Design System blocks
- * Description:       Renders the NKUA design system's components as blocks. The markup comes from @uoa/core; this plugin adds no styles and no behaviour of its own (ADR 0003).
+ * Description:       The NKUA design system for WordPress: components as blocks, @uoa/core styles, and the design tokens in the editor on any theme. The markup comes from @uoa/core; this plugin adds no styles and no behaviour of its own (ADR 0003).
  * Requires at least: 6.6
  * Requires PHP:      8.1
  * Version:           0.0.0
@@ -50,3 +50,27 @@ function enqueue_core_assets(): void {
 	wp_enqueue_style( 'uoa-core', $base . 'uoa.css', array( 'uoa-core-fonts' ), $version );
 }
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_core_assets' );
+
+/**
+ * Feed the generated theme.json to the editor, whatever theme is active.
+ *
+ * A plugin can't ship a theme.json file, but it can add settings through this filter,
+ * so the palette, font sizes and spacing are ours on any theme. Sites that activate the
+ * uoa-ds theme get the same file from the theme; WordPress merges the two.
+ */
+function filter_theme_json( \WP_Theme_JSON_Data $theme_json ): \WP_Theme_JSON_Data {
+	$file = plugin_dir_path( __FILE__ ) . 'assets/uoa/theme.json';
+
+	if ( ! is_readable( $file ) ) {
+		return $theme_json;
+	}
+
+	$data = json_decode( (string) file_get_contents( $file ), true );
+
+	if ( ! is_array( $data ) ) {
+		return $theme_json;
+	}
+
+	return $theme_json->update_with( new \WP_Theme_JSON_Data( $data ) );
+}
+add_filter( 'wp_theme_json_data_theme', __NAMESPACE__ . '\\filter_theme_json' );

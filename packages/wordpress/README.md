@@ -1,8 +1,12 @@
 # @uoa/wordpress
 
-The WordPress adapter (ADR 0003): a block theme and a companion plugin that render
-`@uoa/core`'s reference markup. It owns **no styles and no behaviour** — the core's CSS ships inside
-the plugin and every string goes through WordPress translation.
+The WordPress adapter (ADR 0003): a plugin that renders `@uoa/core`'s reference markup, plus an
+optional block theme. It owns **no styles and no behaviour** — the core's CSS ships inside the plugin
+and every string goes through WordPress translation.
+
+Install **`uoa-ds-blocks`** on any WordPress site: the blocks, the styles and the design tokens in
+the editor come from the plugin, so a faculty site keeps the theme it already has. Activate
+**`uoa-ds`** only if you want the full-site-editing templates as well.
 
 ```sh
 bun run build   # copies @uoa/core/dist and the generated theme.json into the theme/plugin
@@ -15,8 +19,8 @@ gitignored.
 
 | Path | What |
 | --- | --- |
-| `uoa-ds/` | Block theme: `theme.json` (generated), `templates/`, `parts/` |
-| `uoa-ds-blocks/` | Plugin: block registration, enqueues `@uoa/core` |
+| `uoa-ds/` | Optional block theme: `theme.json` (generated), `templates/`, `parts/` |
+| `uoa-ds-blocks/` | Plugin: block registration, enqueues `@uoa/core`, injects the tokens into the editor |
 | `uoa-ds-blocks/blocks/<name>/` | `block.json` + `render.php` per component |
 | `tests/markup.php` | Contract test — renders blocks and diffs them against `packages/core` |
 

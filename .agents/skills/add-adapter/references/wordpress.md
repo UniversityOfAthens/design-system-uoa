@@ -1,21 +1,22 @@
 # WordPress adapter (ADR 0003)
 
-`packages/wordpress` — a block theme `uoa-ds` plus a plugin `uoa-ds-blocks`. WordPress 6.6+.
-Conventions below are the ones the repo already follows; confirm against the ADR before adding to
-them.
+`packages/wordpress` — the plugin `uoa-ds-blocks` (what sites install) plus an optional block theme
+`uoa-ds`. WordPress 6.6+. Conventions below are the ones the repo already follows; confirm against
+the ADR before adding to them.
 
 ## Layout
 
 ```
 packages/wordpress/
 ├── build/build.js                     # copies @uoa/core/dist + generated theme.json (gitignored outputs)
-├── uoa-ds/                            # block theme
+├── uoa-ds/                            # optional block theme
 │   ├── style.css                      # theme header only, no rules
 │   ├── theme.json                     # GENERATED from tokens — never hand-edit
 │   ├── templates/{index,page,single}.html
 │   └── parts/{header,footer}.html
-├── uoa-ds-blocks/                     # plugin: blocks + @uoa/core enqueue
-│   ├── uoa-ds-blocks.php              # register_block_type per blocks/*/block.json, enqueue on enqueue_block_assets
+├── uoa-ds-blocks/                     # plugin: blocks, @uoa/core enqueue, tokens in the editor
+│   ├── uoa-ds-blocks.php              # register_block_type per blocks/*/block.json, enqueue on
+│   │                                  #   enqueue_block_assets, wp_theme_json_data_theme filter
 │   └── blocks/<name>/{block.json,render.php}
 └── tests/markup.php                   # contract test, run with `bun run test`
 ```
@@ -32,6 +33,8 @@ packages/wordpress/
 - **Namespaced plugin functions**, `declare( strict_types = 1 )`, `defined( 'ABSPATH' ) || exit;`.
 - **Assets load on `enqueue_block_assets`**, not `wp_enqueue_scripts`, so the block editor canvas is
   styled by the same file as the front end.
+- **Tokens reach the editor through `wp_theme_json_data_theme`**, because a plugin cannot ship a
+  `theme.json` file. The same generated file is copied into the optional theme; WordPress merges both.
 - **Cache-busting by `filemtime()`** of the built CSS — the plugin has no version to bump.
 - **Lock the styling supports** an editor shouldn't have: `color`, `typography.fontSize`, `spacing`,
   `html`. If the core component has no such variant, the block must not offer it.

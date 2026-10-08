@@ -35,7 +35,7 @@ commit them with the change. CI (`.github/workflows/ci.yml`) runs both on every 
 | --- | --- | --- |
 | `packages/tokens` | Design tokens as DTCG JSON, built to CSS variables, SCSS and JS | Published; every site and `core` |
 | `packages/icons` | Material Symbols subset as SVG files, a sprite and JSON | Published; sites, adapters and the docs site |
-| `packages/wordpress` | WordPress adapter: block theme `uoa-ds` + plugin `uoa-ds-blocks` (ADR 0003) | Published; the 7 live WordPress sites |
+| `packages/wordpress` | WordPress adapter: plugin `uoa-ds-blocks` + optional block theme `uoa-ds` (ADR 0003) | Published; the 7 live WordPress sites |
 | `packages/core` | The CSS (reset, base, layout, components) and reference HTML | Published; every site |
 | `apps/docs` | The documentation site (Astro + Starlight) | Not published as a package; deployed to GitHub Pages |
 | `docs/` | Planning: architecture, conventions, roadmap, ADRs, research | Maintainers |

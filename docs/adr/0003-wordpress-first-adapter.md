@@ -34,13 +34,19 @@ system is pointed at 44 production sites. WordPress is the cheapest place to do 
 Build the first WordPress adapter in `packages/wordpress`, targeting **WordPress 6.6+** (block
 themes, `theme.json` v3, the current block registration APIs).
 
-**Packaging** — a block theme plus a companion plugin:
+**Packaging** — one plugin, plus an optional block theme:
 
-- `packages/wordpress/uoa-ds/` — the **block theme**: `theme.json`, `templates/`, `parts/`,
-  `patterns/`. Faculty sites activate it, or a child theme extends it.
 - `packages/wordpress/uoa-ds-blocks/` — the **plugin**: block registration (`block.json` + PHP render
-  callbacks) and the enqueue of `@uoa/core`. Blocks live in the plugin so they survive a theme switch
-  and can be used site-wide.
+  callbacks), the enqueue of `@uoa/core`, and the design tokens fed to the editor. This is what a
+  faculty site installs: it works on top of whatever theme the site already uses, because the blocks
+  render server-side and the styles come from the plugin.
+- `packages/wordpress/uoa-ds/` — an **optional block theme** (`theme.json`, `templates/`, `parts/`) for
+  sites that want the full-site-editing setup out of the box, or as a starting point for a faculty
+  child theme.
+
+A plugin can't ship a `theme.json` file, so the plugin supplies the same generated data through the
+`wp_theme_json_data_theme` filter: the palette, font sizes and spacing are ours in the editor on any
+theme. WordPress merges it with the active theme's own settings.
 
 **`theme.json` is generated, never hand-written.** `packages/tokens/build/build.js` emits
 `dist/wp/theme.json` from the same DTCG tokens as the CSS custom properties (palette, font sizes,
@@ -75,8 +81,10 @@ adapters output.
 
 - Phase 4 is reordered: the Drupal adapter stays on the roadmap behind a Drupal SDC ADR, and the
   WordPress work moves out of Phase 6.
-- The 7 live WordPress sites get a maintainable path to the design system's components.
-- `theme.json` joins the generated token outputs, so a token change shows up in the block editor.
+- The 7 live WordPress sites get a maintainable path to the design system's components **without
+  changing theme**: the plugin carries the blocks, the styles and the tokens.
+- `theme.json` joins the generated token outputs, so a token change shows up in the block editor —
+  on any theme, because the plugin injects it.
 - WordPress is **not** declared the strategic platform. 44 TYPO3 sites still need an adapter, and
   which one lands next is a separate decision — a later ADR may reorder this without invalidating
   anything here.
@@ -89,4 +97,7 @@ adapters output.
   rejected on merit; it remains the biggest estate.
 - **Drupal first** — rejected because the roadmap's assumption wasn't supported by the audit.
 - **One theme, no plugin** — rejected: blocks would disappear when a site switches themes.
-- **Plugin only, no theme** — rejected: faculties then get no templates and no `theme.json` defaults.
+- **Theme as the only distribution** — rejected: the 7 live sites have their own themes, and
+  switching theme is not something a design system can require.
+- **Plugin only, no theme** — rejected as the *only* artefact: faculties starting from scratch still
+  need templates and patterns. The theme ships as an option, not as a requirement.

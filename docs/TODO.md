@@ -9,7 +9,8 @@
 - [x] Decide docs/workbench tool → ADR 0001: Astro + Starlight (`apps/docs`)
 - [ ] Decide core approach (HTML/CSS/vanilla JS, Web Components only where needed) → ADR 0002
   — decided and built (plain CSS core, no Tailwind/Bootstrap); ADR not written yet
-- [x] Choose the first platform adapter → ADR 0003: **WordPress** (block theme + plugin, WP 6.6+).
+- [x] Choose the first platform adapter → ADR 0003: **WordPress** (plugin + optional block
+      theme, WP 6.6+).
       Chosen as the cheapest way to prove the markup contract; 44/54 live sites still run TYPO3, so
       the platform order stays revisitable. Adapter: `packages/wordpress`, Badge ported
 - [ ] Choose the next platform adapter (TYPO3 for the 44 existing sites, Drupal per Phase 4b?)
@@ -66,7 +67,8 @@ Organisms / layout
 
 ## Phase 4 — WordPress adapter (ADR 0003)
 
-- [x] Block theme `uoa-ds` + plugin `uoa-ds-blocks` skeleton, `theme.json` generated from tokens
+- [x] Plugin `uoa-ds-blocks` (blocks, core CSS, tokens via `wp_theme_json_data_theme`) +
+      optional block theme `uoa-ds`; `theme.json` generated from tokens
 - [x] Badge block + markup contract test (`packages/wordpress/tests/markup.php`)
 - [ ] Button, Alert, Accordion, Tabs, Card, Breadcrumb blocks
 - [ ] `wp i18n make-pot` → `languages/uoa-ds.pot`, English translations
