@@ -14,3 +14,7 @@ apps/docs/.astro/
 apps/docs/dist/
 apps/docs/test-results/
 apps/docs/playwright-report/
+
+# WordPress adapter: generated from @uoa/core/dist and @uoa/tokens (ADR 0003)
+packages/wordpress/uoa-ds-blocks/assets/
+packages/wordpress/uoa-ds/theme.json

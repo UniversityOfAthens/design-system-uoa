@@ -106,7 +106,26 @@ None.
 
 ### Platform adapters
 
-Filled in once the first platform adapter is chosen (ADR 0003).
+#### WordPress (`packages/wordpress`, [ADR 0003](https://github.com/UniversityOfAthens/design-system-uoa/blob/develop/docs/adr/0003-wordpress-first-adapter.md))
+
+The `uoa-ds/badge` block in the `uoa-ds-blocks` plugin. Styling comes from `@uoa/core` through the
+plugin, so the block exposes only the component's two attributes:
+
+| Attribute | Type | Default | What it does |
+| --- | --- | --- | --- |
+| `text` | string | "New programme" | The badge text; translatable |
+| `variant` | `neutral \| info \| success \| warning \| danger` | `neutral` | The variant; maps 1:1 to the core's classes |
+
+No `align`, `className` or colours: the block offers no styling the core doesn't have.
+
+```php
+// The classes and attribute order must be what
+// packages/core/src/components/badge/badge.html produces — tests/markup.php checks it.
+echo '<span class="uoa-badge uoa-badge--success">' . esc_html__( 'Approved', 'uoa-ds' ) . '</span>';
+```
+
+The block is standalone: the badge next to a heading ("MSc in … · Enrolment open") is not produced by
+it, but by a pattern or a heading block variation.
 
 ## Related
 

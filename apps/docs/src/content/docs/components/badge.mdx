@@ -106,7 +106,26 @@ Tokens του στοιχείου, από το `packages/tokens/src/component/bad
 
 ### Προσαρμογείς πλατφορμών
 
-Θα συμπληρωθεί όταν επιλεγεί ο πρώτος προσαρμογέας (ADR 0003).
+#### WordPress (`packages/wordpress`, [ADR 0003](https://github.com/UniversityOfAthens/design-system-uoa/blob/develop/docs/adr/0003-wordpress-first-adapter.md))
+
+Μπλοκ `uoa-ds/badge` στο plugin `uoa-ds-blocks`. Το ύφος έρχεται από το `@uoa/core` μέσω του plugin,
+οπότε το μπλοκ έχει μόνο τα δύο χαρακτηριστικά της έκδοσης:
+
+| Χαρακτηριστικό | Τύπος | Προεπιλογή | Τι κάνει |
+| --- | --- | --- | --- |
+| `text` | string | «Νέο πρόγραμμα» | Το κείμενο του σήματος· αποδέκτης μετάφρασης |
+| `variant` | `neutral \| info \| success \| warning \| danger` | `neutral` | Η παραλλαγή· αντιστοιχεί 1:1 στις κλάσες του core |
+
+Χωρίς `align`, `className` ή χρώματα: το μπλοκ δεν προσφέρει στυλ που το core δεν έχει.
+
+```php
+// Οι κλάσες και η σειρά των χαρακτηριστικών πρέπει να είναι αυτές που παράγει το
+// packages/core/src/components/badge/badge.html — το ελέγχει το tests/markup.php.
+echo '<span class="uoa-badge uoa-badge--success">' . esc_html__( 'Εγκρίθηκε', 'uoa-ds' ) . '</span>';
+```
+
+Το μπλοκ είναι αυτόνομο: το σήμα δίπλα σε τίτλο («Μεταπτυχιακό … Εγγραφές ανοιχτές») δεν
+παράγεται από αυτό, αλλά από μοτίβο ή παραλλαγή του μπλοκ τίτλου.
 
 ## Σχετικά
 
