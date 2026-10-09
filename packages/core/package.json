@@ -6,6 +6,9 @@
   "files": ["dist", "src"],
   "exports": {
     "./css": "./dist/uoa.css",
+    "./base.css": "./dist/uoa-base.css",
+    "./components.css": "./dist/uoa-components.css",
+    "./components-unlayered.css": "./dist/uoa-components-unlayered.css",
     "./js": "./dist/uoa.js",
     "./fonts.css": "./dist/fonts/fonts.css",
     "./src/*": "./src/*"
