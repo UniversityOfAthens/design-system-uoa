@@ -160,7 +160,22 @@ None.
 
 ### Platform adapters
 
-Filled in once the first platform adapter is chosen (ADR 0003).
+#### WordPress (`packages/wordpress`, [ADR 0003](https://github.com/UniversityOfAthens/design-system-uoa/blob/develop/docs/adr/0003-wordpress-first-adapter.md))
+
+The `uoa/button` block in the `uoa-blocks` plugin. With a URL it's a link (`<a>`); without one, a `<button type="button">`.
+
+| Attribute | Type | Default | What it does |
+| --- | --- | --- | --- |
+| `text` | string | — | The text |
+| `url` | string | — | A URL makes the block a link |
+| `variant` | `primary \| secondary \| tertiary` | `primary` | The variant |
+| `size` | `default \| sm` | `default` | Size |
+| `fullWidth` | boolean | `false` | `uoa-button--block` |
+| `icon` | a name from `@uoa/icons` | — | Decorative icon before the text |
+| `label` | string | — | Accessible name, required when there's only an icon |
+| `disabled` | boolean | `false` | `disabled`, or `aria-disabled="true"` with no `href` on a link |
+
+The block outputs the core reference HTML exactly, with no `wp-block-*` classes and no colour or spacing settings; `tests/phpunit/MarkupTest.php` checks it. It works on any theme: its styles come with the plugin.
 
 ## Related
 

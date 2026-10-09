@@ -67,7 +67,7 @@ design-system-uoa/
 │   │   │       ├── accordion.component.yml   # props/slots schema
 │   │   │       └── accordion.twig
 │   │   └── templates/          # overrides for core Drupal templates (menus, fields, forms…)
-│   ├── wordpress/              # (later) block theme / plugin: theme.json, block patterns
+│   ├── wordpress/              # theme `uoa` + standalone plugin `uoa-blocks` (ADR 0003)
 │   └── react/                  # (later) @uoa/react — wrappers over core classes
 ├── apps/
 │   └── docs/                   # Astro + Starlight docs site (ADR 0001)
@@ -86,11 +86,12 @@ design-system-uoa/
 - Map Drupal render output (menus, pagers, form elements, status messages, fields) to our
   markup via template overrides — that is where most of the Drupal work actually is.
 
-### WordPress specifics (later)
+### WordPress specifics (ADR 0003)
 
-- Generate `theme.json` from tokens (palette, font sizes, spacing scale).
-- Block theme + **block patterns** for the Blocks/Patterns layer; custom blocks only where
-  core blocks can't be styled into our components.
+- Plugin `uoa-blocks`, standalone: one block per core component, the class-scoped
+  `uoa-components.css`, the behaviour modules. Works on any theme.
+- Theme `uoa`: the page-level `uoa-base.css`, `theme.json` generated from tokens, templates and
+  **block patterns**. Recommends the plugin.
 
 ### React specifics (later)
 

@@ -30,7 +30,7 @@ language and loads `@uoa/core` CSS/JS. It owns **no styles** and **no design dec
 ## Before the first component of a new platform
 
 The platform needs an ADR in `docs/adr/`, and the first adapter is decided: WordPress, in ADR 0003
-(plugin + optional block theme, WP 6.6+). 44 of 54 NKUA sites still run TYPO3, so any further platform needs
+(theme `uoa` + standalone plugin `uoa-blocks`, WP 6.6+). 44 of 54 NKUA sites still run TYPO3, so any further platform needs
 its own ADR before you scaffold `packages/<platform>/`.
 The ADR should fix: supported platform versions, package location (`packages/<platform>/`),
 how core assets are pulled in, and how it is tested.
@@ -39,9 +39,9 @@ When the ADR lands, add `references/<platform>.md` next to this file with the co
 layout, naming and a worked example, and list it below.
 
 - **WordPress** — decided in [ADR 0003](../../../../docs/adr/0003-wordpress-first-adapter.md);
-  see [`references/wordpress.md`](references/wordpress.md). WP 6.6+, block theme `uoa-ds` plus plugin
-  `uoa-ds-blocks`, `theme.json` generated from tokens, contract test in
-  `packages/wordpress/tests/markup.php`.
+  see [`references/wordpress.md`](references/wordpress.md). WP 6.6+, block theme `uoa` plus standalone
+  plugin `uoa-blocks`, `theme.json` generated from tokens, PHPUnit contract test in
+  `packages/wordpress/tests/phpunit/`, Playwright + axe on wp-env in `packages/wordpress/tests/e2e-pw/`.
 
 ## Platform notes
 
@@ -52,10 +52,9 @@ Starting points from `docs/architecture.md`; confirm against the platform's ADR.
   `<name>.twig`. Referenced as `uoa_ds:<name>`. Most work is template overrides mapping Drupal
   render output (menus, pagers, forms, status messages) to core markup. Lint with twigcs.
 - **WordPress** — decided in [ADR 0003](../../../../docs/adr/0003-wordpress-first-adapter.md);
-  see [`references/wordpress.md`](references/wordpress.md). WP 6.6+, block theme `uoa-ds` plus plugin
-  `uoa-ds-blocks`, `theme.json` generated from tokens, contract test in
-  `packages/wordpress/tests/markup.php`. Prefer block patterns and styles on core blocks; custom
-  blocks only when core blocks can't produce the markup.
+  see [`references/wordpress.md`](references/wordpress.md). One custom block per component in the
+  plugin `uoa-blocks` (works on any theme); the theme `uoa` adds base styles and templates. Block
+  patterns for page-level compositions.
 - **React** — `@uoa/react`, thin typed components rendering core classes; tokens via the TS
   export. No CSS-in-JS.
 - **TYPO3** — likely Fluid templates / content elements in a site package. Not specified yet;

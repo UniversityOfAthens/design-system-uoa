@@ -161,8 +161,11 @@ None.
 
 ### Platform adapters
 
-Filled in once the first platform adapter is chosen (ADR 0003). Each adapter supplies its own
-`aria-label` through its translation mechanism.
+#### WordPress (`packages/wordpress`, [ADR 0003](https://github.com/UniversityOfAthens/design-system-uoa/blob/develop/docs/adr/0003-wordpress-first-adapter.md))
+
+The `uoa/breadcrumb` block in the `uoa-blocks` plugin, with no settings. The trail comes from the site's hierarchy: home → posts page (for posts) → parent pages → current page. It isn't shown on the front page. The `aria-label` and "Home" are translated through the `uoa-blocks` textdomain. The `uoa` theme places it in the page and post templates.
+
+The block outputs the core reference HTML exactly, with no `wp-block-*` classes and no colour or spacing settings; `tests/phpunit/MarkupTest.php` checks it. It works on any theme: its styles come with the plugin.
 
 ## Related
 

@@ -9,10 +9,10 @@
 - [x] Decide docs/workbench tool → ADR 0001: Astro + Starlight (`apps/docs`)
 - [ ] Decide core approach (HTML/CSS/vanilla JS, Web Components only where needed) → ADR 0002
   — decided and built (plain CSS core, no Tailwind/Bootstrap); ADR not written yet
-- [x] Choose the first platform adapter → ADR 0003: **WordPress** (plugin + optional block
-      theme, WP 6.6+).
+- [x] Choose the first platform adapter → ADR 0003: **WordPress** (theme `uoa` + standalone
+      plugin `uoa-blocks`, WP 6.6+).
       Chosen as the cheapest way to prove the markup contract; 44/54 live sites still run TYPO3, so
-      the platform order stays revisitable. Adapter: `packages/wordpress`, Badge ported
+      the platform order stays revisitable. Adapter: `packages/wordpress`, every core component ported
 - [ ] Choose the next platform adapter (TYPO3 for the 44 existing sites, Drupal per Phase 4b?)
 - [ ] Set up Figma library and agree on the Figma ↔ tokens workflow
 - [ ] Inventory existing NKUA sites: list recurring components/patterns and pain points
@@ -43,7 +43,7 @@ Atoms / basic
 - [x] Button / link button (`beta` — for stable: screen-reader pass, design review, adapter)
 - [ ] Link
 - [x] Icon (`draft` — `.uoa-icon` + sizes; Alert, Accordion and Button use the set)
-- [x] Badge / Tag (`beta` — WordPress block `uoa-ds/badge` done; screen-reader pass and design review open)
+- [x] Badge / Tag (`beta` — WordPress block `uoa/badge` done; screen-reader pass and design review open)
 - [ ] Form elements: text input, textarea, select, checkbox, radio, switch, fieldset, error message
 - [x] Alert / status message (`beta` — for stable: screen-reader pass, design review, adapter; dismissible via `alert.js`)
 
@@ -67,14 +67,17 @@ Organisms / layout
 
 ## Phase 4 — WordPress adapter (ADR 0003)
 
-- [x] Plugin `uoa-ds-blocks` (blocks, core CSS, tokens via `wp_theme_json_data_theme`) +
-      optional block theme `uoa-ds`; `theme.json` generated from tokens
-- [x] Badge block + markup contract test (`packages/wordpress/tests/markup.php`)
-- [ ] Button, Alert, Accordion, Tabs, Card, Breadcrumb blocks
-- [ ] `wp i18n make-pot` → `languages/uoa-ds.pot`, English translations
-- [ ] Editor JS: enqueue `@uoa/core` modules (`wp_enqueue_script_module`) for Alert/Accordion/Tabs
+- [x] Standalone plugin `uoa-blocks` (blocks, component CSS, tokens via `wp_theme_json_data_theme`) +
+      block theme `uoa` (base CSS, fonts, `theme.json`, templates); core CSS split into
+      `uoa-base.css` / `uoa-components.css`
+- [x] Blocks for every core component: Badge, Button, Alert, Accordion, Tabs, Card, Breadcrumb, Icon
+- [x] Core behaviour on the front end (`wp_register_script_module` + `viewScriptModule`) for
+      Alert/Accordion/Tabs
+- [x] Tests: PHPUnit markup contract, Playwright + axe on `wp-env` (UOA theme and a third-party
+      theme), phpcs; own CI workflow (`.github/workflows/wordpress.yml`) with installable zips
+- [ ] `bun run makepot` → `languages/uoa-blocks.pot`, `languages/uoa.pot`, English translations
 - [ ] Block patterns for page templates (home, landing, article, event, staff profile)
-- [ ] CI: run the contract test; screenshot tests against a `wp-env` instance
+- [ ] Screenshot tests against `wp-env`
 - [ ] Replace the placeholder templates/parts when Header, main navigation and Footer land in core
 
 ## Phase 4b — Drupal adapter (second, pending an ADR)

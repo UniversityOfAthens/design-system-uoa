@@ -184,7 +184,19 @@ auto-runs on load. Add `role="status"` or `role="alert"` yourself when inserting
 
 ### Platform adapters
 
-Filled in once the first platform adapter is chosen (ADR 0003).
+#### WordPress (`packages/wordpress`, [ADR 0003](https://github.com/UniversityOfAthens/design-system-uoa/blob/develop/docs/adr/0003-wordpress-first-adapter.md))
+
+The `uoa/alert` block in the `uoa-blocks` plugin. The message is inner blocks (paragraphs, lists) and the title is typed straight into the editor. The icon follows the variant.
+
+| Attribute | Type | Default | What it does |
+| --- | --- | --- | --- |
+| `variant` | `info \| success \| warning \| danger` | `info` | The variant; maps 1:1 to the core's classes |
+| `title` | string | — | Optional title (`h2.uoa-alert__title`) |
+| `dismissible` | boolean | `false` | Dismiss button; loads `alert.js` |
+
+No `role` is added: an alert placed in content is already there when the page loads.
+
+The block outputs the core reference HTML exactly, with no `wp-block-*` classes and no colour or spacing settings; `tests/phpunit/MarkupTest.php` checks it. It works on any theme: its styles come with the plugin.
 
 ## Related
 
