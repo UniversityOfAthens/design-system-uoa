@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<ruleset name="UOA WordPress coding standards">
+	<description>PHPCS for the UOA theme and the UOA Blocks plugin.</description>
+
+	<file>uoa</file>
+	<file>uoa-blocks</file>
+
+	<exclude-pattern>*/assets/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+
+	<arg name="extensions" value="php" />
+	<arg value="ps" />
+	<arg name="colors" />
+	<arg name="parallel" value="8" />
+
+	<config name="minimum_supported_wp_version" value="6.6" />
+	<config name="testVersion" value="8.1-" />
+
+	<rule ref="WordPress" />
+	<rule ref="WordPress-Extra" />
+	<rule ref="WordPress-Docs" />
+	<rule ref="Generic.Commenting.Todo" />
+	<rule ref="PHPCompatibility" />
+
+	<!-- Each block's callback lives in render.php next to its block.json, as a namespaced function. -->
+	<rule ref="WordPress.Files.FileName">
+		<exclude-pattern>*/blocks/*/render.php</exclude-pattern>
+	</rule>
+
+	<!-- One text domain per package: the theme and the plugin are translated separately. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="uoa" />
+				<element value="uoa-blocks" />
+			</property>
+		</properties>
+	</rule>
+</ruleset>

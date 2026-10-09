@@ -159,7 +159,17 @@ Tokens του στοιχείου, από το `packages/tokens/src/component/acc
 
 ### Προσαρμογείς πλατφορμών
 
-Θα συμπληρωθεί όταν επιλεγεί ο πρώτος προσαρμογέας (ADR 0003).
+#### WordPress (`packages/wordpress`, [ADR 0003](https://github.com/UniversityOfAthens/design-system-uoa/blob/develop/docs/adr/0003-wordpress-first-adapter.md))
+
+Μπλοκ `uoa/accordion` στο plugin `uoa-blocks`, με εσωτερικά μπλοκ `uoa/accordion-item` (μία ενότητα το καθένα, με οποιοδήποτε περιεχόμενο). Ο τίτλος γράφεται κατευθείαν στον επεξεργαστή, όπου όλες οι ενότητες μένουν ανοιχτές.
+
+| Χαρακτηριστικό | Τύπος | Προεπιλογή | Τι κάνει |
+| --- | --- | --- | --- |
+| `single` | boolean | `false` | `uoa/accordion`: μία ανοιχτή ενότητα τη φορά (`data-uoa-accordion="single"`, φορτώνει το `accordion.js`) |
+| `title` | string | — | `uoa/accordion-item`: ο τίτλος της ενότητας |
+| `open` | boolean | `false` | `uoa/accordion-item`: ανοιχτή όταν φορτώνει η σελίδα |
+
+Το μπλοκ βγάζει ακριβώς το HTML αναφοράς του core, χωρίς κλάσεις `wp-block-*` και χωρίς ρυθμίσεις χρώματος ή απόστασης· το ελέγχει το `tests/phpunit/MarkupTest.php`. Λειτουργεί σε οποιοδήποτε θέμα: το ύφος του έρχεται από το plugin.
 
 ## Σχετικά
 

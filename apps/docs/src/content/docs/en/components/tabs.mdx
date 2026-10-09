@@ -143,7 +143,16 @@ auto-runs on load. Also exports `select(group, tab, focus)` for adapters.
 
 ### Platform adapters
 
-Filled in once the first platform adapter is chosen (ADR 0003).
+#### WordPress (`packages/wordpress`, [ADR 0003](https://github.com/UniversityOfAthens/design-system-uoa/blob/develop/docs/adr/0003-wordpress-first-adapter.md))
+
+The `uoa/tabs` block in the `uoa-blocks` plugin, with `uoa/tab` inner blocks (one panel each, any content). Tab names are typed straight into the list; in the editor every panel stays visible. The IDs and `aria-controls`/`aria-labelledby` pairs are generated unique per page; `tabs.js` loads only where the block is.
+
+| Attribute | Type | Default | What it does |
+| --- | --- | --- | --- |
+| `label` | string | "Καρτέλες" | `uoa/tabs`: the tab list's accessible name |
+| `title` | string | — | `uoa/tab`: the tab's name |
+
+The block outputs the core reference HTML exactly, with no `wp-block-*` classes and no colour or spacing settings; `tests/phpunit/MarkupTest.php` checks it. It works on any theme: its styles come with the plugin.
 
 ## Related
 

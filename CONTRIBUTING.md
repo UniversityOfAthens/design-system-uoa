@@ -22,12 +22,13 @@ bun run dev          # build tokens + core, then the docs site at http://localho
 | --- | --- |
 | `bun run test:a11y` | axe (WCAG 2.2 A/AA) on every docs page, Greek and English, light and dark, including the example iframes |
 | `bun run test:visual` | Screenshots of every component example against `apps/docs/tests/__screenshots__/` |
-| `bun run test:wordpress` | Markup contract: every WordPress block's output vs the core reference HTML |
+| `bun run test:wordpress` | PHPUnit markup contract: every WordPress block's output vs the core reference HTML (needs `composer install` in `packages/wordpress`; e2e and phpcs: see its README) |
 
 Both build the site first. The visual tests run in the Playwright Docker image
 (`mcr.microsoft.com/playwright:v1.63.0-noble`, the same one CI uses), so you need Docker. After an
 intended visual change, run `bun run test:visual:update` in `apps/docs`, look at the new PNGs, and
-commit them with the change. CI (`.github/workflows/ci.yml`) runs both on every pull request.
+commit them with the change. CI (`.github/workflows/ci.yml`) runs both on every pull request;
+`.github/workflows/wordpress.yml` runs the WordPress lint, PHPUnit and e2e suites when anything they ship changes.
 
 ## Where things live
 
@@ -35,7 +36,7 @@ commit them with the change. CI (`.github/workflows/ci.yml`) runs both on every 
 | --- | --- | --- |
 | `packages/tokens` | Design tokens as DTCG JSON, built to CSS variables, SCSS and JS | Published; every site and `core` |
 | `packages/icons` | Material Symbols subset as SVG files, a sprite and JSON | Published; sites, adapters and the docs site |
-| `packages/wordpress` | WordPress adapter: plugin `uoa-ds-blocks` + optional block theme `uoa-ds` (ADR 0003) | Published; the 7 live WordPress sites |
+| `packages/wordpress` | WordPress adapter: standalone plugin `uoa-blocks` (a block per component) + block theme `uoa` (ADR 0003) | Published; the 7 live WordPress sites |
 | `packages/core` | The CSS (reset, base, layout, components) and reference HTML | Published; every site |
 | `apps/docs` | The documentation site (Astro + Starlight) | Not published as a package; deployed to GitHub Pages |
 | `docs/` | Planning: architecture, conventions, roadmap, ADRs, research | Maintainers |

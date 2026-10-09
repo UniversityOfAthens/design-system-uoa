@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "uoa/alert",
+  "version": "0.0.0",
+  "title": "Ειδοποίηση",
+  "category": "uoa",
+  "icon": "info-outline",
+  "description": "Μήνυμα κατάστασης μέσα στη σελίδα: πληροφορία, επιτυχία, προειδοποίηση ή σφάλμα.",
+  "keywords": ["alert", "notice", "message", "ειδοποίηση", "μήνυμα"],
+  "textdomain": "uoa-blocks",
+  "attributes": {
+    "variant": { "type": "string", "default": "info", "enum": ["info", "success", "warning", "danger"] },
+    "title": { "type": "string", "default": "" },
+    "dismissible": { "type": "boolean", "default": false }
+  },
+  "supports": { "html": false, "className": false, "customClassName": false },
+  "editorScript": "uoa-blocks-editor",
+  "viewScriptModule": "@uoa/core/alert"
+}

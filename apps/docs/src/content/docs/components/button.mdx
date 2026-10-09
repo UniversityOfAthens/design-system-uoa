@@ -160,7 +160,22 @@ Tokens του στοιχείου, από το `packages/tokens/src/component/but
 
 ### Προσαρμογείς πλατφορμών
 
-Θα συμπληρωθεί όταν επιλεγεί ο πρώτος προσαρμογέας (ADR 0003).
+#### WordPress (`packages/wordpress`, [ADR 0003](https://github.com/UniversityOfAthens/design-system-uoa/blob/develop/docs/adr/0003-wordpress-first-adapter.md))
+
+Μπλοκ `uoa/button` στο plugin `uoa-blocks`. Με διεύθυνση γίνεται σύνδεσμος (`<a>`), χωρίς διεύθυνση `<button type="button">`.
+
+| Χαρακτηριστικό | Τύπος | Προεπιλογή | Τι κάνει |
+| --- | --- | --- | --- |
+| `text` | string | — | Το κείμενο |
+| `url` | string | — | Διεύθυνση· τότε το μπλοκ είναι σύνδεσμος |
+| `variant` | `primary \| secondary \| tertiary` | `primary` | Η παραλλαγή |
+| `size` | `default \| sm` | `default` | Μέγεθος |
+| `fullWidth` | boolean | `false` | `uoa-button--block` |
+| `icon` | όνομα από το `@uoa/icons` | — | Διακοσμητικό εικονίδιο πριν το κείμενο |
+| `label` | string | — | Προσβάσιμο όνομα, υποχρεωτικό όταν υπάρχει μόνο εικονίδιο |
+| `disabled` | boolean | `false` | `disabled`, ή `aria-disabled="true"` χωρίς `href` για σύνδεσμο |
+
+Το μπλοκ βγάζει ακριβώς το HTML αναφοράς του core, χωρίς κλάσεις `wp-block-*` και χωρίς ρυθμίσεις χρώματος ή απόστασης· το ελέγχει το `tests/phpunit/MarkupTest.php`. Λειτουργεί σε οποιοδήποτε θέμα: το ύφος του έρχεται από το plugin.
 
 ## Σχετικά
 

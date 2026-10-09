@@ -103,6 +103,7 @@ export function init(root = document) {
       setOpen(item, !item.open);
     });
     if (!single) continue;
+    // `toggle` doesn't bubble: listen in the capture phase to hear it from the items.
     group.addEventListener('toggle', (event) => {
       const item = event.target;
       // toggle also fires for popovers and nested groups — only direct <details>
@@ -114,7 +115,7 @@ export function init(root = document) {
           if (sibling !== item) setOpen(sibling, false);
         }
       }
-    });
+    }, true);
   }
 }
 

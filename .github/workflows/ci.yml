@@ -34,15 +34,3 @@ jobs:
       - name: Visual regression
         working-directory: apps/docs
         run: node node_modules/@playwright/test/cli.js test --project=visual
-
-  wordpress:
-    name: WordPress markup contract
-    runs-on: ubuntu-latest
-    # The Playwright image has no PHP, and the contract test needs nothing else from
-    # the monorepo build than packages/core's reference markup.
-    steps:
-      - uses: actions/checkout@v4
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-      - run: php packages/wordpress/tests/markup.php

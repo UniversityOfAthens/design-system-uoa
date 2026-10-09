@@ -176,7 +176,24 @@ None.
 
 ### Platform adapters
 
-Filled in once the first platform adapter is chosen (ADR 0003).
+#### WordPress (`packages/wordpress`, [ADR 0003](https://github.com/UniversityOfAthens/design-system-uoa/blob/develop/docs/adr/0003-wordpress-first-adapter.md))
+
+The `uoa/card` block in the `uoa-blocks` plugin. The image comes from the media library and the date is formatted with the site's date format.
+
+| Attribute | Type | Default | What it does |
+| --- | --- | --- | --- |
+| `mediaId, mediaAlt` | integer, string | — | Image; empty alt text uses the media library's |
+| `eyebrow` | string | — | Category ("News", "Event") |
+| `title, url` | string | — | Title; with a link the whole card is clickable |
+| `headingLevel` | `2`–`6` | `3` | Heading level, following the page outline |
+| `date` | `YYYY-MM-DD[THH:MM]` | — | `<time>` in the meta row |
+| `meta` | string[] | — | Other details, one `<span>` each |
+| `badge, badgeVariant` | string, a badge variant | — | Badge in the meta row |
+| `text` | string | — | Short text |
+| `footerText, footerUrl` | string | — | Footer link |
+| `horizontal` | boolean | `false` | Horizontal layout (people) |
+
+The block outputs the core reference HTML exactly, with no `wp-block-*` classes and no colour or spacing settings; `tests/phpunit/MarkupTest.php` checks it. It works on any theme: its styles come with the plugin.
 
 ## Related
 

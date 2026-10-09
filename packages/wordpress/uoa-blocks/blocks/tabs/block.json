@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "uoa/tabs",
+  "version": "0.0.0",
+  "title": "Καρτέλες",
+  "category": "uoa",
+  "icon": "table-row-before",
+  "description": "Εναλλαγή μεταξύ ισοδύναμων προβολών στην ίδια θέση — πρόγραμμα, εγγραφές, υποτροφίες.",
+  "keywords": ["tabs", "καρτέλες"],
+  "textdomain": "uoa-blocks",
+  "attributes": {
+    "label": { "type": "string", "default": "" }
+  },
+  "allowedBlocks": ["uoa/tab"],
+  "supports": { "html": false, "className": false, "customClassName": false },
+  "editorScript": "uoa-blocks-editor",
+  "viewScriptModule": "@uoa/core/tabs"
+}

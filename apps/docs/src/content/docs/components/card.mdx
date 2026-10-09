@@ -176,7 +176,24 @@ Tokens του στοιχείου, από το `packages/tokens/src/component/car
 
 ### Προσαρμογείς πλατφορμών
 
-Θα συμπληρωθεί όταν επιλεγεί ο πρώτος προσαρμογέας (ADR 0003).
+#### WordPress (`packages/wordpress`, [ADR 0003](https://github.com/UniversityOfAthens/design-system-uoa/blob/develop/docs/adr/0003-wordpress-first-adapter.md))
+
+Μπλοκ `uoa/card` στο plugin `uoa-blocks`. Η εικόνα έρχεται από τη βιβλιοθήκη πολυμέσων και η ημερομηνία μορφοποιείται με τη μορφή ημερομηνίας του ιστότοπου.
+
+| Χαρακτηριστικό | Τύπος | Προεπιλογή | Τι κάνει |
+| --- | --- | --- | --- |
+| `mediaId, mediaAlt` | integer, string | — | Εικόνα· κενό εναλλακτικό κείμενο = αυτό της βιβλιοθήκης |
+| `eyebrow` | string | — | Κατηγορία («Νέα», «Εκδήλωση») |
+| `title, url` | string | — | Τίτλος· με σύνδεσμο όλη η κάρτα γίνεται επιλέξιμη |
+| `headingLevel` | `2`–`6` | `3` | Επίπεδο τίτλου, κατά τη δομή της σελίδας |
+| `date` | `YYYY-MM-DD[THH:MM]` | — | `<time>` στη γραμμή πληροφοριών |
+| `meta` | string[] | — | Λοιπές πληροφορίες, ένα `<span>` η καθεμία |
+| `badge, badgeVariant` | string, παραλλαγή σήματος | — | Σήμα στη γραμμή πληροφοριών |
+| `text` | string | — | Σύντομο κείμενο |
+| `footerText, footerUrl` | string | — | Σύνδεσμος στο υποσέλιδο |
+| `horizontal` | boolean | `false` | Οριζόντια διάταξη (πρόσωπα) |
+
+Το μπλοκ βγάζει ακριβώς το HTML αναφοράς του core, χωρίς κλάσεις `wp-block-*` και χωρίς ρυθμίσεις χρώματος ή απόστασης· το ελέγχει το `tests/phpunit/MarkupTest.php`. Λειτουργεί σε οποιοδήποτε θέμα: το ύφος του έρχεται από το plugin.
 
 ## Σχετικά
 

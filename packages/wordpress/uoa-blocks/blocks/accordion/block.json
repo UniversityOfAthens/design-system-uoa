@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "uoa/accordion",
+  "version": "0.0.0",
+  "title": "Ακορντεόν",
+  "category": "uoa",
+  "icon": "list-view",
+  "description": "Στοίβα από ενότητες που ανοίγουν και κλείνουν — συχνές ερωτήσεις, ενότητες φόρμας.",
+  "keywords": ["accordion", "faq", "details", "ακορντεόν", "ερωτήσεις"],
+  "textdomain": "uoa-blocks",
+  "attributes": {
+    "single": { "type": "boolean", "default": false }
+  },
+  "allowedBlocks": ["uoa/accordion-item"],
+  "supports": { "html": false, "className": false, "customClassName": false },
+  "editorScript": "uoa-blocks-editor",
+  "viewScriptModule": "@uoa/core/accordion"
+}
