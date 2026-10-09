@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "uoa/accordion-item",
+  "version": "0.0.0",
+  "title": "Ενότητα ακορντεόν",
+  "category": "uoa",
+  "icon": "arrow-down-alt2",
+  "description": "Μία ενότητα του ακορντεόν: τίτλος και περιεχόμενο.",
+  "textdomain": "uoa-blocks",
+  "parent": ["uoa/accordion"],
+  "attributes": {
+    "title": { "type": "string", "default": "" },
+    "open": { "type": "boolean", "default": false }
+  },
+  "supports": { "html": false, "className": false, "customClassName": false, "reusable": false },
+  "editorScript": "uoa-blocks-editor"
+}

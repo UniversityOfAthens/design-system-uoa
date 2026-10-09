@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "uoa/icon",
+  "version": "0.0.0",
+  "title": "Εικονίδιο",
+  "category": "uoa",
+  "icon": "star-filled",
+  "description": "Διακοσμητικό εικονίδιο από το σύνολο του συστήματος σχεδίασης. Το νόημα το φέρει πάντα το κείμενο δίπλα του.",
+  "keywords": ["icon", "εικονίδιο"],
+  "textdomain": "uoa-blocks",
+  "attributes": {
+    "name": { "type": "string", "default": "" },
+    "size": { "type": "string", "default": "default", "enum": ["sm", "default", "lg"] }
+  },
+  "supports": { "html": false, "className": false, "customClassName": false },
+  "editorScript": "uoa-blocks-editor"
+}

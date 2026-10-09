@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "uoa/button",
+  "version": "0.0.0",
+  "title": "Κουμπί",
+  "category": "uoa",
+  "icon": "button",
+  "description": "Κουμπί ή σύνδεσμος με μορφή κουμπιού. Με διεύθυνση γίνεται σύνδεσμος.",
+  "keywords": ["button", "link", "κουμπί", "σύνδεσμος"],
+  "textdomain": "uoa-blocks",
+  "attributes": {
+    "text": { "type": "string", "default": "" },
+    "url": { "type": "string", "default": "" },
+    "variant": { "type": "string", "default": "primary", "enum": ["primary", "secondary", "tertiary"] },
+    "size": { "type": "string", "default": "default", "enum": ["default", "sm"] },
+    "fullWidth": { "type": "boolean", "default": false },
+    "icon": { "type": "string", "default": "" },
+    "label": { "type": "string", "default": "" },
+    "disabled": { "type": "boolean", "default": false }
+  },
+  "supports": { "html": false, "className": false, "customClassName": false },
+  "editorScript": "uoa-blocks-editor"
+}

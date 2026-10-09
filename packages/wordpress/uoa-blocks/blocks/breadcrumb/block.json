@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "uoa/breadcrumb",
+  "version": "0.0.0",
+  "title": "Διαδρομή πλοήγησης",
+  "category": "uoa",
+  "icon": "editor-ol",
+  "description": "Η διαδρομή από την αρχική σελίδα έως την τρέχουσα. Δεν εμφανίζεται στην αρχική.",
+  "keywords": ["breadcrumb", "trail", "διαδρομή", "πλοήγηση"],
+  "textdomain": "uoa-blocks",
+  "usesContext": ["postId", "postType"],
+  "supports": { "html": false, "className": false, "customClassName": false, "multiple": false },
+  "editorScript": "uoa-blocks-editor"
+}

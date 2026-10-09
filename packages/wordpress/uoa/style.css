@@ -1,0 +1,18 @@
+/*
+Theme Name: UOA
+Theme URI: https://github.com/UniversityOfAthens/design-system-uoa
+Author: National and Kapodistrian University of Athens
+Author URI:	https://www.uoa.gr/
+Description: Block theme for NKUA sites, built on the NKUA design system. 
+Requires at least: 6.6
+Tested up to: 6.8
+Requires PHP: 8.1
+Version: 1.0.0
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: uoa
+Tags: full-site-editing, block-patterns, accessibility-ready
+*/
+
+/* No rules on purpose. The page-level styles live in packages/core/src/base and ship
+   in assets/uoa/uoa-base.css; adding CSS here would fork the design system. */

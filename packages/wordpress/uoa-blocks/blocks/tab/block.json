@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "uoa/tab",
+  "version": "0.0.0",
+  "title": "Καρτέλα",
+  "category": "uoa",
+  "icon": "index-card",
+  "description": "Μία καρτέλα: το όνομά της και το περιεχόμενο του πλαισίου της.",
+  "textdomain": "uoa-blocks",
+  "parent": ["uoa/tabs"],
+  "attributes": {
+    "title": { "type": "string", "default": "" }
+  },
+  "supports": { "html": false, "className": false, "customClassName": false, "reusable": false },
+  "editorScript": "uoa-blocks-editor"
+}

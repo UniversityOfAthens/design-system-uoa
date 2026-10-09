@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "uoa/badge",
+  "version": "0.0.0",
+  "title": "Σήμα",
+  "category": "uoa",
+  "icon": "tag",
+  "description": "Μικρή ετικέτα κατάστασης — νέο πρόγραμμα, προθεσμία, έγκριση, ακύρωση.",
+  "keywords": ["badge", "status", "ετικέτα", "κατάσταση"],
+  "textdomain": "uoa-blocks",
+  "attributes": {
+    "text": { "type": "string", "default": "" },
+    "variant": { "type": "string", "default": "neutral", "enum": ["neutral", "info", "success", "warning", "danger"] }
+  },
+  "supports": { "html": false, "className": false, "customClassName": false },
+  "editorScript": "uoa-blocks-editor"
+}

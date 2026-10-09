@@ -5,6 +5,25 @@
   "type": "module",
   "scripts": {
     "build": "node build/build.js",
-    "test": "php tests/markup.php"
+    "start": "wp-env start",
+    "stop": "wp-env stop",
+    "destroy": "wp-env destroy",
+    "shell": "wp-env run cli /bin/bash",
+    "seed": "wp-env run cli sh wp-content/uoa-scripts/seed.sh",
+    "seed:reset": "wp-env run cli sh wp-content/uoa-scripts/seed.sh --reset",
+    "lint": "vendor/bin/phpcs --standard=phpcs.xml",
+    "lint:fix": "vendor/bin/phpcbf --standard=phpcs.xml",
+    "test": "vendor/bin/phpunit",
+    "test:unit": "vendor/bin/phpunit",
+    "test:e2e:install": "bunx playwright install chromium",
+    "test:e2e": "bunx playwright test --config tests/e2e-pw/playwright.config.ts",
+    "test:e2e:report": "bunx playwright show-report tests/e2e-pw/playwright-report",
+    "makepot": "wp-env run cli --env-cwd=/var/www/html/wp-content/plugins/uoa-blocks wp i18n make-pot . languages/uoa-blocks.pot --domain=uoa-blocks --exclude=assets && wp-env run cli --env-cwd=/var/www/html/wp-content/themes/uoa wp i18n make-pot . languages/uoa.pot --domain=uoa --exclude=assets",
+    "bundle": "sh scripts/bundle.sh"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "@wordpress/env": "^11.17.0"
   }
 }

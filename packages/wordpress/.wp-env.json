@@ -1,0 +1,23 @@
+{
+  "core": null,
+  "phpVersion": "8.1",
+  "mappings": {
+    "wp-content/themes/uoa": "./uoa",
+    "wp-content/plugins/uoa-blocks": "./uoa-blocks",
+    "wp-content/mu-plugins/uoa-e2e.php": "./tests/e2e-pw/mu-plugin.php",
+    "wp-content/uoa-scripts": "./scripts"
+  },
+  "port": 8888,
+  "testsEnvironment": false,
+  "config": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_LOG": true,
+    "WP_DEBUG_DISPLAY": true,
+    "SCRIPT_DEBUG": true,
+    "WP_ENVIRONMENT_TYPE": "local",
+    "WP_DEVELOPMENT_MODE": "all"
+  },
+  "lifecycleScripts": {
+    "afterStart": "wp-env run cli wp theme activate uoa && wp-env run cli wp plugin activate uoa-blocks && wp-env run cli sh wp-content/uoa-scripts/seed.sh"
+  }
+}
